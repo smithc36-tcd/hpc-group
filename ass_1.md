@@ -6,6 +6,29 @@
 **Describe all steps to connect to Dardel, complile the code, and execute the 
 code on computing nodes with SLURM (Interactive and batch).**
 
+- PDC Account
+- Kerberos and ssh
+- Compiling
+- Running on interactice node
+- Running on batch job
+
+To connect to dardel, use the following steps: 
+ - Apply a PDC account, after which you will be sent a password for your account
+ - PDC uses the kerberos authentication protocol and uses ssh to connect to dardel. 
+    1. Create a kerberos ticket using `kinit --forwardable user@NADA.KTH.SE`
+    2. ssh into Dardel using this ticket with `ssh YourUsername@dardel.pdc.kth.se`
+- Compiling
+    1. Code can be compiled using the `cc`, `CC` wrappers for gcc. 
+- Running on an interactive node
+    ```bash
+    $ cd /cfs/klemming/nobackup/u/user
+    $ salloc --nodes=1 -t 01:00:00 -A edu23.DD2356 -p shared --ntasks-per-node=1 --cpus-per-task=2
+    $ srun -n 128 ./hello.out
+    ```
+- Running on a batch job
+    
+
+
 ### Task 1.2
 
 **How many computing nodes does Dardel have?**
