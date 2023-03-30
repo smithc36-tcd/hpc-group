@@ -17,8 +17,7 @@ code on computing nodes with SLURM (Interactive and batch).**
 **What is the total number of cores and memory of the Dardel computer?**
 - 70912 Total cores in the CPU partition. With 156.672TB of memory.  
 
-**What is the fastest supercomputer in the world? What are the fastest European**
-and Asian supercomputers? What is their power usage?
+**What is the fastest supercomputer in the world? What are the fastest European and Asian supercomputers? What is their power usage?**
 - Frontier in the world [21,1kW]. Asian - Supercomputer Fugaku [29,899kW]. European - LUMI [6,016kW].  
 
 ## Exercise 2: Sustainability and supercomputers
@@ -37,33 +36,28 @@ Estimate done using the EPYC 7513 processor option.
 ## Exercise 3: Modeling Sparce Matrix-Vector Multiply. 
 
 ### Task 3.1
-**What is the performance in total execution time - do not consider data 
-movement - according to your performance model on Dardel or your local 
-computer for different sparse matrices = $10^2$, $10^4$, $10^6$, and 10^8?**
+**What is the performance in total execution time - do not consider data movement - according to your performance model on Dardel or your local computer for different sparse matrices `nrows` = $10^2$, $10^4$, $10^6$, and $10^8$?**
 
 Laptop - i7-10750H (Base 2.6Ghz - 5.0GHz)
 
-Taking the base rate gives $1 / 2.6 \cdot 10^9$ operations/s
+Taking the base rate gives $(1/2.6) \cdot 10^{-9}$ s/operations
 
 for each nnz:
-    $$nnz = 49600 \implies 0.00001907s\\
-    nnz = 4996000 \implies 0.019215s\\
+    $$nnz = 460 \implies 0.0000001769s\\
+    nnz = 49600 \implies 0.00001907s\\
+    nnz = 4996000 \implies 0.0019215s\\
     nnz = 499960000 \implies 0.192292s$$
 
 
+**What is the measured performance in total execution time and floating-point operations per second running spmv.c for different sizes = $10^2$, $10^4$, $10^6$, and $10^8$? Compare the results from the performance model and experimental results. Discuss the comparison in the report.**
 
+Time for Sparse Ax, nrows=100, nnz=460, T = 0.000002s, FLOPS = $2 \cdot nnz / T = 460000000$
+ 
+Time for Sparse Ax, nrows=10000, nnz=49600, T = 0.000262s, FLOPS = $2 \cdot nnz / T = 378625954$
 
-Time for Sparse Ax, nrows=10000, nnz=49600, T = 0.000262s
+Time for Sparse Ax, nrows=1000000, nnz=4996000, T = 0.028904s, FLOPS = $2 \cdot nnz / T = 345696097$
 
-Time for Sparse Ax, nrows=1000000, nnz=4996000, T = 0.028904s
-
-Time for Sparse Ax, nrows=100000000, nnz=499960000, T = 0.598384s
-
-**What is the measured performance in total execution time and floating-point 
-operations per second running spmv.c for different sizes = 102, 104, 106, 
-and 108? Compare the results from the performance model and experimental 
-results. Discuss the comparison in the report.**
-
+Time for Sparse Ax, nrows=100000000, nnz=499960000, T = 0.598384s, FLOPS = $2 \cdot nnz / T = 1671033984$
 
 ## Exercise 4: The memory mountain
 
@@ -91,11 +85,7 @@ Small arrays with low stride is the consistently most high performing region. Th
 High stride and large array size is the consistently most low performing region. The read bandwidth is 2907 MB/s at the lowest.
 
 ### Task 4.5
-**When you look at the graph for stride=1, you (should) see relatively high 
-performance compared to stride=32. This is true even for large array sizes 
-that are much larger than the L3 cache size. How is this possible, when the 
-array cannot possibly all fit into the cache? Your explanation should include 
-a brief overview of hardware prefetching as it applies to caches.**
+**When you look at the graph for stride=1, you (should) see relatively high performance compared to stride=32. This is true even for large array sizes that are much larger than the L3 cache size. How is this possible, when the array cannot possibly all fit into the cache? Your explanation should include a brief overview of hardware prefetching as it applies to caches.**
 
 With a smaller stride there are fewer cache misses even though the whole array cannot  be loaded. If the stride is smaller more of the array can be read before more data has to be loaded into the cache, even if the whole array cannot be loaded at once.
 
