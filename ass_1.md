@@ -46,11 +46,7 @@ To connect to dardel, use the following steps:
 ## Exercise 2: Sustainability and supercomputers
 
 ### Task 2.1
-**Using the calculator at http://calculator.green-algorithms.org/. Evaluate the 
-power usage and carbon footprint of running a simulation on 10 Dardel computing 
-nodes, assuming that we only use CPU, all the memory on the nodes, and we 
-neglect the network costs. The simulation runs on 10 computing nodes for 
-12 hours.**
+**Using the calculator at http://calculator.green-algorithms.org/. Evaluate the power usage and carbon footprint of running a simulation on 10 Dardel computing nodes, assuming that we only use CPU, all the memory on the nodes, and we neglect the network costs. The simulation runs on 10 computing nodes for 12 hours.**
 
 - 12 Hours, CPU, 128 Cores, 256gb * 10 =  20.09kg CO2, 180.71kWh
 
@@ -72,6 +68,7 @@ for each nnz:
     nnz = 499960000 \implies 0.192292s$$
 
 
+### Task 3.2
 **What is the measured performance in total execution time and floating-point operations per second running spmv.c for different sizes = $10^2$, $10^4$, $10^6$, and $10^8$? Compare the results from the performance model and experimental results. Discuss the comparison in the report.**
 
 Time for Sparse Ax, nrows=100, nnz=460, T = 0.000002s, FLOPS = $2 \cdot nnz / T = 460000000$
@@ -81,6 +78,40 @@ Time for Sparse Ax, nrows=10000, nnz=49600, T = 0.000262s, FLOPS = $2 \cdot nnz 
 Time for Sparse Ax, nrows=1000000, nnz=4996000, T = 0.028904s, FLOPS = $2 \cdot nnz / T = 345696097$
 
 Time for Sparse Ax, nrows=100000000, nnz=499960000, T = 0.598384s, FLOPS = $2 \cdot nnz / T = 1671033984$
+
+The theoretical performance model consistently underestimates the execution time, which reasonable as the model only takes into account computing time.
+
+### Task 3.3
+**What is the main reason for the observed difference between the modeled value and the measured value?**
+The model only takes into account computing time, and not read and write times.
+
+### Task 3.4
+**What are the read bandwidth values you measure running spmv.c for different sizes `nrows` = $10^2$, $10^4$, $10^6$, and $10^8$?**
+
+`sizeof(int) + sizeof(double) = 12 bytes` 
+
+Read bandwidth = `(nnz + nrows)(sizeof(int) + sizeof(double)) / T = 12 * (nnz + nrows) / T`
+
+nrows=100, nnz=460, Read bandwidth = 3360 MB/s
+
+nrows=10000, nnz=49600, Read bandwidth = 2729 MB/s
+
+nrows=1000000, nnz=4996000, Read bandwidth = 2489 MB/s
+
+nrows=100000000, nnz=4996000, Read bandwidth = 12031 MB/s
+
+### Task 3.5
+**What is the bandwidth you obtain by running the STREAM benchmark on your system? How does it compare to the bandwidth you measured in SpMV? Discuss the comparison.**
+
+```
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:           28199.4     0.005750     0.005674     0.005853
+Scale:          17540.2     0.009188     0.009122     0.009401
+Add:            20904.5     0.011644     0.011481     0.011998
+Triad:          20714.7     0.011821     0.011586     0.012412
+```
+
+The STREAM benchmark shows a lot higher rates for all the operations compared to our read bandwidth measured on the SpMV benchmark. However, our calculated read bandwidth does not take into account computation time.
 
 ## Exercise 4: The memory mountain
 
@@ -112,6 +143,17 @@ High stride and large array size is the consistently most low performing region.
 
 With a smaller stride there are fewer cache misses even though the whole array cannot  be loaded. If the stride is smaller more of the array can be read before more data has to be loaded into the cache, even if the whole array cannot be loaded at once.
 
+### Task 4.6
+**What is temporal locality? What is spatial locality?**
+Temporally locality is the reuse of recently accessed data. Spatially locality is using data that is nearby in memory.
+
+### Task 4.7
+**Adjusting the total array size impacts temporal locality, why? Will an increased array size increase or decrease temporal locality?**
+Adjusting the array size impacts temporal locality as a smaller fraction of data is temporally local. Increasing the array size decreases temporal locality.
+
+### Task 4.8
+**Adjusting the read stride impacts spatial locality, why? Will an increased read stride increase or decrease spatial locality?**
+Read stride impacts spatial locality as memory further away that is not spatially local is read.
 
 ## Exercise 5: Write a benchmark to measure preformance
 ### Task 5.1.1
