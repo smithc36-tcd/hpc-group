@@ -81,13 +81,13 @@ L3 = 12MB
 ### Task 4.3
 **What region (array size, stride) gets the most consistently high performance (ignoring spikes in the graph that are noisy results...)? What is the read bandwidth reported?**
 
-Small arrays with low stride is the consistently most high performing region. The read bandwidth is up to $1.2 \cdot 10^5$ MB/s.
+Small arrays with low stride is the consistently most high performing region. The read bandwidth is up to 103469 MB/s.
 
 
 ### Task 4.4
 **What region (array size, stride) gets the most consistently low performance (Ignoring spikes in the graph that are noisy results...)? What is the read bandwidth reported?**
 
-High stride and large array size is the consistently most low performing region. The read bandwidth is
+High stride and large array size is the consistently most low performing region. The read bandwidth is 2907 MB/s at the lowest.
 
 ### Task 4.5
 **When you look at the graph for stride=1, you (should) see relatively high 
@@ -95,6 +95,8 @@ performance compared to stride=32. This is true even for large array sizes
 that are much larger than the L3 cache size. How is this possible, when the 
 array cannot possibly all fit into the cache? Your explanation should include 
 a brief overview of hardware prefetching as it applies to caches.**
+
+With a smaller stride there are fewer cache misses even though the whole array cannot  be loaded. If the stride is smaller more of the array can be read before more data has to be loaded into the cache, even if the whole array cannot be loaded at once.
 
 
 ## Exercise 5: Write a benchmark to measure preformance
