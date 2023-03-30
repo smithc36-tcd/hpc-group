@@ -32,6 +32,8 @@ neglect the network costs. The simulation runs on 10 computing nodes for
 
 - 12 Hours, CPU, 128 Cores, 256gb * 10 =  20.09kg CO2, 180.71kWh
 
+Estimate done using the EPYC 7513 processor option. 
+
 ## Exercise 3: Modeling Sparce Matrix-Vector Multiply. 
 
 ### Task 3.1
@@ -65,14 +67,14 @@ results. Discuss the comparison in the report.
 ### Task 4.1 
 Report the name of the processor and the size of the L1, L2, and L3 of the processor you are benchmarking. You can check the specs of your processor online.
 
-Processor: i7-10750H
-L1 = 384kB
-L2 = 1.5MB
-L3 = 12MB
+Processor: i7-10750H \
+L1 = 384kB \
+L2 = 1.5MB  
+L3 = 12MB  
 
 ### Task 4.2
 
-![Memory Mountain](../notes/DD2356/Assignment-I/memory-mountain-example/memory_mountain.png)
+![Memory Mountain](memory_mountain.png)
 
 ### Task 4.3
 What region (array size, stride) gets the most consistently high performance (ignoring spikes in the graph that are noisy results...)? What is the read bandwidth reported?
@@ -102,7 +104,7 @@ Increase N and compile the code, what is the average running time now?
 why is the execution time like that in the previous question when the flag -O2 
 is used? Answer this question using the information you find in the assembly code.
 
-- The complier optimised teh loop out of the code. 
+- The compiler optimized the loop out of the code. 
 
 ### Task 5.2.2
 What is the average execution time without the `-O2` flag
@@ -218,6 +220,11 @@ What is the clock granularity on Dardel or your local computer?
 98	0.00e+00
 99	0.00e+00
 ```
+
+### Task 5.4.1
+Average runtime: 0.00001330s
+
+### Task 5.4.2
 
 
 [Runtime on local machine]
