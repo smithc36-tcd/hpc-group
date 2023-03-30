@@ -60,6 +60,7 @@ The theoretical performance model consistently underestimates the execution time
 
 ### Task 3.3
 **What is the main reason for the observed difference between the modeled value and the measured value?**
+The model only takes into account computing time, and not read and write times.
 
 ### Task 3.4
 **What are the read bandwidth values you measure running spmv.c for different sizes `nrows` = $10^2$, $10^4$, $10^6$, and $10^8$?**
@@ -78,6 +79,14 @@ nrows=100000000, nnz=4996000, Read bandwidth = 12031 MB/s
 
 ### Task 3.5
 **What is the bandwidth you obtain by running the STREAM benchmark Download STREAM benchmarkon your system? How does it compare to the bandwidth you measured in SpMV? Discuss the comparison.**
+
+```
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:           28199.4     0.005750     0.005674     0.005853
+Scale:          17540.2     0.009188     0.009122     0.009401
+Add:            20904.5     0.011644     0.011481     0.011998
+Triad:          20714.7     0.011821     0.011586     0.012412
+```
 
 ## Exercise 4: The memory mountain
 
