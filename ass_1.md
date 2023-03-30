@@ -3,32 +3,32 @@
 ## Exercise 1: Compiling and running on Dardel. 
 
 ### Task 1.1
-Describe all steps to connect to Dardel, complile the code, and execute the 
-code on computing nodes with SLURM (Interactive and batch).
+**Describe all steps to connect to Dardel, complile the code, and execute the 
+code on computing nodes with SLURM (Interactive and batch).**
 
 ### Task 1.2
 
-How many computing nodes does Dardel have? 
+**How many computing nodes does Dardel have?**
 - 554 Nodes [488 SNIC thin, 20 SNIC large, 8 SNIC Huge, 2 SNIC Giant, 36 KTH]
 
-How many CPUs, CPU core, and memory does each computing node have? 
+**How many CPUs, CPU core, and memory does each computing node have?**
 - 2 CPUs, 128 Physical cores with 256 virtual cores. Memory size varies with the type of node.
 
-What is the total number of cores and memory of the Dardel computer?
+**What is the total number of cores and memory of the Dardel computer?**
 - 70912 Total cores in the CPU partition. With 156.672TB of memory.  
 
-What is the fastest supercomputer in the world? What are the fastest European 
+**What is the fastest supercomputer in the world? What are the fastest European**
 and Asian supercomputers? What is their power usage?
 - Frontier in the world [21,1kW]. Asian - Supercomputer Fugaku [29,899kW]. European - LUMI [6,016kW].  
 
 ## Exercise 2: Sustainability and supercomputers
 
 ### Task 2.1
-Using the calculator at http://calculator.green-algorithms.org/. Evaluate the 
+**Using the calculator at http://calculator.green-algorithms.org/. Evaluate the 
 power usage and carbon footprint of running a simulation on 10 Dardel computing 
 nodes, assuming that we only use CPU, all the memory on the nodes, and we 
 neglect the network costs. The simulation runs on 10 computing nodes for 
-12 hours.
+12 hours.**
 
 - 12 Hours, CPU, 128 Cores, 256gb * 10 =  20.09kg CO2, 180.71kWh
 
@@ -37,9 +37,9 @@ Estimate done using the EPYC 7513 processor option.
 ## Exercise 3: Modeling Sparce Matrix-Vector Multiply. 
 
 ### Task 3.1
-What is the performance in total execution time - do not consider data 
+**What is the performance in total execution time - do not consider data 
 movement - according to your performance model on Dardel or your local 
-computer for different sparse matrices = $10^2$, $10^4$, $10^6$, and 10^8?
+computer for different sparse matrices = $10^2$, $10^4$, $10^6$, and 10^8?**
 
 Laptop - i7-10750H (Base 2.6Ghz - 5.0GHz)
 
@@ -58,10 +58,10 @@ Time for Sparse Ax, nrows=1000000, nnz=4996000, T = 0.028904s
 
 Time for Sparse Ax, nrows=100000000, nnz=499960000, T = 0.598384s
 
-What is the measured performance in total execution time and floating-point 
+**What is the measured performance in total execution time and floating-point 
 operations per second running spmv.c for different sizes = 102, 104, 106, 
 and 108? Compare the results from the performance model and experimental 
-results. Discuss the comparison in the report.
+results. Discuss the comparison in the report.**
 
 
 ## Exercise 4: The memory mountain
