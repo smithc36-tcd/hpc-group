@@ -65,7 +65,7 @@ results. Discuss the comparison in the report.
 ## Exercise 4: The memory mountain
 
 ### Task 4.1 
-Report the name of the processor and the size of the L1, L2, and L3 of the processor you are benchmarking. You can check the specs of your processor online.
+**Report the name of the processor and the size of the L1, L2, and L3 of the processor you are benchmarking. You can check the specs of your processor online.**
 
 Processor: i7-10750H
 L1 = 384kB
@@ -77,18 +77,22 @@ L3 = 12MB
 ![Memory Mountain](./memory_mountain.png)
 
 ### Task 4.3
-What region (array size, stride) gets the most consistently high performance (ignoring spikes in the graph that are noisy results...)? What is the read bandwidth reported?
+**What region (array size, stride) gets the most consistently high performance (ignoring spikes in the graph that are noisy results...)? What is the read bandwidth reported?**
+
+Small arrays with low stride is the consistently most high performing region. The read bandwidth is up to $1.2 \cdot 10^5$ MB/s.
+
 
 ### Task 4.4
-What region (array size, stride) gets the most consistently low performance (Ignoring spikes in the graph that are noisy results...)? What is the read bandwidth reported?
+**What region (array size, stride) gets the most consistently low performance (Ignoring spikes in the graph that are noisy results...)? What is the read bandwidth reported?**
 
+High stride and large array size is the consistently most low performing region. The read bandwidth is
 
 ### Task 4.5
-When you look at the graph for stride=1, you (should) see relatively high 
+**When you look at the graph for stride=1, you (should) see relatively high 
 performance compared to stride=32. This is true even for large array sizes 
 that are much larger than the L3 cache size. How is this possible, when the 
 array cannot possibly all fit into the cache? Your explanation should include 
-a brief overview of hardware prefetching as it applies to caches.
+a brief overview of hardware prefetching as it applies to caches.**
 
 
 ## Exercise 5: Write a benchmark to measure preformance
