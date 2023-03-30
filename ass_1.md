@@ -104,36 +104,38 @@ With a smaller stride there are fewer cache misses even though the whole array c
 ### Task 5.1.1
 [On local machine]
 
-What is the average runtime? 
+**What is the average runtime?**
 - 0.00000405s
 
 ### Task 5.1.2
-Increase N and compile the code, what is the average running time now? 
+**Increase N and compile the code, what is the average running time now?**
 - 0.00000405s
 
 ### Task 5.2.1
-why is the execution time like that in the previous question when the flag -O2 
-is used? Answer this question using the information you find in the assembly code.
+**Why is the execution time like that in the previous question when the flag -O2
+is used? Answer this question using the information you find in the assembly code.**
 
-- The compiler optimized the loop out of the code. 
+- Inpecting the asm code shows the The compiler optimized the loop out of the code.  
 
 ### Task 5.2.2
-What is the average execution time without the `-O2` flag
+**What is the average execution time without the `-O2` flag?**
 
-For N = 5000:
+**For N = 5000:**
 - 0.00004816s 
 
-For N = 50000: 
+**For N = 50000:**
 - 0.00050402s
 
 ### Task 5.3
-What is the clock granularity on Dardel or your local computer?
+**What is the clock granularity on Dardel or your local computer?**
 
 $$ Granularity: 9.54 \cdot 10^-7s $$
 
 
 ### Task 5.4.1
-- Average runtime: 0.00001330s
+**Modify the program that you used in question 5.1 and do the following such that the code runs properly with `-O2` optimization:**
+
+- The code runs as expected, inspecting the asm code shows the program executes the loop as intended.
 
 ### Task 5.4.2
 - Average Exectution time: 0.000013399 s
