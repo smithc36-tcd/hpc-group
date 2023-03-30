@@ -78,7 +78,7 @@ nrows=1000000, nnz=4996000, Read bandwidth = 2489 MB/s
 nrows=100000000, nnz=4996000, Read bandwidth = 12031 MB/s
 
 ### Task 3.5
-**What is the bandwidth you obtain by running the STREAM benchmark Download STREAM benchmarkon your system? How does it compare to the bandwidth you measured in SpMV? Discuss the comparison.**
+**What is the bandwidth you obtain by running the STREAM benchmark on your system? How does it compare to the bandwidth you measured in SpMV? Discuss the comparison.**
 
 ```
 Function    Best Rate MB/s  Avg time     Min time     Max time
@@ -87,6 +87,8 @@ Scale:          17540.2     0.009188     0.009122     0.009401
 Add:            20904.5     0.011644     0.011481     0.011998
 Triad:          20714.7     0.011821     0.011586     0.012412
 ```
+
+The STREAM benchmark shows a lot higher rates for all the operations compared to our read bandwidth measured on the SpMV benchmark. However, our calculated read bandwidth does not take into account computation time.
 
 ## Exercise 4: The memory mountain
 
@@ -120,15 +122,15 @@ With a smaller stride there are fewer cache misses even though the whole array c
 
 ### Task 4.6
 **What is temporal locality? What is spatial locality?**
+Temporally locality is the reuse of recently accessed data. Spatially locality is using data that is nearby in memory.
 
 ### Task 4.7
 **Adjusting the total array size impacts temporal locality, why? Will an increased array size increase or decrease temporal locality?**
+Adjusting the array size impacts temporal locality as a smaller fraction of data is temporally local. Increasing the array size decreases temporal locality.
 
 ### Task 4.8
 **Adjusting the read stride impacts spatial locality, why? Will an increased read stride increase or decrease spatial locality?**
-
-### Task 4.9
-**Repeat the analysis on your own laptop to check the differences. (Optional, if you did your analysis on Dardel)**
+Read stride impacts spatial locality as memory further away that is not spatially local is read.
 
 ## Exercise 5: Write a benchmark to measure preformance
 ### Task 5.1.1
