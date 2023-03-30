@@ -37,22 +37,24 @@ neglect the network costs. The simulation runs on 10 computing nodes for
 ### Task 3.1
 What is the performance in total execution time - do not consider data 
 movement - according to your performance model on Dardel or your local 
-computer for different sparse matrices = 10^2, 10^4, 10^6, and 10^8?
+computer for different sparse matrices = $10^2$, $10^4$, $10^6$, and 10^8?
 
 Laptop - i7-10750H (Base 2.6Ghz - 5.0GHz)
 
-Taking the base rate gives 1 / 2.6x10^9 operations/s
+Taking the base rate gives $1 / 2.6 \cdot 10^9$ operations/s
 
 for each nnz:
-    nnz = 49600 => 0.00001907
-    nnz = 4996000 => 0.019215
-    nnz = 499960000 => 0.192292
+    $$nnz = 49600 \implies 0.00001907s\\
+    nnz = 4996000 \implies 0.019215s\\
+    nnz = 499960000 \implies 0.192292s$$
 
 
 
-Time for Sparse Ax, nrows=10000, nnz=49600, T = 0.000262
-Time for Sparse Ax, nrows=1000000, nnz=4996000, T = 0.028904
-Time for Sparse Ax, nrows=100000000, nnz=499960000, T = 0.598384
+Time for Sparse Ax, nrows=10000, nnz=49600, T = 0.000262s
+
+Time for Sparse Ax, nrows=1000000, nnz=4996000, T = 0.028904s
+
+Time for Sparse Ax, nrows=100000000, nnz=499960000, T = 0.598384s
 
 What is the measured performance in total execution time and floating-point 
 operations per second running spmv.c for different sizes = 102, 104, 106, 
@@ -72,7 +74,7 @@ L3 = 12MB
 
 ### Task 4.2
 
-![Memory Mountain](../notes/DD2356/Assignment-I/memory-mountain-example/memory_mountain.png)
+![Memory Mountain](./memory_mountain.png)
 
 ### Task 4.3
 What region (array size, stride) gets the most consistently high performance (ignoring spikes in the graph that are noisy results...)? What is the read bandwidth reported?
