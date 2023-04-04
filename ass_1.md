@@ -22,11 +22,47 @@ To connect to dardel, use the following steps:
 - Running on an interactive node
     ```bash
     $ cd /cfs/klemming/nobackup/u/user
-    $ salloc --nodes=1 -t 01:00:00 -A edu23.DD2356 -p shared --ntasks-per-node=1 --cpus-per-task=2
+    $ salloc --nodes=1 -t 01:00:00 -A edu23.DD2356 -p main
     $ srun -n 128 ./hello.out
     ```
-- Running on a batch job
-    
+- Running on a batch job\
+    We create a file `job.sh`:
+    ```
+    #!/bin/bash -l
+    # The -l above is required to get the full environment with modules
+
+    # The name of the script is myjob
+    #SBATCH -J myjob
+    # Only 1 hour wall-clock time will be given to this job
+    #SBATCH -t 0:01:00
+    #SBATCH -A edu23.DD2356
+    # Number of nodes
+    #SBATCH -p main
+    #SBATCH --nodes=1
+    #SBATCH -e error_file.e
+
+    # Run the executable file 
+    # and write the output into my_output_file
+    srun -n 128 ./hello.out > hello_output
+    ```
+    Then we submit it with
+    ```
+    sbatch job.sh
+    ```
+
+For both, the output looks something like
+
+```
+Hello world from processor nid001264, rank 86 out of 128 processors
+Hello world from processor nid001264, rank 16 out of 128 processors
+Hello world from processor nid001264, rank 97 out of 128 processors
+...
+...
+...
+Hello world from processor nid001264, rank 99 out of 128 processors
+Hello world from processor nid001264, rank 127 out of 128 processors
+Hello world from processor nid001264, rank 115 out of 128 processors
+```
 
 
 ### Task 1.2
