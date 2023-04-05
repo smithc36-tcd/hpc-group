@@ -297,6 +297,10 @@ Importantly, the average time per matrix multiplication is the following:
 |----------------- |:--------------:|:--------------:|:--------------:|:--------------:|
 | Average time (s) | 0.000181       | 0.000154       | 0.889926       | 0.365820       |
 
+**-What are the factors that impact the most the performance of the matrix multiply operation for different matrix sizes and implementations (naive vs optimized)?**
+
+In naïve, memory motion dominates the performance of many operations. Sustained memory bandwidth and larger cache size can provide a better guide to performance. And for optimized, since the ‘-O2’ optimizes the spatial locality and temporal locality, the time for multiplication operation will impact the performance of the matrix multiply operation.
+
 #### Task 6.2 \
 
 Using the perf tool we measured the following performance:
@@ -314,3 +318,11 @@ With the reported base rate for each N being:
 |                     | N=64     | N=128    | N=2048   |
 |---------------------|:--------:|:--------:|:--------:|
 | Base rate (seconds) | 2.29e-06 | 1.90e-05 | 9.32e-02 |
+
+**-What are the factors that impact the performance of the transpose operation most for different matrix sizes and implementations?**
+
+Cache size impact the performance of the transpose operation most. With the size of matrixes increasing, the miss rate of cache increases and because the load and store from memory cause great execution time than form cache, the performance will be worse.
+
+**-Which code transformations can be used in the code for the matrix transpose to improve the re-usage of cache?**
+
+Loop transformations can be used in the code for the matrix transpose. We can reorder the operations so that spatial locality is preserved. There are two methods to break loops into blocks: one is strip mining(Break a loop up into blocks of consecutive elements); Another is loop reordering(Move the loop over i inside the jj loop). 
