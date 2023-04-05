@@ -1,0 +1,18 @@
+
+Transpose 2048 x 2048
+BaseTime = 9.32e-02 s, Base Rate = 3.60e+02 MB/s
+
+ Performance counter stats for '../transpose_2048.out':
+
+           9389.67 msec cpu-clock:u               #    1.000 CPUs utilized          
+        3096812599      instructions:u            #    0.10  insn per cycle         
+       31749338336      cycles:u                  #    3.381 GHz                    
+        1479373680      L1-dcache-load-misses:u   #   29.61% of all L1-dcache hits  
+        4996903907      L1-dcache-loads:u         #  532.170 M/sec                  
+
+       9.393376821 seconds time elapsed
+
+       9.386423000 seconds user
+       0.003999000 seconds sys
+
+

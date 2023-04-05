@@ -1,0 +1,18 @@
+
+Transpose 64 x 64
+BaseTime = 2.29e-06 s, Base Rate = 1.43e+04 MB/s
+
+ Performance counter stats for '../transpose_64.out':
+
+              2.67 msec cpu-clock:u               #    0.173 CPUs utilized          
+           3568479      instructions:u            #    2.19  insn per cycle         
+           1629361      cycles:u                  #    0.610 GHz                    
+            237520      L1-dcache-load-misses:u   #   18.34% of all L1-dcache hits  
+           1295105      L1-dcache-loads:u         #  485.219 M/sec                  
+
+       0.015456084 seconds time elapsed
+
+       0.000000000 seconds user
+       0.003834000 seconds sys
+
+

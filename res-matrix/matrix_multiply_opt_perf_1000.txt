@@ -1,0 +1,17 @@
+1. Initializing Matrices
+2. Matrix Multiply
+3. Sum = 249.968991
+4. time = 0.365820
+
+ Performance counter stats for './matrix_multiply_opt_1000.out':
+
+           4046.83 msec cpu-clock:u               #    0.995 CPUs utilized
+       77243835890      instructions:u            #    5.66  insn per cycle
+       13648758289      cycles:u                  #    3.373 GHz
+        1419318098      L1-dcache-load-misses:u   #    4.28% of all L1-dcache hits
+       33136056533      L1-dcache-loads:u         # 8188.142 M/sec
+
+       4.068640160 seconds time elapsed
+
+       4.047818000 seconds user
+       0.000000000 seconds sys
