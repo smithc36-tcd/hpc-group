@@ -76,15 +76,19 @@ Hello world from processor nid001264, rank 115 out of 128 processors
 #### Task 1.2 \
 
 **How many computing nodes does Dardel have?**
+
 - 554 Nodes [488 SNIC thin, 20 SNIC large, 8 SNIC Huge, 2 SNIC Giant, 36 KTH]
 
 **How many CPUs, CPU core, and memory does each computing node have?**
+
 - 2 CPUs, 128 Physical cores with 256 virtual cores. Memory size varies with the type of node.
 
 **What is the total number of cores and memory of the Dardel computer?**
+
 - 70912 Total cores in the CPU partition. With 156.672TB of memory.  
 
 **What is the fastest supercomputer in the world? What are the fastest European and Asian supercomputers? What is their power usage?**
+
 - Frontier in the world [21,1kW]. Asian - Supercomputer Fugaku [29,899kW]. European - LUMI [6,016kW].  
 
 \pagebreak
