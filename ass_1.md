@@ -158,8 +158,8 @@ L3 = 12MB
 
 #### Task 4.2
 
-<img src="./memory_mountain.png" width="500">
-<!-- ![Memory Mountain](./memory_mountain.png) -->
+<!--<img src="./memory_mountain.png" width="500">-->
+ ![Memory Mountain](memory_mountain.png) 
 
 #### Task 4.3
 **What region (array size, stride) gets the most consistently high performance (ignoring spikes in the graph that are noisy results...)? What is the read bandwidth reported?**
