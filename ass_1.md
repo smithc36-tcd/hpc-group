@@ -31,7 +31,8 @@ To connect to dardel, use the following steps:
     ```
 - Running on a batch job\
     We create a file `job.sh`:
-    ```
+
+    ```bash
     #!/bin/bash -l
     # The -l above is required to get the full environment with modules
 
@@ -49,8 +50,10 @@ To connect to dardel, use the following steps:
     # and write the output into my_output_file
     srun -n 128 ./hello.out > hello_output
     ```
+
     Then we submit it with
-    ```
+
+    ```bash
     sbatch job.sh
     ```
 
@@ -83,6 +86,8 @@ Hello world from processor nid001264, rank 115 out of 128 processors
 **What is the fastest supercomputer in the world? What are the fastest European and Asian supercomputers? What is their power usage?**
 - Frontier in the world [21,1kW]. Asian - Supercomputer Fugaku [29,899kW]. European - LUMI [6,016kW].  
 
+\pagebreak
+
 ### Exercise 2: Sustainability and supercomputers
 
 #### Task 2.1
@@ -91,6 +96,8 @@ Hello world from processor nid001264, rank 115 out of 128 processors
 - 12 Hours, CPU, 128 Cores, 256gb * 10 =  20.09kg CO2, 180.71kWh
 
 Estimate done using the EPYC 7513 processor option. 
+
+\pagebreak
 
 ### Exercise 3: Modeling Sparce Matrix-Vector Multiply. 
 
@@ -102,10 +109,10 @@ Laptop - i7-10750H (Base 2.6Ghz - 5.0GHz)
 Taking the base rate gives $(1/2.6) \cdot 10^{-9}$ s/operations
 
 for each nnz:
-   \[nnz = 460 \implies 0.0000001769s\\
-    nnz = 49600 \implies 0.00001907s\\
-    nnz = 4996000 \implies 0.0019215s\\
-    nnz = 499960000 \implies 0.192292s\]
+    $$nnz = 460 \implies 0.0000001769s$$
+    $$nnz = 49600 \implies 0.00001907s$$
+    $$nnz = 4996000 \implies 0.0019215s$$
+    $$nnz = 499960000 \implies 0.192292s$$
 
 
 #### Task 3.2
@@ -154,6 +161,8 @@ Triad:          20714.7     0.011821     0.011586     0.012412
 
 The STREAM benchmark shows a lot higher rates for all the operations compared to our read bandwidth measured on the SpMV benchmark. However, our calculated read bandwidth does not take into account computation time.
 
+\pagebreak
+
 ### Exercise 4: The memory mountain
 
 #### Task 4.1 
@@ -200,6 +209,8 @@ Adjusting the array size impacts temporal locality as a smaller fraction of data
  
 Read stride impacts spatial locality as memory further away that is not spatially local is read.
 
+\pagebreak
+
 ### Exercise 5: Write a benchmark to measure preformance
 #### Task 5.1.1
 [On local machine]
@@ -241,6 +252,8 @@ $$ Granularity: 9.54 \cdot 10^-7s $$
 - Average Exectution time: 0.000013399 s
 - Min Exectution time: 0.000133991 s
 
+\pagebreak
+
 ### Exercise 6: Measure the Performance of Matrix-Matrix Multiply and Transpose with perf
 
 #### Task 6.1
@@ -256,9 +269,9 @@ We get the following results from perf:
 
 Importantly, the average time per matrix multiplication is the following:
 
-|                        | MSIZE=64 Naive | MSIZE=64 Naive | MSIZE=64 Naive | MSIZE=64 Naive |
-|------------------------|:--------------:|:--------------:|:--------------:|:--------------:|
-| Average time (seconds) | 0.000181       | 0.000154       | 0.889926       | 0.365820       |
+|                  | MSIZE=64 Naive | MSIZE=64 Opt | MSIZE=10 Naive | MSIZE=1000 Opt |
+|----------------- |:--------------:|:--------------:|:--------------:|:--------------:|
+| Average time (s) | 0.000181       | 0.000154       | 0.889926       | 0.365820       |
 
 #### Task 6.2
 
