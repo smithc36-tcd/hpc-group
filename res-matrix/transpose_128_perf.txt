@@ -1,0 +1,18 @@
+
+Transpose 128 x 128
+BaseTime = 1.90e-05 s, Base Rate = 6.90e+03 MB/s
+
+ Performance counter stats for '../transpose_128.out':
+
+              3.22 msec cpu-clock:u               #    0.251 CPUs utilized          
+          12680806      instructions:u            #    1.62  insn per cycle         
+           7806929      cycles:u                  #    2.422 GHz                    
+           1871167      L1-dcache-load-misses:u   #   32.79% of all L1-dcache hits  
+           5705839      L1-dcache-loads:u         # 1769.924 M/sec                  
+
+       0.012847589 seconds time elapsed
+
+       0.004166000 seconds user
+       0.000000000 seconds sys
+
+

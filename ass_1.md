@@ -25,40 +25,48 @@ To connect to dardel, use the following steps:
 - Running on an interactive node
 
     ```bash
-    $ cd /cfs/klemming/scratch/u/user
-    $ salloc --nodes=1 -t 01:00:00 -A edu23.DD2356 -p shared --ntasks-per-node=1 --cpus-per-task=2
+    $ cd /cfs/klemming/nobackup/u/user
+    $ salloc --nodes=1 -t 01:00:00 -A edu23.DD2356 -p main
     $ srun -n 128 ./hello.out
     ```
+- Running on a batch job\
+    We create a file `job.sh`:
+    ```
+    #!/bin/bash -l
+    # The -l above is required to get the full environment with modules
 
-- Running on a batch job
-    1. To run a batch job we create a bash script: 
+    # The name of the script is myjob
+    #SBATCH -J myjob
+    # Only 1 hour wall-clock time will be given to this job
+    #SBATCH -t 0:01:00
+    #SBATCH -A edu23.DD2356
+    # Number of nodes
+    #SBATCH -p main
+    #SBATCH --nodes=1
+    #SBATCH -e error_file.e
 
-        ```bash 
-        #!/bin/bash -l
-        # The -l above is required to get the full environment with modules
-        # The name of the script is myjob
-        #SBATCH -J myjob
-        # Only 1 hour wall-clock time will be given to this job
-        #SBATCH -t 1:00:00
-        #SBATCH -A edu23.DD2356
-        # Number of nodes
-        #SBATCH -p shared
-        #SBATCH --ntasks-per-node=1
-        #SBATCH --cpus-per-task=2
-        #SBATCH --nodes=1
-        #SBATCH -e error_file.e
+    # Run the executable file 
+    # and write the output into my_output_file
+    srun -n 128 ./hello.out > hello_output
+    ```
+    Then we submit it with
+    ```
+    sbatch job.sh
+    ```
 
-        # Run the executable file 
-        # and write the output into my_output_file
-        srun -n 128 ./hello.out > hello_output
-        ```
-        
-    2. And we run the script using the command:
+For both, the output looks something like
 
-        ```bash
-        $ sbatch ./myjob.sh
-        ```
-    
+```
+Hello world from processor nid001264, rank 86 out of 128 processors
+Hello world from processor nid001264, rank 16 out of 128 processors
+Hello world from processor nid001264, rank 97 out of 128 processors
+...
+...
+...
+Hello world from processor nid001264, rank 99 out of 128 processors
+Hello world from processor nid001264, rank 127 out of 128 processors
+Hello world from processor nid001264, rank 115 out of 128 processors
+```
 
 
 #### Task 1.2
@@ -233,5 +241,39 @@ $$ Granularity: 9.54 \cdot 10^-7s $$
 - Average Exectution time: 0.000013399 s
 - Min Exectution time: 0.000133991 s
 
+### Exercise 6: Measure the Performance of Matrix-Matrix Multiply and Transpose with perf
 
+#### Task 6.1
 
+We get the following results from perf:
+
+|                        | MSIZE=64 Naive | MSIZE=64 Optimised | MSIZE=1000 Naive | MSIZE=1000 Optimised |
+|------------------------|:--------------:|:------------------:|:----------------:|:--------------------:|
+| Elapsed time (seconds) | 0.006008407    | 0.026428618        | 9.820340947      | 4.068640160          |
+| Instructions per cycle | 3.05223157746  | 3.39699755395      | 2.33566861357    | 5.65940389993        |
+| L1 cache miss ratio    | 0.156965536823 | 0.0152186701427    | 0.568518889684   | 0.0428330419037      |
+| L1 cache miss rate PTI | 45.6882622051  | 6.56849478495      | 162.654417351    | 18.374515994         |
+
+Importantly, the average time per matrix multiplication is the following:
+
+|                        | MSIZE=64 Naive | MSIZE=64 Naive | MSIZE=64 Naive | MSIZE=64 Naive |
+|------------------------|:--------------:|:--------------:|:--------------:|:--------------:|
+| Average time (seconds) | 0.000181       | 0.000154       | 0.889926       | 0.365820       |
+
+#### Task 6.2
+
+Using the perf tool we measured the following performance:
+
+|                        | N=64           | N=128          | N=2048          |
+|------------------------|:--------------:|:--------------:|:---------------:|
+| Elapsed time (seconds) | 0.015456084    | 0.012847589    | 9.393376821     |
+| Bandwidth/Rate (MB/s)  | 1.43e+04       | 6.90e+03       | 3.60e+02        |
+| Instructions per cycle | 2.19010949691  | 1.62430143786  | 0.0975394373964 |
+| L1 cache miss ratio    | 0.183398257284 | 0.327938976196 | 0.296058060658  |
+| L1 cache miss rate PTI | 66.5605710444  | 147.558995856  | 477.708493074   |
+
+With the reported base rate for each N being:
+
+|                     | N=64     | N=128    | N=2048   |
+|---------------------|:--------:|:--------:|:--------:|
+| Base rate (seconds) | 2.29e-06 | 1.90e-05 | 9.32e-02 |
