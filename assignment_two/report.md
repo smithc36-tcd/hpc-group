@@ -18,11 +18,21 @@ OpenMP flag:`-openmp`
 
 **4.How many different ways can the number of threads in OpenMP be changed? Which are they?**
 
-Two ways.
+Here are three ways.
+
+Changing the enviroment variable `OMP_NUM_THREADS`:
 
 `export OMP_NUM_THREADS=<number of threads to use>`(bash shell)
   
 `setenv OMP_NUM_THREADS <number of threads to use>`(csh or tcsh shell)
+
+Using the runtime library functions:
+
+`omp_set_num_threads(int num_threads)`
+
+As a clause as part of the directive:
+
+`#pragma omp parallel num_threads(int num_threads)`
 
 ### Exercise 2 - STREAM benchmark and the importance of threads
 
@@ -112,13 +122,13 @@ int DFT(int idft, double *xr, double *xi, double *Xr_o, double *Xi_o, int N) {
 
 Making use of the OpenMP reduction statement. 
 
-** Measure the performance on Dardel 32 cores reporting the average values and standard deviation for DFTW using an input size equal to 10000 (N=10000). **
+**Measure the performance on Dardel 32 cores reporting the average values and standard deviation for DFTW using an input size equal to 10000 (N=10000).**
 
 DFTW calculation with N = 10000 
 Mean running time across 20 runs: 0.339029 seconds
 Standard deviation of running time for 20 runs: 0.016917 seconds
 
-** Prepare a speed-up plot varying the number of threads: 1,32,64, and 128. **
+**Prepare a speed-up plot varying the number of threads: 1,32,64, and 128.**
 
 To be added 
 
