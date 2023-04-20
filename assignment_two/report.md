@@ -77,3 +77,59 @@ Using a 256 byte struct (double + 248 char padding) the following results are ob
 There is an improvement in performance over the serial sum, but omp local sum seems to perform better overall despite not accounting for false sharing.
 
 ### Exercise 4 - DFTW, The Fastest DFT in the West
+
+Our method for parallelisation is the following: 
+
+```c
+// DFT/IDFT routine
+// idft: 1 direct DFT, -1 inverse IDFT (Inverse DFT)
+int DFT(int idft, double *xr, double *xi, double *Xr_o, double *Xi_o, int N) {
+#pragma omp parallel for reduction(+ : Xr_o[:N]) reduction( +:Xi_o[:N]) 
+  for (int k = 0; k < N; k++) {
+    for (int n = 0; n < N; n++) {
+      double angle = n * k * PI2 / N;
+      double cos_val = cos(angle);
+      double sin_val = sin(angle);
+
+      // Real part of X[k]
+      Xr_o[k] += xr[n] * cos_val + idft * xi[n] * sin_val;
+      // Imaginary part of X[k]
+      Xi_o[k] += -idft * xr[n] * sin_val + xi[n] * cos_val;
+    }
+  }
+
+  // normalize if you are doing IDFT
+  if (idft == -1) {
+#pragma omp parallel for
+    for (int n = 0; n < N; n++) {
+      Xr_o[n] /= N;
+      Xi_o[n] /= N;
+    }
+  }
+  return 1;
+}
+```
+
+Making use of the OpenMP reduction statement. 
+
+** Measure the performance on Dardel 32 cores reporting the average values and standard deviation for DFTW using an input size equal to 10000 (N=10000). **
+
+DFTW calculation with N = 10000 
+Mean running time across 20 runs: 0.339029 seconds
+Standard deviation of running time for 20 runs: 0.016917 seconds
+
+** Prepare a speed-up plot varying the number of threads: 1,32,64, and 128. **
+
+To be added 
+
+
+ **Which performance optimizations (think about what you learned in the previous module) would be suitable for DFT other than parallelization with OpenMP? Explain, no need to implement the optimizations. **
+
+There are several suuitable optimizations
+
+- Precomputation and lookup tables. We could precompute the values for the trigonometric functions and store them in a loopup table.
+
+- Cache friendly memory access. We could implement cache blocking for more friendly cache access. 
+
+- Vectorization: We could implement vectorisation with SIMD instructions, which is even possible with OpenMP using the `#pragma omp parallel for simd` directive. 
+

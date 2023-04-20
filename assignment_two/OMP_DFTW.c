@@ -18,7 +18,7 @@
 // 0.01 precision good for N > 8000
 #define R_ERROR 0.01
 
-#define N_runs 20
+#define N_runs 10
 
 // main routine to calculate DFT
 int DFT(int idft, double *xr, double *xi, double *Xr_o, double *Xi_o, int N);
@@ -130,7 +130,7 @@ int main(int argc, char *argv[]) {
 // DFT/IDFT routine
 // idft: 1 direct DFT, -1 inverse IDFT (Inverse DFT)
 int DFT(int idft, double *xr, double *xi, double *Xr_o, double *Xi_o, int N) {
-#pragma omp parallel for simd reduction(+ : Xr_o[:N]) reduction(+ : Xi_o[:N])
+#pragma omp parallel for simd reduction(+ : Xr_o[:N]) reduction( +:Xi_o[:N]) 
   for (int k = 0; k < N; k++) {
     for (int n = 0; n < N; n++) {
       double angle = n * k * PI2 / N;
