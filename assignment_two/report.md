@@ -3,6 +3,21 @@
 ### Exercise 1 - OpenMP Hello World, get familiar with OpenMP Environment
 
 **1.	Write an OpenMP C code with each thread printing Hello World from Thread X! where X is the thread ID.**
+```c
+#include "omp.h"
+#include<stdio.h>
+int main()
+{
+#pragma omp parallel
+  {
+    int ID = omp_get_thread_num();
+    int np = omp_get_num_threads();
+    printf("Hello World from Thread %d!\n",ID);
+  }
+  return 0;
+}
+
+```c
 
 **2.How do you compile the code in question 1? Which compiler and flags have you used?**
 
@@ -50,22 +65,22 @@ As the number of threads increases, the measured bandwidth gradually increases, 
 If using static schedule, we don't need to modify the STREAM code. 
 
 If using dynamic schedule, we set the code like 
-'''c
+```c
 #pragma omp parallel for schedule(dynamic)
       for (j=0; j<STREAM_ARRAY_SIZE; j++)
         a[j] = b[j]+scalar*c[j];
 #end
 ...
-'''
+```c
 
 If using guided schedule, we set the code like 
-'''c
+```c
 #pragma omp parallel for schedule(guided)
       for (j=0; j<STREAM_ARRAY_SIZE; j++)
         a[j] = b[j]+scalar*c[j];
 #end
 ...
-'''
+```c
 Guided schedule is fastest because the copy bandwidth is largest, which means the computing time is lowest. 
 ### Exercise 3 - Parallel Sum
 
