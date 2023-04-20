@@ -52,12 +52,14 @@ As a clause as part of the directive:
 
 **Run the STREAM benchmark five times and record the average bandwidth values and its standard deviation for the copy kernel. Prepare a plot (with error bars) comparing the bandwidth using 1,32,64, and 128 threads.**
 
+![graph.png](stream/streambandwidth.png)
 **How does the measured bandwidth with the copy kernel depend on the number of threads?**
 
 As the number of threads increases, the measured bandwidth gradually increases, but the increase tends to slow down.
 
 **Prepare another plot comparing the bandwidth measured with copy kernel with static, dynamic, and guided schedules using 128 threads.**
 
+![graph.png](stream/schedule.png)
 
 **How do you set the schedule in the STREAM code? What is the fastest schedule, and why do you think it is so?**
 
