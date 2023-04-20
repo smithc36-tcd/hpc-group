@@ -98,7 +98,7 @@ If using guided schedule, we set the code like
 ...
 ```
 
-Static schedule is fastest because the copy bandwidth is largest, which means the computing time is lowest.  That may be caused that when do static scheduling, the switching time is less. 
+Static schedule is fastest because the copy bandwidth is largest, which means the computing time is lowest. Static schedule when loop limits known, work per iteration constant. 
 ### Exercise 3 - Parallel Sum
 
 **Measure the performance of the serial code (average + standard deviation).**
