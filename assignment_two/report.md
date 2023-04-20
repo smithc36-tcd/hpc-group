@@ -50,11 +50,7 @@ As a clause as part of the directive:
 
 `#pragma omp parallel num_threads(int num_threads)`
 
-
-
-
-
-
+\pagebreak
 
 ### Exercise 2 - STREAM benchmark and the importance of threads
 
