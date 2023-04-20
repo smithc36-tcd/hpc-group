@@ -1,6 +1,8 @@
 # Assignment 2: Programming with OpenMP
 
 **Github repo for our assignment: https://github.com/smithc36-tcd/hpc-group**
+
+
 ### Exercise 1 - OpenMP Hello World, get familiar with OpenMP Environment
 
 **1.	Write an OpenMP C code with each thread printing Hello World from Thread X! where X is the thread ID.**
