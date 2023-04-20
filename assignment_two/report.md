@@ -132,7 +132,7 @@ Standard deviation of running time for 20 runs: 0.016917 seconds
 
 **Prepare a speed-up plot varying the number of threads: 1,32,64, and 128.**
 
-![graph.png](graph.png)
+![graph.png](dftw/graph.png)
 
 Table comparing execution speed against thread count using 32 cores, varying the number of threads.
 
