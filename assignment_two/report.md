@@ -78,7 +78,7 @@ As the number of threads increases, the measured bandwidth gradually increases, 
 
 **How do you set the schedule in the STREAM code? What is the fastest schedule, and why do you think it is so?**
 
-If using static schedule, we don't need to modify the STREAM code. 
+If using static schedule, we don't need to modify the STREAM code., since the defualt schedule is static in openMP.
 
 If using dynamic schedule, we set the code like 
 ```c
