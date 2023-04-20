@@ -50,6 +50,8 @@ As a clause as part of the directive:
 
 `#pragma omp parallel num_threads(int num_threads)`
 
+\pagebreak
+
 ### Exercise 2 - STREAM benchmark and the importance of threads
 
 **Run the STREAM benchmark five times and record the average bandwidth values and its standard deviation for the copy kernel. Prepare a plot (with error bars) comparing the bandwidth using 1,32,64, and 128 threads.**
