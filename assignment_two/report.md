@@ -124,14 +124,21 @@ Making use of the OpenMP reduction statement.
 
 **Measure the performance on Dardel 32 cores reporting the average values and standard deviation for DFTW using an input size equal to 10000 (N=10000).**
 
+```
 DFTW calculation with N = 10000 
 Mean running time across 20 runs: 0.339029 seconds
 Standard deviation of running time for 20 runs: 0.016917 seconds
+```
 
 **Prepare a speed-up plot varying the number of threads: 1,32,64, and 128.**
 
-To be added 
+![graph.png](graph.png)
 
+Table comparing execution speed against thread count using 32 cores, varying the number of threads.
+
+| Threads | 1        | 2        | 4        | 8        | 16      | 32       | 64       | 128      |
+|---------|----------|----------|----------|----------|---------|----------|----------|----------|
+| Seconds | 7.080946 | 3.567994 | 1.799715 | 0.924253 | 0.47055 | 0.345014 | 1.003984 | 2.834436 |
 
  **Which performance optimizations (think about what you learned in the previous module) would be suitable for DFT other than parallelization with OpenMP? Explain, no need to implement the optimizations. **
 
