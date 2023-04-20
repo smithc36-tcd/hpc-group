@@ -2,6 +2,28 @@
 
 ### Exercise 1 - OpenMP Hello World, get familiar with OpenMP Environment
 
+**1.	Write an OpenMP C code with each thread printing Hello World from Thread X! where X is the thread ID.**
+
+**2.How do you compile the code in question 1? Which compiler and flags have you used?**
+
+```cc -openmp  hello_world.c ```（gray）
+
+OpenMP flag：```-openmp```
+
+**3.How do you run the OpenMP code on Dardel? What flags did you set?**
+
+```srun -n 1 ./hello_world.out```
+
+```export OMP_NUM_THREADS=4```
+
+**4.How many different ways can the number of threads in OpenMP be changed? Which are they?**
+
+Two ways.
+
+```export OMP_NUM_THREADS=<number of threads to use>```(bash shell)
+  
+```setenv OMP_NUM_THREADS <number of threads to use>```(csh or tcsh shell)
+
 ### Exercise 2 - STREAM benchmark and the importance of threads
 
 ### Exercise 3 - Parallel Sum
