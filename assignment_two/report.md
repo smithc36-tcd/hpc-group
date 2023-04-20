@@ -16,8 +16,7 @@ int main()
   }
   return 0;
 }
-
-```c
+```
 
 **2.How do you compile the code in question 1? Which compiler and flags have you used?**
 
