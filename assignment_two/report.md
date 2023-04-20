@@ -6,23 +6,23 @@
 
 **2.How do you compile the code in question 1? Which compiler and flags have you used?**
 
-```cc -openmp  hello_world.c ```（gray）
+`cc -openmp  hello_world.c `(gray)
 
-OpenMP flag：```-openmp```
+OpenMP flag:`-openmp`
 
 **3.How do you run the OpenMP code on Dardel? What flags did you set?**
 
-```srun -n 1 ./hello_world.out```
+`srun -n 1 ./hello_world.out`
 
-```export OMP_NUM_THREADS=4```
+`export OMP_NUM_THREADS=4`
 
 **4.How many different ways can the number of threads in OpenMP be changed? Which are they?**
 
 Two ways.
 
-```export OMP_NUM_THREADS=<number of threads to use>```(bash shell)
+`export OMP_NUM_THREADS=<number of threads to use>`(bash shell)
   
-```setenv OMP_NUM_THREADS <number of threads to use>```(csh or tcsh shell)
+`setenv OMP_NUM_THREADS <number of threads to use>`(csh or tcsh shell)
 
 ### Exercise 2 - STREAM benchmark and the importance of threads
 
@@ -37,7 +37,7 @@ Out of 5 measurements with 10^7 elements we obtained:
 
 **Implement a parallel version of the serial_sum called omp_sum and use the omp parallel for construct to parallelize the program. Run the code with 32 threads and measure the execution time (average + standard deviation). Is and should the code be working correctly? If not, why not?**
 
-Using ```omp parallel for``` and 32 threads we get:
+Using `omp parallel for` and 32 threads we get:
 
 * Average: 0.052364 s
 * Standard deviation: 0.00201 
@@ -55,7 +55,7 @@ Performance is lost when using critical to protect the code as the code is essen
 
 **Try to avoid the use of a critical section. Implement a new version called omp_local_sum. Let each thread find the local sum in its own data, then combine their local result to get the final result. For instance, we can use temporary arrays indexed by their thread number to hold the values found by each thread, like the code below.**
 
-* ```double local_sum[MAX_THREADS];```
+* `double local_sum[MAX_THREADS];`
 
 * Measure the performance of the new implementation, varying the number of threads to 1,32,64, and 128 threads. Does the performance increase as expected? If not, why not?
 
