@@ -70,7 +70,7 @@ If using dynamic schedule, we set the code like
         a[j] = b[j]+scalar*c[j];
 #end
 ...
-```c
+```
 
 If using guided schedule, we set the code like 
 ```c
@@ -79,7 +79,8 @@ If using guided schedule, we set the code like
         a[j] = b[j]+scalar*c[j];
 #end
 ...
-```c
+```
+
 Guided schedule is fastest because the copy bandwidth is largest, which means the computing time is lowest. 
 ### Exercise 3 - Parallel Sum
 
