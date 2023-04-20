@@ -44,8 +44,29 @@ As the number of threads increases, the measured bandwidth gradually increases, 
 
 **Prepare another plot comparing the bandwidth measured with copy kernel with static, dynamic, and guided schedules using 128 threads.**
 
+
 **How do you set the schedule in the STREAM code? What is the fastest schedule, and why do you think it is so?**
 
+If using static schedule, we don't need to modify the STREAM code. 
+
+If using dynamic schedule, we set the code like 
+'''c
+#pragma omp parallel for schedule(dynamic)
+      for (j=0; j<STREAM_ARRAY_SIZE; j++)
+        a[j] = b[j]+scalar*c[j];
+#end
+...
+'''
+
+If using guided schedule, we set the code like 
+'''c
+#pragma omp parallel for schedule(guided)
+      for (j=0; j<STREAM_ARRAY_SIZE; j++)
+        a[j] = b[j]+scalar*c[j];
+#end
+...
+'''
+Guided schedule is fastest because the copy bandwidth is largest, which means the computing time is lowest. 
 ### Exercise 3 - Parallel Sum
 
 **Measure the performance of the serial code (average + standard deviation).**
