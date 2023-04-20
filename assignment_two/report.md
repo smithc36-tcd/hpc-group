@@ -40,6 +40,8 @@ As a clause as part of the directive:
 
 **How does the measured bandwidth with the copy kernel depend on the number of threads?**
 
+As the number of threads increases, the measured bandwidth gradually increases, but the increase tends to slow down.
+
 **Prepare another plot comparing the bandwidth measured with copy kernel with static, dynamic, and guided schedules using 128 threads.**
 
 **How do you set the schedule in the STREAM code? What is the fastest schedule, and why do you think it is so?**
