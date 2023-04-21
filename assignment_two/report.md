@@ -115,14 +115,14 @@ Static schedule is fastest because the copy bandwidth is largest, which means th
 Exercise 3 - Parallel Sum
 =========================================================================
 
-**Measure the performance of the serial code (average + standard deviation).**
+**1. Measure the performance of the serial code (average + standard deviation).**
 
 Out of 5 measurements with 10^7 elements we obtained:
 
 * Average: 0.032559 s
 * Standard deviation: 3.74e-5 s
 
-**Implement a parallel version of the serial_sum called omp_sum and use the omp parallel for construct to parallelize the program. Run the code with 32 threads and measure the execution time (average + standard deviation). Is and should the code be working correctly? If not, why not?**
+**2. Implement a parallel version of the serial_sum called omp_sum and use the omp parallel for construct to parallelize the program. Run the code with 32 threads and measure the execution time (average + standard deviation). Is and should the code be working correctly? If not, why not?**
 
 Using `omp parallel for` and 32 threads we get:
 
@@ -131,7 +131,7 @@ Using `omp parallel for` and 32 threads we get:
 
 The code doesn't run correctly as multiple threads try to access and modify the sum variable concurrently, making it susceptible to race conditions.
 
-**Implement a new version called omp_critical_sum and use the omp critical to protect the code region that might be updated by multiple threads concurrently. Measure the execution time for the code in questions 2 and 3 by varying the number of threads: 1, 2, 4, 8, 16, 20, 24, 28, and 32. How does the performance compare to the program in questions 1 and 2? What is the reason for the performance gain/loss?**
+**3. Implement a new version called omp_critical_sum and use the omp critical to protect the code region that might be updated by multiple threads concurrently. Measure the execution time for the code in questions 2 and 3 by varying the number of threads: 1, 2, 4, 8, 16, 20, 24, 28, and 32. How does the performance compare to the program in questions 1 and 2? What is the reason for the performance gain/loss?**
 
 |                  | 1        | 2        | 4        | 8        | 16       | 20       | 24       | 28       | 32       |
 |------------------|----------|----------|----------|----------|----------|----------|----------|----------|----------|
@@ -140,7 +140,7 @@ The code doesn't run correctly as multiple threads try to access and modify the 
 
 Performance is lost when using critical to protect the code as the code is essentially serialised as threads only access the sum one by one (nonetheless giving a correct result).
 
-**Try to avoid the use of a critical section. Implement a new version called omp_local_sum. Let each thread find the local sum in its own data, then combine their local result to get the final result. For instance, we can use temporary arrays indexed by their thread number to hold the values found by each thread, like the code below.**
+**4. Try to avoid the use of a critical section. Implement a new version called omp_local_sum. Let each thread find the local sum in its own data, then combine their local result to get the final result. For instance, we can use temporary arrays indexed by their thread number to hold the values found by each thread, like the code below.**
 
 * `double local_sum[MAX_THREADS];`
 
@@ -154,7 +154,8 @@ As expected, this method gives the correct sum. We get the following performance
 
 The performance increases with number of threads, and is better than the serial sum.
 
-**Write a new version of the code in question 4 called opt_local_sum using a technique to remove false sharing with padding. Measure the performance of the code by varying the number of threads to 1, 32, 64, and 128.**
+**5. Write a new version of the code in question 4 called opt_local_sum using a technique to remove false sharing with padding. Measure the performance of the code by varying the number of threads to 1, 32, 64, and 128.**
+
 Using a 256 byte struct (double + 248 char padding) the following results are obtained
 
 |               | 1        | 32       | 64       | 128      |
