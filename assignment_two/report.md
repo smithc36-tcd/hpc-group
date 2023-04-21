@@ -227,9 +227,9 @@ There are several suitable optimizations
 
 - Pre-computation and lookup tables. We could precompute the values for the trigonometric functions and store them in a lookup table.
 
-- Common expression elimination. The term `n * k * PI2/N`, computing the expressions `sin(n * k * PI2/N)` and `cos(n * k * PI2/N)` once for each loop would save computation. 
+- Common expression elimination. If lookup tables couldnt be used we could implement common expression elimination. The term `n * k * PI2/N`, computing the expressions `sin(n * k * PI2/N)` and `cos(n * k * PI2/N)` once for each loop would save computation. 
 
-- Cache friendly memory access. We could implement cache blocking for more friendly cache access. 
+- Cache friendly memory access. We could a cache friendly memory access with strip mining and loop reordering to implement blocking. 
 
 - Vectorization: We could implement vectorisation with SIMD instructions, which is even possible with OpenMP using the `#pragma omp simd` directive. 
 
