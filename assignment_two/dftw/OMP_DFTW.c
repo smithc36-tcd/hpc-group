@@ -130,23 +130,21 @@ int main(int argc, char *argv[]) {
 // DFT/IDFT routine
 // idft: 1 direct DFT, -1 inverse IDFT (Inverse DFT)
 int DFT(int idft, double *xr, double *xi, double *Xr_o, double *Xi_o, int N) {
-#pragma omp parallel for simd reduction(+ : Xr_o[:N]) reduction( +:Xi_o[:N]) 
+#pragma omp parallel for reduction(+ : Xr_o[:N]) reduction( +:Xi_o[:N]) 
   for (int k = 0; k < N; k++) {
     for (int n = 0; n < N; n++) {
-      double angle = n * k * PI2 / N;
-      double cos_val = cos(angle);
-      double sin_val = sin(angle);
 
       // Real part of X[k]
-      Xr_o[k] += xr[n] * cos_val + idft * xi[n] * sin_val;
+      /*Xr_o[k] += xr[n] * cos_val + idft * xi[n] * sin_val;*/
+      Xr_o[k] += xr[n] * cos(n * k * PI2/N) + idft * xi[n] * sin(n * k * PI2/N);
       // Imaginary part of X[k]
-      Xi_o[k] += -idft * xr[n] * sin_val + xi[n] * cos_val;
+      Xi_o[k] += -idft * xr[n] * sin(n * k * PI2/N) + xi[n] * cos(n * k * PI2/N);
     }
   }
 
   // normalize if you are doing IDFT
   if (idft == -1) {
-#pragma omp parallel for simd
+#pragma omp parallel for
     for (int n = 0; n < N; n++) {
       Xr_o[n] /= N;
       Xi_o[n] /= N;

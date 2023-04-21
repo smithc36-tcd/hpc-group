@@ -3,10 +3,11 @@
 **Github repo for our assignment: https://github.com/smithc36-tcd/hpc-group**
 
 
-### Exercise 1 - OpenMP Hello World, get familiar with OpenMP Environment
+Exercise 1 - OpenMP Hello World, get familiar with OpenMP Environment
+=========================================================================
 
 **1. Write an OpenMP C code with each thread printing Hello World from Thread X! where X is the thread ID.**
-=======
+
 ```c
 #include "omp.h"
 #include<stdio.h>
@@ -56,7 +57,8 @@ As a clause as part of the directive:
 
 \pagebreak
 
-### Exercise 2 - STREAM benchmark and the importance of threads
+Exercise 2 - STREAM benchmark and the importance of threads
+=========================================================================
 
 **Run the STREAM benchmark five times and record the average bandwidth values and its standard deviation for the copy kernel. Prepare a plot (with error bars) comparing the bandwidth using 1,32,64, and 128 threads.**
 
@@ -107,7 +109,11 @@ If using guided schedule, we set the code like
 ```
 
 Static schedule is fastest because the copy bandwidth is largest, which means the computing time is lowest. Static schedule when loop limits known, work per iteration constant. 
-### Exercise 3 - Parallel Sum
+
+\pagebreak
+
+Exercise 3 - Parallel Sum
+=========================================================================
 
 **Measure the performance of the serial code (average + standard deviation).**
 
@@ -157,7 +163,11 @@ Using a 256 byte struct (double + 248 char padding) the following results are ob
 
 There is an improvement in performance over the serial sum, but omp local sum seems to perform better overall despite not accounting for false sharing.
 
-### Exercise 4 - DFTW, The Fastest DFT in the West
+\pagebreak
+
+
+Exercise 4 - DFTW, The Fastest DFT in the West
+=========================================================================
 
 Our method for parallelisation is the following: 
 
@@ -168,12 +178,8 @@ int DFT(int idft, double *xr, double *xi, double *Xr_o, double *Xi_o, int N) {
 #pragma omp parallel for reduction(+ : Xr_o[:N]) reduction( +:Xi_o[:N]) 
   for (int k = 0; k < N; k++) {
     for (int n = 0; n < N; n++) {
-      double angle = n * k * PI2 / N;
-      double sin_value = sin(angle);
-      double cos_value = cos(angle);
-
-      Xr_o[k] += xr[n] * cos_value + idft * xi[n] * sin_value;
-      Xi_o[k] += -idft * xr[n] * sin_value + xi[n] * cos_value;
+      Xr_o[k] += xr[n] * cos( n * k * PI2 / N) + idft * xi[n] * sin( n * k * PI2 / N);
+      Xi_o[k] += -idft * xr[n] * sin( n * k * PI2 / N) + xi[n] * cos( n * k * PI2 / N);
     }
   }
 
@@ -201,7 +207,7 @@ Standard deviation of running time for 20 runs: 0.016917 seconds
 
 **Prepare a speed-up plot varying the number of threads: 1,32,64, and 128.**
 
-![graph.png](dftw/graph_two.png)
+![Graph of execution time against thread count on Dardel](dftw/graph_two.png)
 
 Table comparing execution speed against thread count using 32 cores, varying the number of threads.
 
@@ -215,7 +221,11 @@ There are several suitable optimizations
 
 - Pre-computation and lookup tables. We could precompute the values for the trigonometric functions and store them in a lookup table.
 
+- Common expression elimination. The term `n * k * PI2/N`, computing the expressions `sin(n * k * PI2/N)` and `cos(n * k * PI2/N)` once for each loop would save computation. 
+
 - Cache friendly memory access. We could implement cache blocking for more friendly cache access. 
 
 - Vectorization: We could implement vectorisation with SIMD instructions, which is even possible with OpenMP using the `#pragma omp simd` directive. 
+
+- Algorithm: This Algorithm runs in `O(N^2)` time while the FFT Algorithm runs in `O(N logN)`. Choice of more appropriate Algorithm would be faster.
 
