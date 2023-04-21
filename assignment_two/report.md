@@ -1,8 +1,27 @@
 # Assignment 2: Programming with OpenMP
 
+**Github repo for our assignment: https://github.com/smithc36-tcd/hpc-group**
+
+
 ### Exercise 1 - OpenMP Hello World, get familiar with OpenMP Environment
 
 **1. Write an OpenMP C code with each thread printing Hello World from Thread X! where X is the thread ID.**
+=======
+```c
+#include "omp.h"
+#include<stdio.h>
+int main()
+{
+omp_set_num_threads(4)
+#pragma omp parallel
+  {
+    int ID = omp_get_thread_num();
+    int np = omp_get_num_threads();
+    printf("Hello World from Thread %d!\n",ID);
+  }
+  return 0;
+}
+```
 
 **2. How do you compile the code in question 1? Which compiler and flags have you used?**
 
@@ -35,8 +54,59 @@ As a clause as part of the directive:
 
 `#pragma omp parallel num_threads(int num_threads)`
 
+\pagebreak
+
 ### Exercise 2 - STREAM benchmark and the importance of threads
 
+**Run the STREAM benchmark five times and record the average bandwidth values and its standard deviation for the copy kernel. Prepare a plot (with error bars) comparing the bandwidth using 1,32,64, and 128 threads.**
+
+|                  | 1        | 2        | 3        | 4        | 5       | average       | standard deviation      | 
+|------------------|----------|----------|----------|----------|----------|----------|----------|
+| 1          | 11200.5 | 12608.3 |  12235.2   | 11996.6  | 12730.7        | 12154.0|608.2|
+| 32 | 33298.0  |33375.9  | 33311.3 |  34379.5   | 33999.8 | 33673.0|491.3|
+| 64 | 42701.0 |  43847.7  | 42172.4| 42172.4  | 42116.8 | 42602.0|735.9|
+| 128 | 48619.0 | 45990.2   |45977.6  | 47662.5  | 45977.6 | 46845.0|1229.9|
+
+![graph.png](stream/streambandwidth.png)
+
+**How does the measured bandwidth with the copy kernel depend on the number of threads?**
+
+As the number of threads increases, the measured bandwidth gradually increases, but the increase tends to slow down.
+
+**Prepare another plot comparing the bandwidth measured with copy kernel with static, dynamic, and guided schedules using 128 threads.**
+
+|                  | 1        | 2        | 3        | 4        | 5       | average       | standard deviation      | 
+|------------------|----------|----------|----------|----------|----------|----------|----------|
+| static          |44894.9 | 45883.3 |  46949.0  | 47689.6| 46808.2  | 46445.0|1078.6|
+| dynamic | 21019.5| 20332.9 |20418.9| 20610.8 |21450.8 | 20767.0|465.1|
+| guided | 32894.9| 31904.9| 30922.9 |31110.7| 29514.0| 31269.0|1252.3|
+
+
+![graph.png](stream/schedule.png)
+
+**How do you set the schedule in the STREAM code? What is the fastest schedule, and why do you think it is so?**
+
+If using static schedule, we don't need to modify the STREAM code., since the defualt schedule is static in openMP.
+
+If using dynamic schedule, we set the code like 
+```c
+#pragma omp parallel for schedule(dynamic)
+      for (j=0; j<STREAM_ARRAY_SIZE; j++)
+        a[j] = b[j]+scalar*c[j];
+#end
+...
+```
+
+If using guided schedule, we set the code like 
+```c
+#pragma omp parallel for schedule(guided)
+      for (j=0; j<STREAM_ARRAY_SIZE; j++)
+        a[j] = b[j]+scalar*c[j];
+#end
+...
+```
+
+Static schedule is fastest because the copy bandwidth is largest, which means the computing time is lowest. Static schedule when loop limits known, work per iteration constant. 
 ### Exercise 3 - Parallel Sum
 
 **Measure the performance of the serial code (average + standard deviation).**
