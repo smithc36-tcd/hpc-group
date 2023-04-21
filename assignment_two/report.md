@@ -1,6 +1,6 @@
 # Assignment 2: Programming with OpenMP
 
-**Github repo for our assignment: https://github.com/smithc36-tcd/hpc-group**
+**Github repo for our assignment: \href{https://github.com/smithc36-tcd/hpc-group}{https://github.com/smithc36-tcd/hpc-group}**
 
 
 Exercise 1 - OpenMP Hello World, get familiar with OpenMP Environment
