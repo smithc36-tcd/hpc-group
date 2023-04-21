@@ -84,7 +84,7 @@ As the number of threads increases, the measured bandwidth gradually increases, 
 | guided | 32894.9| 31904.9| 30922.9 |31110.7| 29514.0| 31269.0|1252.3|
 
 
-![graph.png](stream/schedule.png)
+![graph.png](stream/threads.png)
 
 **How do you set the schedule in the STREAM code? What is the fastest schedule, and why do you think it is so?**
 
