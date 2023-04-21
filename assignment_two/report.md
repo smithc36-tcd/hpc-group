@@ -159,10 +159,15 @@ Using a 256 byte struct (double + 248 char padding) the following results are ob
 
 |               | 1        | 32       | 64       | 128      |
 |---------------|----------|----------|----------|----------|
-| omp_local_sum | 0.052609 | 0.041504 | 0.027234 | 0.029865 |
+| opt_local_sum | 0.052609 | 0.041504 | 0.027234 | 0.029865 |
 
-There is an improvement in performance over the serial sum, but omp local sum seems to perform better overall despite not accounting for false sharing.
+There is an improvement in performance over the serial sum, but omp local sum seems to perform better overall despite not accounting for false sharing. This could be because we are not aware of the cache line size of the system. Another way to remove false sharing is to create a local variable in each thread to store the local sum. This gives slightly better performance.
 
+|                     | 1        | 32       | 64       | 128      |
+|---------------------|----------|----------|----------|----------|
+| opt_local_sum_nopad | 0.033760 | 0.006540 | 0.007709 | 0.012429 |
+
+Removing false sharing halves the quickest time compared to ```omp_local_sum``` for the optimal number of threads!
 \pagebreak
 
 
