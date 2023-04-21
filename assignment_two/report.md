@@ -69,7 +69,7 @@ Exercise 2 - STREAM benchmark and the importance of threads
 | 64 | 42701.0 |  43847.7  | 42172.4| 42172.4  | 42116.8 | 42602.0|735.9|
 | 128 | 48619.0 | 45990.2   |45977.6  | 47662.5  | 45977.6 | 46845.0|1229.9|
 
-![graph.png](stream/streambandwidth.png)
+![graph.png](stream/threads.png)
 
 **How does the measured bandwidth with the copy kernel depend on the number of threads?**
 
@@ -84,7 +84,7 @@ As the number of threads increases, the measured bandwidth gradually increases, 
 | guided | 32894.9| 31904.9| 30922.9 |31110.7| 29514.0| 31269.0|1252.3|
 
 
-![graph.png](stream/threads.png)
+![graph.png](stream/schedule.png)
 
 **How do you set the schedule in the STREAM code? What is the fastest schedule, and why do you think it is so?**
 
