@@ -30,14 +30,14 @@ omp_set_num_threads(4)
 
 OpenMP flag:`-fopenmp`
 
-**3.How do you run the OpenMP code on Dardel? What flags did you set?**
+**3. How do you run the OpenMP code on Dardel? What flags did you set?**
 
 ```bash 
 export OMP_NUM_THREADS=4
 srun -n 1 ./hello_world.out
 ```
 
-**4.How many different ways can the number of threads in OpenMP be changed? Which are they?**
+**4. How many different ways can the number of threads in OpenMP be changed? Which are they?**
 
 Here are three ways.
 
@@ -60,7 +60,7 @@ As a clause as part of the directive:
 Exercise 2 - STREAM benchmark and the importance of threads
 =========================================================================
 
-**Run the STREAM benchmark five times and record the average bandwidth values and its standard deviation for the copy kernel. Prepare a plot (with error bars) comparing the bandwidth using 1,32,64, and 128 threads.**
+**1. Run the STREAM benchmark five times and record the average bandwidth values and its standard deviation for the copy kernel. Prepare a plot (with error bars) comparing the bandwidth using 1,32,64, and 128 threads.**
 
 |                  | 1        | 2        | 3        | 4        | 5       | average       | standard deviation      | 
 |------------------|----------|----------|----------|----------|----------|----------|----------|
@@ -71,11 +71,11 @@ Exercise 2 - STREAM benchmark and the importance of threads
 
 ![graph.png](stream/threads.png)
 
-**How does the measured bandwidth with the copy kernel depend on the number of threads?**
+**2. How does the measured bandwidth with the copy kernel depend on the number of threads?**
 
 As the number of threads increases, the measured bandwidth gradually increases, but the increase tends to slow down.
 
-**Prepare another plot comparing the bandwidth measured with copy kernel with static, dynamic, and guided schedules using 128 threads.**
+**3. Prepare another plot comparing the bandwidth measured with copy kernel with static, dynamic, and guided schedules using 128 threads.**
 
 |                  | 1        | 2        | 3        | 4        | 5       | average       | standard deviation      | 
 |------------------|----------|----------|----------|----------|----------|----------|----------|
@@ -86,7 +86,7 @@ As the number of threads increases, the measured bandwidth gradually increases, 
 
 ![graph.png](stream/schedule.png)
 
-**How do you set the schedule in the STREAM code? What is the fastest schedule, and why do you think it is so?**
+**4. How do you set the schedule in the STREAM code? What is the fastest schedule, and why do you think it is so?**
 
 If using static schedule, we don't need to modify the STREAM code., since the defualt schedule is static in openMP.
 
@@ -131,7 +131,7 @@ Using `omp parallel for` and 32 threads we get:
 
 The code doesn't run correctly as multiple threads try to access and modify the sum variable concurrently, making it susceptible to race conditions.
 
-**3. Implement a new version called omp_critical_sum and use the omp critical to protect the code region that might be updated by multiple threads concurrently. Measure the execution time for the code in questions 2 and 3 by varying the number of threads: 1, 2, 4, 8, 16, 20, 24, 28, and 32. How does the performance compare to the program in questions 1 and 2? What is the reason for the performance gain/loss?**
+**3. Implement a new version called 'omp_critical_sum' and use the omp critical to protect the code region that might be updated by multiple threads concurrently. Measure the execution time for the code in questions 2 and 3 by varying the number of threads: 1, 2, 4, 8, 16, 20, 24, 28, and 32. How does the performance compare to the program in questions 1 and 2? What is the reason for the performance gain/loss?**
 
 |                  | 1        | 2        | 4        | 8        | 16       | 20       | 24       | 28       | 32       |
 |------------------|----------|----------|----------|----------|----------|----------|----------|----------|----------|
@@ -175,7 +175,7 @@ Removing false sharing halves the quickest time compared to ```omp_local_sum``` 
 Exercise 4 - DFTW, The Fastest DFT in the West
 =========================================================================
 
-Our method for parallelisation is the following: 
+1. Our method for parallelisation is the following: 
 
 ```c
 // DFT/IDFT routine
@@ -203,7 +203,7 @@ int DFT(int idft, double *xr, double *xi, double *Xr_o, double *Xi_o, int N) {
 
 Making use of the OpenMP reduction statement. 
 
-**Measure the performance on Dardel 32 cores reporting the average values and standard deviation for DFTW using an input size equal to 10000 (N=10000).**
+**2. Measure the performance on Dardel 32 cores reporting the average values and standard deviation for DFTW using an input size equal to 10000 (N=10000).**
 
 ```
 DFTW calculation with N = 10000 
@@ -211,7 +211,7 @@ Mean running time across 20 runs: 0.339029 seconds
 Standard deviation of running time for 20 runs: 0.016917 seconds
 ```
 
-**Prepare a speed-up plot varying the number of threads: 1,32,64, and 128.**
+**3. Prepare a speed-up plot varying the number of threads: 1,32,64, and 128.**
 
 ![Graph of execution time against thread count on Dardel](dftw/graph_two.png)
 
@@ -221,7 +221,7 @@ Table comparing execution speed against thread count using 32 cores, varying the
 |---------|----------|----------|----------|----------|---------|----------|----------|----------|
 | Seconds | 7.080946 | 3.567994 | 1.799715 | 0.924253 | 0.47055 | 0.345014 | 1.003984 | 2.834436 |
 
- **Which performance optimizations (think about what you learned in the previous module) would be suitable for DFT other than parallelization with OpenMP? Explain, no need to implement the optimizations. **
+ **4. Which performance optimizations (think about what you learned in the previous module) would be suitable for DFT other than parallelization with OpenMP? Explain, no need to implement the optimizations. **
 
 There are several suitable optimizations
 
@@ -233,5 +233,5 @@ There are several suitable optimizations
 
 - Vectorization: We could implement vectorisation with SIMD instructions, which is even possible with OpenMP using the `#pragma omp simd` directive. 
 
-- Algorithm: This Algorithm runs in `O(N^2)` time while the FFT Algorithm runs in `O(N logN)`. Choice of more appropriate Algorithm would be faster.
+- Algorithm: This Algorithm runs in `O(N^2)` time while the FFT Algorithm runs in `O(N logN)`. Changing implementation would have a significant effect on execution time for large N. 
 
