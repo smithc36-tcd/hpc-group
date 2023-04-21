@@ -2,19 +2,20 @@
 
 ### Exercise 1 - OpenMP Hello World, get familiar with OpenMP Environment
 
-**1.	Write an OpenMP C code with each thread printing Hello World from Thread X! where X is the thread ID.**
+**1. Write an OpenMP C code with each thread printing Hello World from Thread X! where X is the thread ID.**
 
-**2.How do you compile the code in question 1? Which compiler and flags have you used?**
+**2. How do you compile the code in question 1? Which compiler and flags have you used?**
 
-`cc -openmp  hello_world.c `(gray)
+`cc -fopenmp  hello_world.c `(gray)
 
-OpenMP flag:`-openmp`
+OpenMP flag:`-fopenmp`
 
 **3.How do you run the OpenMP code on Dardel? What flags did you set?**
 
-`srun -n 1 ./hello_world.out`
-
-`export OMP_NUM_THREADS=4`
+```bash 
+export OMP_NUM_THREADS=4
+srun -n 1 ./hello_world.out
+```
 
 **4.How many different ways can the number of threads in OpenMP be changed? Which are they?**
 
@@ -98,13 +99,11 @@ int DFT(int idft, double *xr, double *xi, double *Xr_o, double *Xi_o, int N) {
   for (int k = 0; k < N; k++) {
     for (int n = 0; n < N; n++) {
       double angle = n * k * PI2 / N;
-      double cos_val = cos(angle);
-      double sin_val = sin(angle);
+      double sin_value = sin(angle);
+      double cos_value = cos(angle);
 
-      // Real part of X[k]
-      Xr_o[k] += xr[n] * cos_val + idft * xi[n] * sin_val;
-      // Imaginary part of X[k]
-      Xi_o[k] += -idft * xr[n] * sin_val + xi[n] * cos_val;
+      Xr_o[k] += xr[n] * cos_value + idft * xi[n] * sin_value;
+      Xi_o[k] += -idft * xr[n] * sin_value + xi[n] * cos_value;
     }
   }
 
@@ -142,11 +141,11 @@ Table comparing execution speed against thread count using 32 cores, varying the
 
  **Which performance optimizations (think about what you learned in the previous module) would be suitable for DFT other than parallelization with OpenMP? Explain, no need to implement the optimizations. **
 
-There are several suuitable optimizations
+There are several suitable optimizations
 
-- Precomputation and lookup tables. We could precompute the values for the trigonometric functions and store them in a loopup table.
+- Pre-computation and lookup tables. We could precompute the values for the trigonometric functions and store them in a lookup table.
 
 - Cache friendly memory access. We could implement cache blocking for more friendly cache access. 
 
-- Vectorization: We could implement vectorisation with SIMD instructions, which is even possible with OpenMP using the `#pragma omp parallel for simd` directive. 
+- Vectorization: We could implement vectorisation with SIMD instructions, which is even possible with OpenMP using the `#pragma omp simd` directive. 
 
