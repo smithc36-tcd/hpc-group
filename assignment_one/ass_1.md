@@ -99,7 +99,7 @@ Hello world from processor nid001264, rank 115 out of 128 processors
  
 **What is the total number of cores and memory of the Dardel computer?**
 
-- 162,560 Total cores in the CPU partition. With 156.672TB of memory.  
+- 162,560 Total cores in the CPU partition. With 157,928 GB of memory.  
 
 
 
