@@ -77,7 +77,7 @@ Hello world from processor nid001264, rank 115 out of 128 processors
 
 **How many computing nodes does Dardel have?**
 
-- Dardel supercomputer have 1270 nodes. [488 SNIC thin, 20 SNIC large, 8 SNIC Huge, 2 SNIC Giant, 36 KTH]
+- Dardel supercomputer have 1270 nodes. [488 SNIC thin, 20 SNIC large, 8 SNIC Huge, 2 SNIC Giant, 284 KTH]
 
 **How many CPUs, CPU core, and memory does each computing node have?**
 
