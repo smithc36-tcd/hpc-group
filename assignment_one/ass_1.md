@@ -77,15 +77,29 @@ Hello world from processor nid001264, rank 115 out of 128 processors
 
 **How many computing nodes does Dardel have?**
 
-- 554 Nodes [488 SNIC thin, 20 SNIC large, 8 SNIC Huge, 2 SNIC Giant, 36 KTH]
+- Dardel supercomputer have 1270 nodes. [488 SNIC thin, 20 SNIC large, 8 SNIC Huge, 2 SNIC Giant, 36 KTH]
 
 **How many CPUs, CPU core, and memory does each computing node have?**
 
 - 2 CPUs, 128 Physical cores with 256 virtual cores. Memory size varies with the type of node.
+     There are several memory sizes in the CPU partition：
 
+    (1) $736 \times 256 \quad GB$ (NAISS thin nodes)
+    
+    (2) $268 \times 512\quad GB$ (NAISS large nodes)
+    
+    (3) $8 \times 1024\quad GB$ (NAISS huge nodes)
+    
+    (4) $10 \times 2048\quad GB$ (NAISS giant nodes)
+    
+    (5) $36 \times 256\quad GB$ (KTH industry/business research nodes)
+    
+    (6) $248 \times 512\quad GB$ (KTH industry/business research nodes)
 **What is the total number of cores and memory of the Dardel computer?**
 
-- 70912 Total cores in the CPU partition. With 156.672TB of memory.  
+- 162,560 Total cores in the CPU partition. With 156.672TB of memory.  
+
+
 
 **What is the fastest supercomputer in the world? What are the fastest European and Asian supercomputers? What is their power usage?**
 
