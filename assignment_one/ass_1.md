@@ -105,7 +105,7 @@ Hello world from processor nid001264, rank 115 out of 128 processors
 
 **What is the fastest supercomputer in the world? What are the fastest European and Asian supercomputers? What is their power usage?**
 
-- Frontier in the world [21,1kW]. Asian - Supercomputer Fugaku [29,899kW]. European - LUMI [6,016kW].  
+- Frontier in the world [21,100.00 kW]. Asian - Supercomputer Fugaku [29,899kW]. European - LUMI [6,016kW].  
 
 \pagebreak
 
@@ -115,9 +115,8 @@ Hello world from processor nid001264, rank 115 out of 128 processors
 
 **Using the calculator at http://calculator.green-algorithms.org/. Evaluate the power usage and carbon footprint of running a simulation on 10 Dardel computing nodes, assuming that we only use CPU, all the memory on the nodes, and we neglect the network costs. The simulation runs on 10 computing nodes for 12 hours.**
 
-- 12 Hours, CPU, 128 Cores, 256gb * 10 =  20.09kg CO2, 180.71kWh
-
-Estimate done using the EPYC 7513 processor option. 
+Thermal Design Power (TDP) value  of  AMD EPYC Zen2 is about 225 W.
+- 12 Hours, CPU, 128 Cores, 256gb * 10 =  7.19kg CO2, 1.27 MWh
 
 \pagebreak
 
