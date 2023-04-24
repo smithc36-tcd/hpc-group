@@ -95,7 +95,8 @@ Hello world from processor nid001264, rank 115 out of 128 processors
     (5) $36 \times 256\quad GB$ (KTH industry/business research nodes)
     
     (6) $248 \times 512\quad GB$ (KTH industry/business research nodes)
-    
+ 
+ 
 **What is the total number of cores and memory of the Dardel computer?**
 
 - 162,560 Total cores in the CPU partition. With 156.672TB of memory.  
