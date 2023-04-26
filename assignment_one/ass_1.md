@@ -226,7 +226,7 @@ High stride and large array size is the consistently most low performing region.
 
 **When you look at the graph for stride=1, you (should) see relatively high performance compared to stride=32. This is true even for large array sizes that are much larger than the L3 cache size. How is this possible, when the array cannot possibly all fit into the cache? Your explanation should include a brief overview of hardware prefetching as it applies to caches.**
 
-With a smaller stride there are fewer cache misses even though the whole array cannot  be loaded. If the stride is smaller more of the array can be read before more data has to be loaded into the cache, even if the whole array cannot be loaded at once.
+Hardware prefetching loads data that is spatially local into cache memory. In this case, this means that consecutive elements of the array are loaded into cache. With a smaller stride, we can access more elements that are in the cache before there is a cache miss and prefetching has to be done again. For instance, if a cache line is 128 bytes, and we're accessing 8 byte longs we can read 16 values before a cache miss occurs with a stride of 1, but only 4 values if we have a stride of 4. The large amount of cache misses leads to the low performance when the stride length is large. 
 
 #### Task 4.6 \
 
@@ -318,7 +318,7 @@ Importantly, the average time per matrix multiplication is the following:
 
 **What are the factors that impact the most the performance of the matrix multiply operation for different matrix sizes and implementations (naive vs optimized)?**
 
-In naïve, memory motion dominates the performance of many operations. Sustained memory bandwidth and larger cache size can provide a better guide to performance. And for optimized, since the ‘-O2’ optimizes the spatial locality and temporal locality, the time for multiplication operation will impact the performance of the matrix multiply operation.
+Cache misses are the biggest performance factor between the naive and optimised implementation. The naive algorithm steps across columns of the matrix B, causing many cache misses especially when the matrix is large. The program takes a stride of ```MSIZE * sizeof(double)```, which we saw was bad for performance in the memory mountain example. Rearranging the loop leads to the optimised versioning utilising spatial locality by accessing data along the rows, as the matrices are stored in row major order in memory, taking only a stride of ```sizeof(double)```.
 
 #### Task 6.2 \
 
