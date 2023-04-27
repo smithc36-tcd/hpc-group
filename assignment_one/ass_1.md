@@ -82,7 +82,7 @@ Hello world from processor nid001264, rank 115 out of 128 processors
 **How many CPUs, CPU core, and memory does each computing node have?**
 
 - 2 CPUs, 128 Physical cores with 256 virtual cores. Memory size varies with the type of node.
-     There are several memory sizes in the CPU partition：
+     There are several memory sizes in the CPU partition:
 
     (1) $736 \times 256 \quad GB$ (NAISS thin nodes)
     
@@ -253,29 +253,31 @@ Read stride impacts spatial locality as memory further away that is not spatiall
 [On local machine]
 
 **What is the average runtime?**
-- 0.00000405s
+
+The average running time is `0.00000405s`
 
 #### Task 5.1.2 \
 
 **Increase N and compile the code, what is the average running time now?**
-- 0.00000405s
+
+
+Increasing the N to `500,000` does not alter the running time of `0.00000405s`
 
 #### Task 5.2.1 \
 
 **Why is the execution time like that in the previous question when the flag -O2
 is used? Answer this question using the information you find in the assembly code.**
 
-- Inpecting the asm code shows the The compiler optimized the loop out of the code.  
+Inspecting the ASM code shows the compiler optimized the loop out of the code.  
+As the compiler viewed the code as 'dead' code as it is not being used. 
 
 #### Task 5.2.2 \
 
 **What is the average execution time without the `-O2` flag?**
 
-**For N = 5000:**
-- 0.00004816s 
+For N = 5000, the execution time with no `-O2` flag is `0.00004816 s`
 
-**For N = 50000:**
-- 0.00050402s
+For N = 50,000, the execution time with no `-O2` flag is `0.00047493 s`
 
 #### Task 5.3 \
 
@@ -288,12 +290,17 @@ Granularity: $$ 9.54 \cdot 10^{-7s} $$
 
 **Modify the program that you used in question 5.1 and do the following such that the code runs properly with `-O2` optimization:**
 
-- The code runs as expected, inspecting the asm code shows the program executes the loop as intended.
+The code runs as expected, inspecting the asm code shows the program executes the loop as intended.
+In order to make the code run as expected with `-O2`, we used the volatile keyword
+for the C array.
 
 #### Task 5.4.2 \
 
-- Average Exectution time: 0.000013399 s
-- Min Exectution time: 0.000133991 s
+Below are the average and and minimum timing for the loop over 20 iterations. 
+
+- Average Exectution time:   0.00006533 s
+- Min Exectution time:       0.00006294 s
+
 
 \pagebreak
 

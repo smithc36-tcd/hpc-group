@@ -113,8 +113,9 @@ int main(int argc, char *argv[]) {
 
   double std_dev = sqrt(total_time / (double)N_runs);
 
-  printf("Mean running time across %d runs: %.6f seconds\n",N_runs , mean);
-  printf("Standard deviation of running time for %d runs: %.6f seconds\n", N_runs, std_dev);
+  printf("Mean running time across %d runs: %.6f seconds\n", N_runs, mean);
+  printf("Standard deviation of running time for %d runs: %.6f seconds\n",
+         N_runs, std_dev);
 
   // take out the garbage
   free(xr);
@@ -130,21 +131,24 @@ int main(int argc, char *argv[]) {
 // DFT/IDFT routine
 // idft: 1 direct DFT, -1 inverse IDFT (Inverse DFT)
 int DFT(int idft, double *xr, double *xi, double *Xr_o, double *Xi_o, int N) {
-#pragma omp parallel for reduction(+ : Xr_o[:N]) reduction( +:Xi_o[:N]) 
-  for (int k = 0; k < N; k++) {
-    for (int n = 0; n < N; n++) {
-
+  int k, n;
+#pragma omp for parallel simd reduction(+ : Xr_o[:N], Xi_o[:N]) private(n)
+  for (k = 0; k < N; k++) {
+    for (n = 0; n < N; n++) {
+      double factor = n * k * PI2 / N;
+      double cos_v = cos(factor);
+      double sin_v = sin(factor);
       // Real part of X[k]
       /*Xr_o[k] += xr[n] * cos_val + idft * xi[n] * sin_val;*/
-      Xr_o[k] += xr[n] * cos(n * k * PI2/N) + idft * xi[n] * sin(n * k * PI2/N);
+      Xr_o[k] += xr[n] * cos_v + idft * xi[n] * sin_v;
       // Imaginary part of X[k]
-      Xi_o[k] += -idft * xr[n] * sin(n * k * PI2/N) + xi[n] * cos(n * k * PI2/N);
+      Xi_o[k] += -idft * xr[n] * sin_v + xi[n] * cos_v;
     }
   }
 
   // normalize if you are doing IDFT
   if (idft == -1) {
-#pragma omp parallel for
+#pragma omp parallel for simd
     for (int n = 0; n < N; n++) {
       Xr_o[n] /= N;
       Xi_o[n] /= N;
