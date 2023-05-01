@@ -7,7 +7,7 @@
 #include <stdio.h>
 
 int main(int argc, char *argv[]) {
-  int rank, size, i, provided;
+  int rank, size, provided;
   MPI_Init_thread(&argc, &argv, MPI_THREAD_SINGLE, &provided);
 
   // Get rank ID
@@ -68,4 +68,4 @@ The most commonly use implementations of MPI are:
 - MPICH 
 - OpenMPI
 
-
+# Exercise 2 -
