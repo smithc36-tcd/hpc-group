@@ -69,3 +69,19 @@ The most commonly use implementations of MPI are:
 - OpenMPI
 
 # Exercise 2 -
+
+
+
+# Exercise 4 - Calculate PI with MPI
+
+## 4.1 Collective reduce 
+
+| Processes |        8 |       16 |       32 |      64 |     128 |      256 |      384 |
+|-----------|---------:|---------:|---------:|--------:|--------:|---------:|---------:|
+| Seconds   | 3.510213 | 1.788219 | 0.901785 | 0.75959 | 0.42112 | 0.140007 | 0.142021 |
+
+
+![graph](task4/mpi_reduce_graph.png)
+
+As can be seen in the above graph, the preformance improves with increasing the number of Processes
+up to 256 where the preformance plateaus. 
