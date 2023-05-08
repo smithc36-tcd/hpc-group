@@ -68,7 +68,17 @@ The most commonly use implementations of MPI are:
 - MPICH 
 - OpenMPI
 
-# Exercise 2 -
+# Exercise 2 - Measure Network Bandwidth and Latency on Dardel with Ping-Pong
+
+**2. Using best fit (using Matlab, Python, or similar), calculate the bandwidth and latency for 1) and 2).**
+
+Averaged across 5 runs of ping-pong. 
+
+Bandwidth of intra-communication:   16.7943784650487 GB/s \
+Latency of intra-communication:     190.32859586752318 us
+
+Bandwidth of inter-communication:   23.94768412896673 GB/s \
+Latency of inter-communication:     3.5903784765432594 us
 
 # Exercise 3 - 1D Domain Decomposition with Blocking Communication
 
