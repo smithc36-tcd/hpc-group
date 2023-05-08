@@ -70,6 +70,17 @@ The most commonly use implementations of MPI are:
 
 # Exercise 2 -
 
+# Exercise 3 - 1D Domain Decomposition with Blocking Communication
+
+**1. Assume periodic boundary conditions, e.g. the first and last process will communicate. Implement the communication for the 1D domain decomposition using**
+
+* MPI blocking point-to-point communication. 
+
+* MPI non-blocking point-to-point communication. 
+
+**2. Test the results by checking the correct values are on the ghost cells and the derivative of sin(x) on the edges of the domain is correct (the derivative of sin(x) is cos(x)). Show that your code produce the correct results (especially at the ghost cells).**
+
+**3. Why ```MPI_Send``` and ```MPI_Recv``` are called "blocking "communication?**
 
 
 # Exercise 4 - Calculate PI with MPI
