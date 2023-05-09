@@ -154,12 +154,17 @@ As can be seen in the above graph, the preformance improves with increasing the 
 up to 256 where the preformance plateaus. 
 ## 4.2 MPI Blocking Communication & Linear Reduction Algorithm 
 
+**2.Measure the performance of the code (execution time) for 8, 16, 32, 64, 128, (possibly 256) MPI processes and plot it. How the execution time scale with the number of processes? What is the MPI function for timing?**
+
 | Processes |        8 |       16 |       32 |      64 |     128 |      256 |
 |-----------|---------:|---------:|---------:|--------:|--------:|---------:|
 | Seconds   | 3.512224 | 2.330320 | 0.999621 | 0.445600 | 0.326196 | 0.340048 |
 
 
-![graph](task4/mpi_reduce_graph.png)
+![graph](task4/blocking.png)
 
-As can be seen in the above graph, the preformance improves with increasing the number of Processes
-up to 256 where the preformance plateaus. 
+Execution time decreases as the number of processes increases, almost inversely.
+The MPI function for timing is ```MPI_Wtime()```
+
+**3.Develop a performance model for the execution time of the application (or of the communication model only) using the postal communication model for the network performance. Use the values of bandwidth and latency you found in exercise 2. Compare the results from the measurements with the performance model results.**
+
