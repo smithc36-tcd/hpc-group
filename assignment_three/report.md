@@ -152,3 +152,14 @@ which have shared resources and cache.
 
 As can be seen in the above graph, the preformance improves with increasing the number of Processes
 up to 256 where the preformance plateaus. 
+## 4.2 MPI Blocking Communication & Linear Reduction Algorithm 
+
+| Processes |        8 |       16 |       32 |      64 |     128 |      256 |
+|-----------|---------:|---------:|---------:|--------:|--------:|---------:|
+| Seconds   | 3.512224 | 2.330320 | 0.999621 | 0.445600 | 0.326196 | 0.340048 |
+
+
+![graph](task4/mpi_reduce_graph.png)
+
+As can be seen in the above graph, the preformance improves with increasing the number of Processes
+up to 256 where the preformance plateaus. 
