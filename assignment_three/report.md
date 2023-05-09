@@ -72,13 +72,59 @@ The most commonly use implementations of MPI are:
 
 **2. Using best fit (using Matlab, Python, or similar), calculate the bandwidth and latency for 1) and 2).**
 
-Averaged across 5 runs of ping-pong. 
+Below are the results averaged across 5 runs of the ping-pong benchmark.  
 
-Bandwidth of intra-communication:   16.7943784650487 GB/s \
-Latency of intra-communication:     190.32859586752318 us
+| Processes |Intra           |Inter |
+|----------|----------------:|-----:|
+|Time (us)      |  190.32859 | 3.59037 |
+|Bandwidth  (GB/s) | 16.79437 | 23.94768 |
 
-Bandwidth of inter-communication:   23.94768412896673 GB/s \
-Latency of inter-communication:     3.5903784765432594 us
+<!--Bandwidth of intra-communication:   16.7943784650487 GB/s \-->
+<!--Latency of intra-communication:     190.32859586752318 us-->
+
+<!--Bandwidth of inter-communication:   23.94768412896673 GB/s \-->
+<!--Latency of inter-communication:     3.5903784765432594 us-->
+
+Note: These results are unexpected, it would be expected that the intra-node 
+communication to be faster than inter-node communication. 
+
+**3. Why the postal model is not the best performance model for communication?**
+    
+<!--The postal model makes a number of simplifications which introduce inaccuracies, -->
+<!--such simplifications are that it measures the communication rate for a single -->
+<!--process, where in reality a network cannot sustain this rate. It ignores the interface-->
+<!--between nodes, as well as some other network considerations such as contention and topology. -->
+<!--Postal doesn't account for the different methods MPI implements for sending messages of -->
+<!--different sizes. -->
+
+The Postal model is not the best for modelling performance due to a number of 
+simplifications the model makes about the network and node communication. One 
+simplification it makes is to measure the communication rate for a single process, 
+in reality, the network cannot sustain this rate of communication, giving skewed 
+results. 
+
+Another simplification is how the model ignores the bandwidth limits at the interfaces 
+of the nodes. This means in applications where bandwidth is a limiting factor 
+the results will be inaccurate.
+
+It also doesn't account for the different communication methods used for 
+messages of different lengths, such as eager and rendezvous. 
+
+**4. How you would you improve the ping pong test after have read the paper?**
+
+There are a number of ways you could improve the ping pong benchmark. 
+Two which were already mentioned in the paper were to recognise the eager/rendezvous 
+threshold for sending messages of different sizes, and to take the bandwidth of 
+the interface between the nodes. 
+
+The methods mentioned in the paper, being
+
+- Accounting for the eager/rendezvous threshold, and 
+- Taking the bandwidth limits of the interfaces of nodes 
+
+are a good step to improving the accuracy of the ping pong bench mark, one could
+increase the accuracy of the model by taking contention and congestion of multi-processes running on a single node 
+which have shared resources and cache.
 
 # Exercise 3 - 1D Domain Decomposition with Blocking Communication
 
