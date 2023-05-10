@@ -68,7 +68,63 @@ The most commonly use implementations of MPI are:
 - MPICH 
 - OpenMPI
 
-# Exercise 2 -
+# Exercise 2 - Measure Network Bandwidth and Latency on Dardel with Ping-Pong
+
+**2. Using best fit (using Matlab, Python, or similar), calculate the bandwidth and latency for 1) and 2).**
+
+Below are the results averaged across 5 runs of the ping-pong benchmark.  
+
+| Processes |Intra           |Inter |
+|----------|----------------:|-----:|
+|Time (us)      |  190.32859 | 3.59037 |
+|Bandwidth  (GB/s) | 16.79437 | 23.94768 |
+
+<!--Bandwidth of intra-communication:   16.7943784650487 GB/s \-->
+<!--Latency of intra-communication:     190.32859586752318 us-->
+
+<!--Bandwidth of inter-communication:   23.94768412896673 GB/s \-->
+<!--Latency of inter-communication:     3.5903784765432594 us-->
+
+Note: These results are unexpected, it would be expected that the intra-node 
+communication to be faster than inter-node communication. 
+
+**3. Why the postal model is not the best performance model for communication?**
+    
+<!--The postal model makes a number of simplifications which introduce inaccuracies, -->
+<!--such simplifications are that it measures the communication rate for a single -->
+<!--process, where in reality a network cannot sustain this rate. It ignores the interface-->
+<!--between nodes, as well as some other network considerations such as contention and topology. -->
+<!--Postal doesn't account for the different methods MPI implements for sending messages of -->
+<!--different sizes. -->
+
+The Postal model is not the best for modelling performance due to a number of 
+simplifications the model makes about the network and node communication. One 
+simplification it makes is to measure the communication rate for a single process, 
+in reality, the network cannot sustain this rate of communication, giving skewed 
+results. 
+
+Another simplification is how the model ignores the bandwidth limits at the interfaces 
+of the nodes. This means in applications where bandwidth is a limiting factor 
+the results will be inaccurate.
+
+It also doesn't account for the different communication methods used for 
+messages of different lengths, such as eager and rendezvous. 
+
+**4. How you would you improve the ping pong test after have read the paper?**
+
+There are a number of ways you could improve the ping pong benchmark. 
+Two which were already mentioned in the paper were to recognise the eager/rendezvous 
+threshold for sending messages of different sizes, and to take the bandwidth of 
+the interface between the nodes. 
+
+The methods mentioned in the paper, being
+
+- Accounting for the eager/rendezvous threshold, and 
+- Taking the bandwidth limits of the interfaces of nodes 
+
+are a good step to improving the accuracy of the ping pong bench mark, one could
+increase the accuracy of the model by taking contention and congestion of multi-processes running on a single node 
+which have shared resources and cache.
 
 # Exercise 3 - 1D Domain Decomposition with Blocking Communication
 
@@ -210,3 +266,30 @@ The `MPI_Send` and `MPI_Recv` functions must wait until the buffer has been empt
 
 As can be seen in the above graph, the preformance improves with increasing the number of Processes
 up to 256 where the preformance plateaus. 
+## 4.2 MPI Blocking Communication & Linear Reduction Algorithm 
+
+**2.Measure the performance of the code (execution time) for 8, 16, 32, 64, 128, (possibly 256) MPI processes and plot it. How the execution time scale with the number of processes? What is the MPI function for timing?**
+
+| Processes |        8 |       16 |       32 |      64 |     128 |      256 |
+|-----------|---------:|---------:|---------:|--------:|--------:|---------:|
+| Seconds   | 3.512224 | 2.330320 | 0.999621 | 0.445600 | 0.326196 | 0.340048 |
+
+
+![graph](task4/blocking.png)
+
+Execution time decreases as the number of processes increases, almost inversely.
+The MPI function for timing is ```MPI_Wtime()```
+
+**3.Develop a performance model for the execution time of the application (or of the communication model only) using the postal communication model for the network performance. Use the values of bandwidth and latency you found in exercise 2. Compare the results from the measurements with the performance model results.**
+
+The postal communication model is $T=s+r n$. s is 190.32859586752318 us and r is $1/bandwidth =0.0595 ns$
+In this application, the message size is 4 Bytes. The number of receiving and sending messages is 2*(the number of processes-1).  So the execution time is nearly 
+$T=2(N-1)(s+r n)+NumIter \div N\times (20+pi/2)t$, 
+where $N$ is the number of processes ,and $NumIter=1000000000$ in this case and $t$ is the execution time per instrucation,assuming that every operation spends only one cycle(including load and store) and ignore some instruction not within the loop.
+
+| Processes |        8 |       16 |       32 |      64 |     128 |      256 |
+|-----------|---------:|---------:|---------:|--------:|--------:|---------:|
+| Seconds(model)   | 1.20104 | 0.60489 | 0.31139 | 0.173778 | 0.123242 | 0.134517 |
+
+
+From the tabel, we can see that the results is quite smaller than those from the measurements. Maybe the reason is that the execaution times of some operations are large than  1 cycle.
