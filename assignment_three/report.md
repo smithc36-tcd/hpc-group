@@ -169,8 +169,11 @@ The MPI function for timing is ```MPI_Wtime()```
 **3.Develop a performance model for the execution time of the application (or of the communication model only) using the postal communication model for the network performance. Use the values of bandwidth and latency you found in exercise 2. Compare the results from the measurements with the performance model results.**
 
 The postal communication model is T=s+r n. s is 190.32859586752318 us and r is 1/bandwidth =0.0595 ns
-In this application, the message size is 4 Bytes. The number of receiving and sending messages is (the number of processes-1).  So the execution time is nearly $$ T = (N-1) \times 2 \times (s+4r) +11 \times NUM_ITER \divN \times t $$, where N is the number of processes and t is the execution time per instrucation,assuming that every operation spends only one cycle and there is no memory load and store.
+In this application, the message size is 4 Bytes. The number of receiving and sending messages is 2*(the number of processes-1).  So the execution time is nearly 
+$ T = (N-1) \times 2 \times (s+4r) +(20 +pi/2) \times NUM_ITER \div N \times t $, 
+where N is the number of processes and t is the execution time per instrucation,assuming that every operation spends only one cycle(including load and store).
 
 | Processes |        8 |       16 |       32 |      64 |     128 |      256 |
 |-----------|---------:|---------:|---------:|--------:|--------:|---------:|
-| Seconds(model)   | 3.512224 | 2.330320 | 0.999621 | 0.445600 | 0.326196 | 0.340048 |
+| Seconds(model)   | 1.20104 | 0.60489 | 0.31139 | 0.173778 | 0.123242 | 0.134517 |
+From the tabel, we can see that the results is quite smaller than those from the measurements. Maybe the reason is that the execaution time of some operations is large than  1 cycle.
