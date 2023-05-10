@@ -168,3 +168,5 @@ The MPI function for timing is ```MPI_Wtime()```
 
 **3.Develop a performance model for the execution time of the application (or of the communication model only) using the postal communication model for the network performance. Use the values of bandwidth and latency you found in exercise 2. Compare the results from the measurements with the performance model results.**
 
+The postal communication model is T=s+r n. 
+In this application, the message size is 4 Bytes. The number of receiving and sending messages is (the number of processes-1). 2. So the execution time is nearly $ T = (N-1)*2*(s+4r) +9* NUM_ITER/N*t $, where N is the number of processes and t is the execution time per instrucation.
