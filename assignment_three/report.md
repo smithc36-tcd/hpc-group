@@ -178,4 +178,4 @@ where $N$ is the number of processes ,and $NumIter=1000000000$ in this case and 
 | Seconds(model)   | 1.20104 | 0.60489 | 0.31139 | 0.173778 | 0.123242 | 0.134517 |
 
 
-From the tabel, we can see that the results is quite smaller than those from the measurements. Maybe the reason is that the execaution time of some operations is large than  1 cycle.
+From the tabel, we can see that the results is quite smaller than those from the measurements. Maybe the reason is that the execaution times of some operations are large than  1 cycle.
