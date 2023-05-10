@@ -171,7 +171,7 @@ The MPI function for timing is ```MPI_Wtime()```
 The postal communication model is T=s+r n. s is 190.32859586752318 us and r is 1/bandwidth =0.0595 ns
 In this application, the message size is 4 Bytes. The number of receiving and sending messages is 2*(the number of processes-1).  So the execution time is nearly 
 $ T = (N-1) \times 2 \times (s+4r) +(20 +pi/2) \times NUM_ITER \div N \times t $, 
-where N is the number of processes and t is the execution time per instrucation,assuming that every operation spends only one cycle(including load and store).
+where $N$ is the number of processes and t is the execution time per instrucation,assuming that every operation spends only one cycle(including load and store).
 
 | Processes |        8 |       16 |       32 |      64 |     128 |      256 |
 |-----------|---------:|---------:|---------:|--------:|--------:|---------:|
