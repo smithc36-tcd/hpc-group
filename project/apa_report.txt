@@ -1,0 +1,1916 @@
+CrayPat/X:  Version 22.06.0 Revision 4b5ab6256  05/21/22 02:03:49
+
+Number of PEs (MPI ranks):   64
+                           
+Numbers of PEs per Node:     64
+                           
+Numbers of Threads per PE:    1
+                           
+Number of Cores per Socket:  64
+
+Execution start time:  Wed May 10 21:37:21 2023
+
+System name and speed:  nid001428  2.756 GHz (nominal)
+
+AMD   Rome                 CPU  Family: 23  Model: 49  Stepping:  0
+
+Core Performance Boost:  All 64 PEs have CPB capability
+
+
+Current path to data file:
+  /cfs/klemming/home/c/cillians/Public/iPIC3D/build/iPIC3D+orig+apa+51189-8606179t   (RTS)
+
+
+Notes for table 1:
+
+  This table shows functions that have significant exclusive time,
+    averaged across ranks.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O profile ...
+
+Table 1:  Profile by Function Group and Function
+
+  Time% |      Time |     Imb. |  Imb. |     Calls | Group
+        |           |     Time | Time% |           |  Function
+        |           |          |       |           |   PE=HIDE
+       
+ 100.0% | 65.307826 |       -- |    -- | 407,012.7 | Total
+|-----------------------------------------------------------------------------
+|  90.4% | 59.067354 |       -- |    -- |     777.0 | USER
+||----------------------------------------------------------------------------
+||  53.8% | 35.127748 | 1.059508 |  3.0% |     204.0 | Particles3D::mover_PC_AoS
+||  20.7% | 13.519683 | 0.383946 |  2.8% |      52.0 | EMfields3D::sumMoments_AoS
+||  13.5% |  8.825467 | 0.803799 |  8.5% |       1.0 | main
+||   2.4% |  1.594456 | 0.048634 |  3.0% |     520.0 | EMfields3D::MUdot
+||============================================================================
+|   8.3% |  5.429193 |       -- |    -- | 403,725.7 | MPI
+||----------------------------------------------------------------------------
+||   2.7% |  1.791505 | 1.348019 | 43.6% |   7,080.0 | MPI_Waitany
+||   2.7% |  1.740597 | 1.387888 | 45.1% |  34,722.0 | MPI_Waitall
+||============================================================================
+|   1.2% |  0.811126 |       -- |    -- |   2,110.0 | MPI_SYNC
+||----------------------------------------------------------------------------
+||   1.2% |  0.790106 | 0.279775 | 35.4% |   2,044.0 | MPI_Allreduce(sync)
+|=============================================================================
+
+Notes for table 2:
+
+  This table shows functions that have the most significant exclusive
+    time, taking the maximum time across ranks and threads.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O profile_max ...
+
+Table 2:  Profile of maximum function times
+
+  Time% |      Time |     Imb. |   Imb. | Function
+        |           |     Time |  Time% |  PE=[max,min]
+|-------------------------------------------------------------------
+| 100.0% | 36.187256 | 1.059508 |   3.0% | Particles3D::mover_PC_AoS
+||------------------------------------------------------------------
+|| 100.0% | 36.187256 |       -- |     -- | pe.4
+||  94.1% | 34.046725 |       -- |     -- | pe.1
+||==================================================================
+|  38.4% | 13.903629 | 0.383946 |   2.8% | EMfields3D::sumMoments_AoS
+||------------------------------------------------------------------
+||  38.4% | 13.903629 |       -- |     -- | pe.42
+||  36.0% | 13.030518 |       -- |     -- | pe.41
+||==================================================================
+|  26.6% |  9.629266 | 0.803799 |   8.5% | main
+||------------------------------------------------------------------
+||  26.6% |  9.629266 |       -- |     -- | pe.52
+||  21.0% |  7.605475 |       -- |     -- | pe.16
+||==================================================================
+|   8.7% |  3.139525 | 1.348019 |  43.6% | MPI_Waitany
+||------------------------------------------------------------------
+||   8.7% |  3.139525 |       -- |     -- | pe.1
+||   1.8% |  0.637674 |       -- |     -- | pe.39
+||==================================================================
+|   8.6% |  3.128485 | 1.387888 |  45.1% | MPI_Waitall
+||------------------------------------------------------------------
+||   8.6% |  3.128485 |       -- |     -- | pe.27
+||   2.4% |  0.885780 |       -- |     -- | pe.55
+||==================================================================
+|   4.5% |  1.643090 | 0.048634 |   3.0% | EMfields3D::MUdot
+||------------------------------------------------------------------
+||   4.5% |  1.643090 |       -- |     -- | pe.4
+||   4.3% |  1.561652 |       -- |     -- | pe.44
+||==================================================================
+|   3.4% |  1.240017 | 0.279775 |  35.4% | MPI_Allreduce(sync)
+||------------------------------------------------------------------
+||   3.4% |  1.240017 |       -- |     -- | pe.14
+||   1.4% |  0.510331 |       -- |     -- | pe.55
+||==================================================================
+|   1.7% |  0.620383 | 0.009875 |   1.6% | MPI_File_set_view
+||------------------------------------------------------------------
+||   1.7% |  0.620383 |       -- |     -- | pe.41
+||   0.0% |  0.001670 |       -- |     -- | pe.0
+||==================================================================
+|   1.7% |  0.618818 | 0.609149 | 100.0% | MPI_File_write
+||------------------------------------------------------------------
+||   1.7% |  0.618818 |       -- |     -- | pe.0
+||   0.0% |  0.000000 |       -- |     -- | pe.63
+||==================================================================
+|   1.6% |  0.565633 | 0.000034 |   0.0% | MPI_File_open
+||------------------------------------------------------------------
+||   1.6% |  0.565633 |       -- |     -- | pe.2
+||   1.6% |  0.565557 |       -- |     -- | pe.60
+||==================================================================
+|   1.0% |  0.376874 | 0.066272 |  17.9% | MPI_Isend
+||------------------------------------------------------------------
+||   1.0% |  0.376874 |       -- |     -- | pe.56
+||   0.7% |  0.253069 |       -- |     -- | pe.0
+|===================================================================
+
+Notes for table 3:
+
+  This table shows functions that have significant exclusive time,
+    averaged across ranks.
+    Processor HW counter data is also shown, if available.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O profile+hwpc ...
+
+Table 3:  Profile by Function Group and Function
+
+Group / Function / PE=HIDE
+
+  
+==============================================================================
+  Total
+------------------------------------------------------------------------------
+  Time%                                         100.0% 
+  Time                                       65.307826 secs
+  Imb. Time                                         -- secs
+  Imb. Time%                                        -- 
+  Calls                        0.006M/sec    407,012.7 calls
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                             81,648,142 
+  L2_PREFETCH_HIT_L2                       143,577,952 
+  L2_PREFETCH_HIT_L3                        83,606,922 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF           495,296,803 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X            58,032,155 
+  Cache Lines PF from OffCore  0.005G/sec  351,718,852 lines
+  Cache Lines PF from Memory   0.004G/sec  268,111,929 lines
+  Cache Lines Requested from 
+    Memory                     0.953M/sec   62,239,600 lines
+  Write Memory Traffic GBytes  0.031G/sec         2.01 GB
+  Read Memory Traffic GBytes   0.324G/sec        21.14 GB
+  Memory traffic GBytes        0.355G/sec        23.15 GB
+  Memory Traffic / Nominal Peak                   0.2% 
+  Average Time per Call                       0.000160 secs
+  CrayPat Overhead : Time       0.4%                   
+==============================================================================
+  USER
+------------------------------------------------------------------------------
+  Time%                                          90.4% 
+  Time                                       59.067354 secs
+  Imb. Time                                         -- secs
+  Imb. Time%                                        -- 
+  Calls                       13.154 /sec        777.0 calls
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                             64,142,426 
+  L2_PREFETCH_HIT_L2                       127,637,739 
+  L2_PREFETCH_HIT_L3                        74,748,162 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF           463,282,002 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X            43,464,484 
+  Cache Lines PF from OffCore  0.006G/sec  335,644,262 lines
+  Cache Lines PF from Memory   0.004G/sec  260,896,100 lines
+  Cache Lines Requested from 
+    Memory                     0.844M/sec   49,857,872 lines
+  Write Memory Traffic GBytes  0.027G/sec         1.57 GB
+  Read Memory Traffic GBytes   0.337G/sec        19.89 GB
+  Memory traffic GBytes        0.363G/sec        21.45 GB
+  Memory Traffic / Nominal Peak                   0.2% 
+  Average Time per Call                       0.076020 secs
+  CrayPat Overhead : Time       0.0%                   
+==============================================================================
+  USER / Particles3D::mover_PC_AoS
+------------------------------------------------------------------------------
+  Time%                                          53.8% 
+  Time                                       35.127748 secs
+  Imb. Time                                   1.059508 secs
+  Imb. Time%                                      3.0% 
+  Calls                        5.807 /sec        204.0 calls
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                             13,277,082 
+  L2_PREFETCH_HIT_L2                        33,569,338 
+  L2_PREFETCH_HIT_L3                         6,074,136 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF            93,335,444 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X               834,451 
+  Cache Lines PF from OffCore  0.002G/sec   59,766,107 lines
+  Cache Lines PF from Memory   0.002G/sec   53,691,971 lines
+  Cache Lines Requested from 
+    Memory                     0.340M/sec   11,927,709 lines
+  Write Memory Traffic GBytes  0.875M/sec         0.03 GB
+  Read Memory Traffic GBytes   0.120G/sec         4.20 GB
+  Memory traffic GBytes        0.120G/sec         4.23 GB
+  Memory Traffic / Nominal Peak                   0.1% 
+  Average Time per Call                       0.172195 secs
+  CrayPat Overhead : Time       0.0%                   
+==============================================================================
+  USER / EMfields3D::sumMoments_AoS
+------------------------------------------------------------------------------
+  Time%                                          20.7% 
+  Time                                       13.519683 secs
+  Imb. Time                                   0.383946 secs
+  Imb. Time%                                      2.8% 
+  Calls                        3.846 /sec         52.0 calls
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                             17,086,181 
+  L2_PREFETCH_HIT_L2                        48,203,411 
+  L2_PREFETCH_HIT_L3                        11,746,481 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF           117,012,735 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X             3,003,804 
+  Cache Lines PF from OffCore  0.005G/sec   68,809,324 lines
+  Cache Lines PF from Memory   0.004G/sec   57,062,843 lines
+  Cache Lines Requested from 
+    Memory                     0.001G/sec   14,169,389 lines
+  Write Memory Traffic GBytes  0.007G/sec         0.09 GB
+  Read Memory Traffic GBytes   0.337G/sec         4.56 GB
+  Memory traffic GBytes        0.344G/sec         4.65 GB
+  Memory Traffic / Nominal Peak                   0.2% 
+  Average Time per Call                       0.259994 secs
+  CrayPat Overhead : Time       0.0%                   
+==============================================================================
+  USER / main
+------------------------------------------------------------------------------
+  Time%                                          13.5% 
+  Time                                        8.825467 secs
+  Imb. Time                                   0.803799 secs
+  Imb. Time%                                      8.5% 
+  Calls                        0.113 /sec          1.0 calls
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                             32,078,141 
+  L2_PREFETCH_HIT_L2                        35,214,155 
+  L2_PREFETCH_HIT_L3                        40,362,031 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF           225,570,395 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X            39,531,521 
+  Cache Lines PF from OffCore  0.022G/sec  190,356,240 lines
+  Cache Lines PF from Memory   0.017G/sec  149,994,209 lines
+  Cache Lines Requested from 
+    Memory                     0.003G/sec   25,276,479 lines
+  Write Memory Traffic GBytes  0.191G/sec         1.68 GB
+  Read Memory Traffic GBytes   1.271G/sec        11.22 GB
+  Memory traffic GBytes        1.462G/sec        12.90 GB
+  Memory Traffic / Nominal Peak                   0.7% 
+  Average Time per Call                       8.825467 secs
+  CrayPat Overhead : Time       0.0%                   
+==============================================================================
+  USER / EMfields3D::MUdot
+------------------------------------------------------------------------------
+  Time%                                           2.4% 
+  Time                                        1.594456 secs
+  Imb. Time                                   0.048634 secs
+  Imb. Time%                                      3.0% 
+  Calls                      326.130 /sec        520.0 calls
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                              1,701,021 
+  L2_PREFETCH_HIT_L2                        10,650,835 
+  L2_PREFETCH_HIT_L3                        16,565,514 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF            27,363,427 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X                94,708 
+  Cache Lines PF from OffCore  0.010G/sec   16,712,592 lines
+  Cache Lines PF from Memory   0.092M/sec      147,078 lines
+  Cache Lines Requested from 
+    Memory                     0.009M/sec       14,970 lines
+  Write Memory Traffic GBytes  0.020M/sec         0.00 GB
+  Read Memory Traffic GBytes   0.007G/sec         0.01 GB
+  Memory traffic GBytes        0.007G/sec         0.01 GB
+  Memory Traffic / Nominal Peak                   0.0% 
+  Average Time per Call                       0.003066 secs
+  CrayPat Overhead : Time       0.0%                   
+==============================================================================
+==============================================================================
+  MPI
+------------------------------------------------------------------------------
+  Time%                                           8.3% 
+  Time                                        5.429193 secs
+  Imb. Time                                         -- secs
+  Imb. Time%                                        -- 
+  Calls                        0.074M/sec    403,725.7 calls
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                             17,254,458 
+  L2_PREFETCH_HIT_L2                        15,884,027 
+  L2_PREFETCH_HIT_L3                         8,778,428 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF            31,862,386 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X            14,468,124 
+  Cache Lines PF from OffCore  0.003G/sec   15,978,359 lines
+  Cache Lines PF from Memory   0.001G/sec    7,199,932 lines
+  Cache Lines Requested from 
+    Memory                     0.001G/sec    7,774,948 lines
+  Write Memory Traffic GBytes  0.039G/sec         0.21 GB
+  Read Memory Traffic GBytes   0.177G/sec         0.96 GB
+  Memory traffic GBytes        0.215G/sec         1.17 GB
+  Memory Traffic / Nominal Peak                   0.1% 
+  Average Time per Call                       0.000013 secs
+  CrayPat Overhead : Time       5.3%                   
+==============================================================================
+  MPI / MPI_Waitany
+------------------------------------------------------------------------------
+  Time%                                           2.7% 
+  Time                                        1.791505 secs
+  Imb. Time                                   1.348019 secs
+  Imb. Time%                                     43.6% 
+  Calls                        0.004M/sec      7,080.0 calls
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                                141,252 
+  L2_PREFETCH_HIT_L2                            76,601 
+  L2_PREFETCH_HIT_L3                            11,719 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF               207,149 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X               684,960 
+  Cache Lines PF from OffCore  0.073M/sec      130,548 lines
+  Cache Lines PF from Memory   0.066M/sec      118,829 lines
+  Cache Lines Requested from 
+    Memory                     0.072M/sec      128,572 lines
+  Write Memory Traffic GBytes  0.014G/sec         0.03 GB
+  Read Memory Traffic GBytes   0.009G/sec         0.02 GB
+  Memory traffic GBytes        0.023G/sec         0.04 GB
+  Memory Traffic / Nominal Peak                   0.0% 
+  Average Time per Call                       0.000253 secs
+  CrayPat Overhead : Time       0.3%                   
+==============================================================================
+  MPI / MPI_Waitall
+------------------------------------------------------------------------------
+  Time%                                           2.7% 
+  Time                                        1.740597 secs
+  Imb. Time                                   1.387888 secs
+  Imb. Time%                                     45.1% 
+  Calls                        0.020M/sec     34,722.0 calls
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                              4,943,468 
+  L2_PREFETCH_HIT_L2                         5,884,015 
+  L2_PREFETCH_HIT_L3                         3,036,914 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF            12,459,251 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X             5,510,508 
+  Cache Lines PF from OffCore  0.004G/sec    6,575,237 lines
+  Cache Lines PF from Memory   0.002G/sec    3,538,322 lines
+  Cache Lines Requested from 
+    Memory                     0.002G/sec    2,660,221 lines
+  Write Memory Traffic GBytes  0.058G/sec         0.10 GB
+  Read Memory Traffic GBytes   0.228G/sec         0.40 GB
+  Memory traffic GBytes        0.285G/sec         0.50 GB
+  Memory Traffic / Nominal Peak                   0.1% 
+  Average Time per Call                       0.000050 secs
+  CrayPat Overhead : Time       1.4%                   
+==============================================================================
+==============================================================================
+  MPI_SYNC
+------------------------------------------------------------------------------
+  Time%                                           1.2% 
+  Time                                        0.811126 secs
+  Imb. Time                                         -- secs
+  Imb. Time%                                        -- 
+  Calls                        0.003M/sec      2,110.0 calls
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                                251,162 
+  L2_PREFETCH_HIT_L2                            55,875 
+  L2_PREFETCH_HIT_L3                            80,308 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF               152,045 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X                99,009 
+  Cache Lines PF from OffCore  0.119M/sec       96,170 lines
+  Cache Lines PF from Memory   0.020M/sec       15,862 lines
+  Cache Lines Requested from 
+    Memory                     0.051M/sec       41,426 lines
+  Write Memory Traffic GBytes  0.815M/sec         0.00 GB
+  Read Memory Traffic GBytes   0.005G/sec         0.00 GB
+  Memory traffic GBytes        0.005G/sec         0.00 GB
+  Memory Traffic / Nominal Peak                   0.0% 
+  Average Time per Call                       0.000384 secs
+  CrayPat Overhead : Time       0.2%                   
+==============================================================================
+  MPI_SYNC / MPI_Allreduce(sync)
+------------------------------------------------------------------------------
+  Time%                                           1.2% 
+  Time                                        0.790106 secs
+  Imb. Time                                   0.279775 secs
+  Imb. Time%                                     35.4% 
+  Calls                        0.003M/sec      2,044.0 calls
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                                242,578 
+  L2_PREFETCH_HIT_L2                            54,413 
+  L2_PREFETCH_HIT_L3                            77,666 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF               147,547 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X                97,429 
+  Cache Lines PF from OffCore  0.118M/sec       93,134 lines
+  Cache Lines PF from Memory   0.020M/sec       15,468 lines
+  Cache Lines Requested from 
+    Memory                     0.051M/sec       40,288 lines
+  Write Memory Traffic GBytes  0.827M/sec         0.00 GB
+  Read Memory Traffic GBytes   0.005G/sec         0.00 GB
+  Memory traffic GBytes        0.005G/sec         0.00 GB
+  Memory Traffic / Nominal Peak                   0.0% 
+  Average Time per Call                       0.000387 secs
+  CrayPat Overhead : Time       0.2%                   
+==============================================================================
+
+Notes for table 4:
+
+  This table shows the ranks with maximum, mean, and minimum time for
+    functions with significant time, within the function groups. It
+    also shows MPI message statistics for functions in the MPI group.
+    Note that this table includes both point to point and  collective
+    communications, using estimates for the latter based on a naive
+    implementation using the former, and does not reflect
+    optimizations by the MPI library.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O load_balance_m ...
+
+Table 4:  Load Balance with MPI Message Stats
+
+  Time% |      Time |   MPI Msg | MPI Msg Bytes |  Avg MPI | Group
+        |           |     Count |               | Msg Size |  PE=[mmm]
+       
+ 100.0% | 65.307826 | 162,113.0 | 186,455,562.0 | 1,150.16 | Total
+|---------------------------------------------------------------------
+|  90.4% | 59.067354 |       0.0 |           0.0 |       -- | USER
+||--------------------------------------------------------------------
+||  93.4% | 60.978024 |       0.0 |           0.0 |       -- | pe.39
+||  90.2% | 58.885825 |       0.0 |           0.0 |       -- | pe.61
+||  87.1% | 56.869354 |       0.0 |           0.0 |       -- | pe.51
+||====================================================================
+|   8.3% |  5.429193 | 162,113.0 | 186,455,562.0 | 1,150.16 | MPI
+||--------------------------------------------------------------------
+||  11.5% |  7.484397 | 150,178.0 | 169,140,776.0 | 1,126.27 | pe.51
+||   8.4% |  5.478317 | 150,178.0 | 169,069,736.0 | 1,125.80 | pe.48
+||   5.6% |  3.681173 | 174,048.0 | 203,814,544.0 | 1,171.02 | pe.39
+||====================================================================
+|   1.2% |  0.811126 |       0.0 |           0.0 |       -- | MPI_SYNC
+||--------------------------------------------------------------------
+||   1.9% |  1.266018 |       0.0 |           0.0 |       -- | pe.14
+||   1.2% |  0.774046 |       0.0 |           0.0 |       -- | pe.58
+||   0.8% |  0.525449 |       0.0 |           0.0 |       -- | pe.55
+|=====================================================================
+
+Notes for table 5:
+
+  This table shows the MPI library functions that are used to send a
+    significant number of bytes, taking the average across sender
+    ranks of the sum of bytes sent from the sender to all destination
+    ranks. It also shows how many bytes are attributable to each of
+    its call paths. It also shows a count of messages and the number
+    of messages that fall into each bin of message sizes. For each
+    path, it shows the ranks that send the minimum, mean, and maximum
+    number of bytes.
+    Note that this table includes both point to point and  collective
+    communications, using estimates for the latter based on a naive
+    implementation using the former, and does not reflect
+    optimizations by the MPI library.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O mpi_callers ...
+
+Table 5:  MPI Message Stats by Caller
+
+Function / Caller / PE=[mmm]
+
+  
+=============================================================================
+  Total
+-----------------------------------------------------------------------------
+  MPI Msg Bytes%                       100.0% 
+  MPI Msg Bytes                 186,455,562.0 
+  MPI Msg Count                     162,113.0 msgs
+  MsgSz <16 Count                     1,575.0 msgs
+  16<= MsgSz <256 Count              38,906.0 msgs
+  256<= MsgSz <4KiB Count           120,553.5 msgs
+  4KiB<= MsgSz <64KiB Count           1,077.4 msgs
+  64KiB<= MsgSz <1MiB Count               1.0 msgs
+=============================================================================
+  MPI_Isend
+-----------------------------------------------------------------------------
+  MPI Msg Bytes%                       100.0% 
+  MPI Msg Bytes                 186,420,042.0 
+  MPI Msg Count                     160,069.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count              38,437.0 msgs
+  256<= MsgSz <4KiB Count           120,553.5 msgs
+  4KiB<= MsgSz <64KiB Count           1,077.4 msgs
+  64KiB<= MsgSz <1MiB Count               1.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        91.7% 
+  MPI Msg Bytes                 170,988,156.0 
+  MPI Msg Count                     152,989.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count              32,556.0 msgs
+  256<= MsgSz <4KiB Count           120,433.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        37.2% 
+  MPI Msg Bytes                  69,419,648.0 
+  MPI Msg Count                      71,578.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count              16,518.0 msgs
+  256<= MsgSz <4KiB Count            55,060.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / Grid3DCU::lapN2N
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        31.6% 
+  MPI Msg Bytes                  59,005,440.0 
+  MPI Msg Count                      60,840.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count              14,040.0 msgs
+  256<= MsgSz <4KiB Count            46,800.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / Grid3DCU::lapN2N / EMfields3D::MaxwellImage
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        31.6% 
+  MPI Msg Bytes                  59,005,440.0 
+  MPI Msg Count                      60,840.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count              14,040.0 msgs
+  256<= MsgSz <4KiB Count            46,800.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / Grid3DCU::lapN2N / EMfields3D::MaxwellImage / GMRES
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        31.6% 
+  MPI Msg Bytes                  59,005,440.0 
+  MPI Msg Count                      60,840.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count              14,040.0 msgs
+  256<= MsgSz <4KiB Count            46,800.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / Grid3DCU::lapN2N / EMfields3D::MaxwellImage / GMRES / EMfields3D::calculateE
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        31.6% 
+  MPI Msg Bytes                  59,005,440.0 
+  MPI Msg Count                      60,840.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count              14,040.0 msgs
+  256<= MsgSz <4KiB Count            46,800.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / Grid3DCU::lapN2N / EMfields3D::MaxwellImage / GMRES / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        31.6% 
+  MPI Msg Bytes                  59,005,440.0 
+  MPI Msg Count                      60,840.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count              14,040.0 msgs
+  256<= MsgSz <4KiB Count            46,800.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / Grid3DCU::lapN2N / EMfields3D::MaxwellImage / GMRES / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField / main
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        31.6% 
+  MPI Msg Bytes                  59,005,440.0 
+  MPI Msg Count                      60,840.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count              14,040.0 msgs
+  256<= MsgSz <4KiB Count            46,800.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / Grid3DCU::lapN2N / EMfields3D::MaxwellImage / GMRES / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField / main / pe.4
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        34.9% 
+  MPI Msg Bytes                  64,995,840.0 
+  MPI Msg Count                      65,520.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               9,360.0 msgs
+  256<= MsgSz <4KiB Count            56,160.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / Grid3DCU::lapN2N / EMfields3D::MaxwellImage / GMRES / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField / main / pe.0
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        28.4% 
+  MPI Msg Bytes                  53,015,040.0 
+  MPI Msg Count                      56,160.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count              18,720.0 msgs
+  256<= MsgSz <4KiB Count            37,440.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / Grid3DCU::lapN2N / EMfields3D::MaxwellImage / GMRES / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField / main / pe.63
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        28.4% 
+  MPI Msg Bytes                  53,015,040.0 
+  MPI Msg Count                      56,160.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count              18,720.0 msgs
+  256<= MsgSz <4KiB Count            37,440.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / EMfields3D::MaxwellImage
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         3.5% 
+  MPI Msg Bytes                   6,556,160.0 
+  MPI Msg Count                       6,760.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               1,560.0 msgs
+  256<= MsgSz <4KiB Count             5,200.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / EMfields3D::MaxwellImage / GMRES
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         3.5% 
+  MPI Msg Bytes                   6,556,160.0 
+  MPI Msg Count                       6,760.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               1,560.0 msgs
+  256<= MsgSz <4KiB Count             5,200.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / EMfields3D::MaxwellImage / GMRES / EMfields3D::calculateE
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         3.5% 
+  MPI Msg Bytes                   6,556,160.0 
+  MPI Msg Count                       6,760.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               1,560.0 msgs
+  256<= MsgSz <4KiB Count             5,200.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / EMfields3D::MaxwellImage / GMRES / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         3.5% 
+  MPI Msg Bytes                   6,556,160.0 
+  MPI Msg Count                       6,760.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               1,560.0 msgs
+  256<= MsgSz <4KiB Count             5,200.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / EMfields3D::MaxwellImage / GMRES / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField / main
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         3.5% 
+  MPI Msg Bytes                   6,556,160.0 
+  MPI Msg Count                       6,760.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               1,560.0 msgs
+  256<= MsgSz <4KiB Count             5,200.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / EMfields3D::MaxwellImage / GMRES / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField / main / pe.4
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         3.9% 
+  MPI Msg Bytes                   7,221,760.0 
+  MPI Msg Count                       7,280.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               1,040.0 msgs
+  256<= MsgSz <4KiB Count             6,240.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / EMfields3D::MaxwellImage / GMRES / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField / main / pe.0
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         3.2% 
+  MPI Msg Bytes                   5,890,560.0 
+  MPI Msg Count                       6,240.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               2,080.0 msgs
+  256<= MsgSz <4KiB Count             4,160.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / EMfields3D::MaxwellImage / GMRES / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField / main / pe.63
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         3.2% 
+  MPI Msg Bytes                   5,890,560.0 
+  MPI Msg Count                       6,240.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               2,080.0 msgs
+  256<= MsgSz <4KiB Count             4,160.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / EMfields3D::MaxwellSource
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         1.0% 
+  MPI Msg Bytes                   1,929,024.0 
+  MPI Msg Count                       1,989.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                 459.0 msgs
+  256<= MsgSz <4KiB Count             1,530.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / EMfields3D::MaxwellSource / EMfields3D::calculateE
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         1.0% 
+  MPI Msg Bytes                   1,929,024.0 
+  MPI Msg Count                       1,989.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                 459.0 msgs
+  256<= MsgSz <4KiB Count             1,530.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / EMfields3D::MaxwellSource / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         1.0% 
+  MPI Msg Bytes                   1,929,024.0 
+  MPI Msg Count                       1,989.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                 459.0 msgs
+  256<= MsgSz <4KiB Count             1,530.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / EMfields3D::MaxwellSource / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField / main
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         1.0% 
+  MPI Msg Bytes                   1,929,024.0 
+  MPI Msg Count                       1,989.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                 459.0 msgs
+  256<= MsgSz <4KiB Count             1,530.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / EMfields3D::MaxwellSource / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField / main / pe.4
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         1.1% 
+  MPI Msg Bytes                   2,124,864.0 
+  MPI Msg Count                       2,142.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                 306.0 msgs
+  256<= MsgSz <4KiB Count             1,836.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / EMfields3D::MaxwellSource / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField / main / pe.0
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         0.9% 
+  MPI Msg Bytes                   1,733,184.0 
+  MPI Msg Count                       1,836.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                 612.0 msgs
+  256<= MsgSz <4KiB Count             1,224.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / EMfields3D::MaxwellSource / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField / main / pe.63
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         0.9% 
+  MPI Msg Bytes                   1,733,184.0 
+  MPI Msg Count                       1,836.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                 612.0 msgs
+  256<= MsgSz <4KiB Count             1,224.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / EMfields3D::calculateB
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         1.0% 
+  MPI Msg Bytes                   1,929,024.0 
+  MPI Msg Count                       1,989.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                 459.0 msgs
+  256<= MsgSz <4KiB Count             1,530.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / EMfields3D::calculateB / iPic3D::c_Solver::CalculateB
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         1.0% 
+  MPI Msg Bytes                   1,929,024.0 
+  MPI Msg Count                       1,989.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                 459.0 msgs
+  256<= MsgSz <4KiB Count             1,530.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / EMfields3D::calculateB / iPic3D::c_Solver::CalculateB / main
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         1.0% 
+  MPI Msg Bytes                   1,929,024.0 
+  MPI Msg Count                       1,989.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                 459.0 msgs
+  256<= MsgSz <4KiB Count             1,530.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / EMfields3D::calculateB / iPic3D::c_Solver::CalculateB / main / pe.4
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         1.1% 
+  MPI Msg Bytes                   2,124,864.0 
+  MPI Msg Count                       2,142.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                 306.0 msgs
+  256<= MsgSz <4KiB Count             1,836.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / EMfields3D::calculateB / iPic3D::c_Solver::CalculateB / main / pe.0
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         0.9% 
+  MPI Msg Bytes                   1,733,184.0 
+  MPI Msg Count                       1,836.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                 612.0 msgs
+  256<= MsgSz <4KiB Count             1,224.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC / EMfields3D::calculateB / iPic3D::c_Solver::CalculateB / main / pe.63
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         0.9% 
+  MPI Msg Bytes                   1,733,184.0 
+  MPI Msg Count                       1,836.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                 612.0 msgs
+  256<= MsgSz <4KiB Count             1,224.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateInterp
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        15.8% 
+  MPI Msg Bytes                  29,411,200.0 
+  MPI Msg Count                      27,040.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               6,240.0 msgs
+  256<= MsgSz <4KiB Count            20,800.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateInterp / EMfields3D::communicateGhostP2G
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        15.8% 
+  MPI Msg Bytes                  29,411,200.0 
+  MPI Msg Count                      27,040.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               6,240.0 msgs
+  256<= MsgSz <4KiB Count            20,800.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateInterp / EMfields3D::communicateGhostP2G / EMfields3D::sumMoments_AoS
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        15.8% 
+  MPI Msg Bytes                  29,411,200.0 
+  MPI Msg Count                      27,040.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               6,240.0 msgs
+  256<= MsgSz <4KiB Count            20,800.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateInterp / EMfields3D::communicateGhostP2G / EMfields3D::sumMoments_AoS / iPic3D::c_Solver::CalculateMoments
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        15.8% 
+  MPI Msg Bytes                  29,411,200.0 
+  MPI Msg Count                      27,040.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               6,240.0 msgs
+  256<= MsgSz <4KiB Count            20,800.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateInterp / EMfields3D::communicateGhostP2G / EMfields3D::sumMoments_AoS / iPic3D::c_Solver::CalculateMoments / main
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        15.8% 
+  MPI Msg Bytes                  29,411,200.0 
+  MPI Msg Count                      27,040.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               6,240.0 msgs
+  256<= MsgSz <4KiB Count            20,800.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateInterp / EMfields3D::communicateGhostP2G / EMfields3D::sumMoments_AoS / iPic3D::c_Solver::CalculateMoments / main / pe.4
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        17.4% 
+  MPI Msg Bytes                  32,381,440.0 
+  MPI Msg Count                      29,120.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               4,160.0 msgs
+  256<= MsgSz <4KiB Count            24,960.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateInterp / EMfields3D::communicateGhostP2G / EMfields3D::sumMoments_AoS / iPic3D::c_Solver::CalculateMoments / main / pe.0
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        14.2% 
+  MPI Msg Bytes                  26,440,960.0 
+  MPI Msg Count                      24,960.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               8,320.0 msgs
+  256<= MsgSz <4KiB Count            16,640.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateInterp / EMfields3D::communicateGhostP2G / EMfields3D::sumMoments_AoS / iPic3D::c_Solver::CalculateMoments / main / pe.63
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        14.2% 
+  MPI Msg Bytes                  26,440,960.0 
+  MPI Msg Count                      24,960.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               8,320.0 msgs
+  256<= MsgSz <4KiB Count            16,640.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNode_P
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        15.8% 
+  MPI Msg Bytes                  29,411,200.0 
+  MPI Msg Count                      27,040.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               6,240.0 msgs
+  256<= MsgSz <4KiB Count            20,800.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNode_P / EMfields3D::communicateGhostP2G
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        15.8% 
+  MPI Msg Bytes                  29,411,200.0 
+  MPI Msg Count                      27,040.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               6,240.0 msgs
+  256<= MsgSz <4KiB Count            20,800.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNode_P / EMfields3D::communicateGhostP2G / EMfields3D::sumMoments_AoS
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        15.8% 
+  MPI Msg Bytes                  29,411,200.0 
+  MPI Msg Count                      27,040.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               6,240.0 msgs
+  256<= MsgSz <4KiB Count            20,800.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNode_P / EMfields3D::communicateGhostP2G / EMfields3D::sumMoments_AoS / iPic3D::c_Solver::CalculateMoments
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        15.8% 
+  MPI Msg Bytes                  29,411,200.0 
+  MPI Msg Count                      27,040.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               6,240.0 msgs
+  256<= MsgSz <4KiB Count            20,800.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNode_P / EMfields3D::communicateGhostP2G / EMfields3D::sumMoments_AoS / iPic3D::c_Solver::CalculateMoments / main
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        15.8% 
+  MPI Msg Bytes                  29,411,200.0 
+  MPI Msg Count                      27,040.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               6,240.0 msgs
+  256<= MsgSz <4KiB Count            20,800.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNode_P / EMfields3D::communicateGhostP2G / EMfields3D::sumMoments_AoS / iPic3D::c_Solver::CalculateMoments / main / pe.4
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        17.4% 
+  MPI Msg Bytes                  32,381,440.0 
+  MPI Msg Count                      29,120.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               4,160.0 msgs
+  256<= MsgSz <4KiB Count            24,960.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNode_P / EMfields3D::communicateGhostP2G / EMfields3D::sumMoments_AoS / iPic3D::c_Solver::CalculateMoments / main / pe.0
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        14.2% 
+  MPI Msg Bytes                  26,440,960.0 
+  MPI Msg Count                      24,960.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               8,320.0 msgs
+  256<= MsgSz <4KiB Count            16,640.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNode_P / EMfields3D::communicateGhostP2G / EMfields3D::sumMoments_AoS / iPic3D::c_Solver::CalculateMoments / main / pe.63
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                        14.2% 
+  MPI Msg Bytes                  26,440,960.0 
+  MPI Msg Count                      24,960.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               8,320.0 msgs
+  256<= MsgSz <4KiB Count            16,640.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBoxStencilBC_P
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         6.4% 
+  MPI Msg Bytes                  11,902,176.0 
+  MPI Msg Count                       5,148.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                   0.0 msgs
+  256<= MsgSz <4KiB Count             5,148.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBoxStencilBC_P / EMfields3D::smooth
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         6.4% 
+  MPI Msg Bytes                  11,902,176.0 
+  MPI Msg Count                       5,148.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                   0.0 msgs
+  256<= MsgSz <4KiB Count             5,148.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBoxStencilBC_P / EMfields3D::smooth / EMfields3D::calculateHatFunctions
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         6.4% 
+  MPI Msg Bytes                  11,902,176.0 
+  MPI Msg Count                       5,148.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                   0.0 msgs
+  256<= MsgSz <4KiB Count             5,148.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBoxStencilBC_P / EMfields3D::smooth / EMfields3D::calculateHatFunctions / iPic3D::c_Solver::CalculateMoments
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         6.4% 
+  MPI Msg Bytes                  11,902,176.0 
+  MPI Msg Count                       5,148.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                   0.0 msgs
+  256<= MsgSz <4KiB Count             5,148.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBoxStencilBC_P / EMfields3D::smooth / EMfields3D::calculateHatFunctions / iPic3D::c_Solver::CalculateMoments / main
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         6.4% 
+  MPI Msg Bytes                  11,902,176.0 
+  MPI Msg Count                       5,148.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                   0.0 msgs
+  256<= MsgSz <4KiB Count             5,148.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBoxStencilBC_P / EMfields3D::smooth / EMfields3D::calculateHatFunctions / iPic3D::c_Solver::CalculateMoments / main / pe.4
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         7.0% 
+  MPI Msg Bytes                  12,984,192.0 
+  MPI Msg Count                       5,616.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                   0.0 msgs
+  256<= MsgSz <4KiB Count             5,616.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBoxStencilBC_P / EMfields3D::smooth / EMfields3D::calculateHatFunctions / iPic3D::c_Solver::CalculateMoments / main / pe.0
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         5.8% 
+  MPI Msg Bytes                  10,820,160.0 
+  MPI Msg Count                       4,680.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                   0.0 msgs
+  256<= MsgSz <4KiB Count             4,680.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBoxStencilBC_P / EMfields3D::smooth / EMfields3D::calculateHatFunctions / iPic3D::c_Solver::CalculateMoments / main / pe.63
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         5.8% 
+  MPI Msg Bytes                  10,820,160.0 
+  MPI Msg Count                       4,680.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                   0.0 msgs
+  256<= MsgSz <4KiB Count             4,680.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBoxStencilBC
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         6.3% 
+  MPI Msg Bytes                  11,673,288.0 
+  MPI Msg Count                       5,049.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                   0.0 msgs
+  256<= MsgSz <4KiB Count             5,049.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBoxStencilBC / EMfields3D::smoothE
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         6.3% 
+  MPI Msg Bytes                  11,673,288.0 
+  MPI Msg Count                       5,049.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                   0.0 msgs
+  256<= MsgSz <4KiB Count             5,049.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBoxStencilBC / EMfields3D::smoothE / EMfields3D::calculateE
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         6.3% 
+  MPI Msg Bytes                  11,673,288.0 
+  MPI Msg Count                       5,049.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                   0.0 msgs
+  256<= MsgSz <4KiB Count             5,049.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBoxStencilBC / EMfields3D::smoothE / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         6.3% 
+  MPI Msg Bytes                  11,673,288.0 
+  MPI Msg Count                       5,049.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                   0.0 msgs
+  256<= MsgSz <4KiB Count             5,049.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBoxStencilBC / EMfields3D::smoothE / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField / main
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         6.3% 
+  MPI Msg Bytes                  11,673,288.0 
+  MPI Msg Count                       5,049.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                   0.0 msgs
+  256<= MsgSz <4KiB Count             5,049.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBoxStencilBC / EMfields3D::smoothE / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField / main / pe.4
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         6.8% 
+  MPI Msg Bytes                  12,734,496.0 
+  MPI Msg Count                       5,508.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                   0.0 msgs
+  256<= MsgSz <4KiB Count             5,508.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBoxStencilBC / EMfields3D::smoothE / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField / main / pe.0
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         5.7% 
+  MPI Msg Bytes                  10,612,080.0 
+  MPI Msg Count                       4,590.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                   0.0 msgs
+  256<= MsgSz <4KiB Count             4,590.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBoxStencilBC / EMfields3D::smoothE / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField / main / pe.63
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         5.7% 
+  MPI Msg Bytes                  10,612,080.0 
+  MPI Msg Count                       4,590.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                   0.0 msgs
+  256<= MsgSz <4KiB Count             4,590.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC_P
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         4.9% 
+  MPI Msg Bytes                   9,166,016.0 
+  MPI Msg Count                       9,451.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               2,181.0 msgs
+  256<= MsgSz <4KiB Count             7,270.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC_P / EMfields3D::calculateHatFunctions
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         4.6% 
+  MPI Msg Bytes                   8,523,008.0 
+  MPI Msg Count                       8,788.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               2,028.0 msgs
+  256<= MsgSz <4KiB Count             6,760.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC_P / EMfields3D::calculateHatFunctions / iPic3D::c_Solver::CalculateMoments
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         4.6% 
+  MPI Msg Bytes                   8,523,008.0 
+  MPI Msg Count                       8,788.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               2,028.0 msgs
+  256<= MsgSz <4KiB Count             6,760.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC_P / EMfields3D::calculateHatFunctions / iPic3D::c_Solver::CalculateMoments / main
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         4.6% 
+  MPI Msg Bytes                   8,523,008.0 
+  MPI Msg Count                       8,788.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               2,028.0 msgs
+  256<= MsgSz <4KiB Count             6,760.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC_P / EMfields3D::calculateHatFunctions / iPic3D::c_Solver::CalculateMoments / main / pe.4
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         5.0% 
+  MPI Msg Bytes                   9,388,288.0 
+  MPI Msg Count                       9,464.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               1,352.0 msgs
+  256<= MsgSz <4KiB Count             8,112.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC_P / EMfields3D::calculateHatFunctions / iPic3D::c_Solver::CalculateMoments / main / pe.0
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         4.1% 
+  MPI Msg Bytes                   7,657,728.0 
+  MPI Msg Count                       8,112.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               2,704.0 msgs
+  256<= MsgSz <4KiB Count             5,408.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBC_P / EMfields3D::calculateHatFunctions / iPic3D::c_Solver::CalculateMoments / main / pe.63
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         4.1% 
+  MPI Msg Bytes                   7,657,728.0 
+  MPI Msg Count                       8,112.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               2,704.0 msgs
+  256<= MsgSz <4KiB Count             5,408.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBC
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         3.5% 
+  MPI Msg Bytes                   6,490,260.0 
+  MPI Msg Count                       5,967.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               1,377.0 msgs
+  256<= MsgSz <4KiB Count             4,590.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBC / EMfields3D::calculateE
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         2.3% 
+  MPI Msg Bytes                   4,326,840.0 
+  MPI Msg Count                       3,978.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                 918.0 msgs
+  256<= MsgSz <4KiB Count             3,060.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBC / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         2.3% 
+  MPI Msg Bytes                   4,326,840.0 
+  MPI Msg Count                       3,978.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                 918.0 msgs
+  256<= MsgSz <4KiB Count             3,060.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBC / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField / main
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         2.3% 
+  MPI Msg Bytes                   4,326,840.0 
+  MPI Msg Count                       3,978.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                 918.0 msgs
+  256<= MsgSz <4KiB Count             3,060.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBC / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField / main / pe.4
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         2.6% 
+  MPI Msg Bytes                   4,763,808.0 
+  MPI Msg Count                       4,284.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                 612.0 msgs
+  256<= MsgSz <4KiB Count             3,672.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBC / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField / main / pe.0
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         2.1% 
+  MPI Msg Bytes                   3,889,872.0 
+  MPI Msg Count                       3,672.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               1,224.0 msgs
+  256<= MsgSz <4KiB Count             2,448.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBC / EMfields3D::calculateE / iPic3D::c_Solver::CalculateField / main / pe.63
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         2.1% 
+  MPI Msg Bytes                   3,889,872.0 
+  MPI Msg Count                       3,672.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               1,224.0 msgs
+  256<= MsgSz <4KiB Count             2,448.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBC / EMfields3D::calculateB
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         1.2% 
+  MPI Msg Bytes                   2,163,420.0 
+  MPI Msg Count                       1,989.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                 459.0 msgs
+  256<= MsgSz <4KiB Count             1,530.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBC / EMfields3D::calculateB / iPic3D::c_Solver::CalculateB
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         1.2% 
+  MPI Msg Bytes                   2,163,420.0 
+  MPI Msg Count                       1,989.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                 459.0 msgs
+  256<= MsgSz <4KiB Count             1,530.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBC / EMfields3D::calculateB / iPic3D::c_Solver::CalculateB / main
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         1.2% 
+  MPI Msg Bytes                   2,163,420.0 
+  MPI Msg Count                       1,989.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                 459.0 msgs
+  256<= MsgSz <4KiB Count             1,530.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBC / EMfields3D::calculateB / iPic3D::c_Solver::CalculateB / main / pe.4
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         1.3% 
+  MPI Msg Bytes                   2,381,904.0 
+  MPI Msg Count                       2,142.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                 306.0 msgs
+  256<= MsgSz <4KiB Count             1,836.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBC / EMfields3D::calculateB / iPic3D::c_Solver::CalculateB / main / pe.0
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         1.0% 
+  MPI Msg Bytes                   1,944,936.0 
+  MPI Msg Count                       1,836.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                 612.0 msgs
+  256<= MsgSz <4KiB Count             1,224.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateNodeBC / EMfields3D::calculateB / iPic3D::c_Solver::CalculateB / main / pe.63
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         1.0% 
+  MPI Msg Bytes                   1,944,936.0 
+  MPI Msg Count                       1,836.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                 612.0 msgs
+  256<= MsgSz <4KiB Count             1,224.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBoxStencilBC_P
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         1.9% 
+  MPI Msg Bytes                   3,514,368.0 
+  MPI Msg Count                       1,716.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                   0.0 msgs
+  256<= MsgSz <4KiB Count             1,716.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBoxStencilBC_P / EMfields3D::smooth
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         1.9% 
+  MPI Msg Bytes                   3,514,368.0 
+  MPI Msg Count                       1,716.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                   0.0 msgs
+  256<= MsgSz <4KiB Count             1,716.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBoxStencilBC_P / EMfields3D::smooth / EMfields3D::calculateHatFunctions
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         1.9% 
+  MPI Msg Bytes                   3,514,368.0 
+  MPI Msg Count                       1,716.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                   0.0 msgs
+  256<= MsgSz <4KiB Count             1,716.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBoxStencilBC_P / EMfields3D::smooth / EMfields3D::calculateHatFunctions / iPic3D::c_Solver::CalculateMoments
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         1.9% 
+  MPI Msg Bytes                   3,514,368.0 
+  MPI Msg Count                       1,716.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                   0.0 msgs
+  256<= MsgSz <4KiB Count             1,716.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBoxStencilBC_P / EMfields3D::smooth / EMfields3D::calculateHatFunctions / iPic3D::c_Solver::CalculateMoments / main
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         1.9% 
+  MPI Msg Bytes                   3,514,368.0 
+  MPI Msg Count                       1,716.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                   0.0 msgs
+  256<= MsgSz <4KiB Count             1,716.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBoxStencilBC_P / EMfields3D::smooth / EMfields3D::calculateHatFunctions / iPic3D::c_Solver::CalculateMoments / main / pe.4
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         2.1% 
+  MPI Msg Bytes                   3,833,856.0 
+  MPI Msg Count                       1,872.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                   0.0 msgs
+  256<= MsgSz <4KiB Count             1,872.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBoxStencilBC_P / EMfields3D::smooth / EMfields3D::calculateHatFunctions / iPic3D::c_Solver::CalculateMoments / main / pe.0
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         1.7% 
+  MPI Msg Bytes                   3,194,880.0 
+  MPI Msg Count                       1,560.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                   0.0 msgs
+  256<= MsgSz <4KiB Count             1,560.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+  MPI_Isend / NBDerivedHaloComm / communicateCenterBoxStencilBC_P / EMfields3D::smooth / EMfields3D::calculateHatFunctions / iPic3D::c_Solver::CalculateMoments / main / pe.63
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         1.7% 
+  MPI Msg Bytes                   3,194,880.0 
+  MPI Msg Count                       1,560.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count                   0.0 msgs
+  256<= MsgSz <4KiB Count             1,560.0 msgs
+  4KiB<= MsgSz <64KiB Count               0.0 msgs
+  64KiB<= MsgSz <1MiB Count               0.0 msgs
+==============================================================================
+==============================================================================
+  MPI_Isend / Block<>::send_block
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         8.3% 
+  MPI Msg Bytes                  15,431,886.0 
+  MPI Msg Count                       7,080.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               5,881.0 msgs
+  256<= MsgSz <4KiB Count               120.5 msgs
+  4KiB<= MsgSz <64KiB Count           1,077.4 msgs
+  64KiB<= MsgSz <1MiB Count               1.0 msgs
+==============================================================================
+  MPI_Isend / Block<>::send_block / BlockCommunicator<>::send_curr_block
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         8.3% 
+  MPI Msg Bytes                  15,431,886.0 
+  MPI Msg Count                       7,080.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               5,881.0 msgs
+  256<= MsgSz <4KiB Count               120.5 msgs
+  4KiB<= MsgSz <64KiB Count           1,077.4 msgs
+  64KiB<= MsgSz <1MiB Count               1.0 msgs
+==============================================================================
+  MPI_Isend / Block<>::send_block / BlockCommunicator<>::send_curr_block / BlockCommunicator<>::send_complete
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         8.3% 
+  MPI Msg Bytes                  15,431,886.0 
+  MPI Msg Count                       7,080.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               5,881.0 msgs
+  256<= MsgSz <4KiB Count               120.5 msgs
+  4KiB<= MsgSz <64KiB Count           1,077.4 msgs
+  64KiB<= MsgSz <1MiB Count               1.0 msgs
+==============================================================================
+  MPI_Isend / Block<>::send_block / BlockCommunicator<>::send_curr_block / BlockCommunicator<>::send_complete / Particles3Dcomm::flush_send
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         8.3% 
+  MPI Msg Bytes                  15,431,886.0 
+  MPI Msg Count                       7,080.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               5,881.0 msgs
+  256<= MsgSz <4KiB Count               120.5 msgs
+  4KiB<= MsgSz <64KiB Count           1,077.4 msgs
+  64KiB<= MsgSz <1MiB Count               1.0 msgs
+==============================================================================
+  MPI_Isend / Block<>::send_block / BlockCommunicator<>::send_curr_block / BlockCommunicator<>::send_complete / Particles3Dcomm::flush_send / Particles3Dcomm::recommunicate_particles_until_done
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         8.3% 
+  MPI Msg Bytes                  15,431,886.0 
+  MPI Msg Count                       7,080.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               5,881.0 msgs
+  256<= MsgSz <4KiB Count               120.5 msgs
+  4KiB<= MsgSz <64KiB Count           1,077.4 msgs
+  64KiB<= MsgSz <1MiB Count               1.0 msgs
+==============================================================================
+  MPI_Isend / Block<>::send_block / BlockCommunicator<>::send_curr_block / BlockCommunicator<>::send_complete / Particles3Dcomm::flush_send / Particles3Dcomm::recommunicate_particles_until_done / iPic3D::c_Solver::ParticlesMover
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         8.3% 
+  MPI Msg Bytes                  15,431,886.0 
+  MPI Msg Count                       7,080.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               5,881.0 msgs
+  256<= MsgSz <4KiB Count               120.5 msgs
+  4KiB<= MsgSz <64KiB Count           1,077.4 msgs
+  64KiB<= MsgSz <1MiB Count               1.0 msgs
+==============================================================================
+  MPI_Isend / Block<>::send_block / BlockCommunicator<>::send_curr_block / BlockCommunicator<>::send_complete / Particles3Dcomm::flush_send / Particles3Dcomm::recommunicate_particles_until_done / iPic3D::c_Solver::ParticlesMover / main
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         8.3% 
+  MPI Msg Bytes                  15,431,886.0 
+  MPI Msg Count                       7,080.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               5,881.0 msgs
+  256<= MsgSz <4KiB Count               120.5 msgs
+  4KiB<= MsgSz <64KiB Count           1,077.4 msgs
+  64KiB<= MsgSz <1MiB Count               1.0 msgs
+==============================================================================
+  MPI_Isend / Block<>::send_block / BlockCommunicator<>::send_curr_block / BlockCommunicator<>::send_complete / Particles3Dcomm::flush_send / Particles3Dcomm::recommunicate_particles_until_done / iPic3D::c_Solver::ParticlesMover / main / pe.20
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         8.5% 
+  MPI Msg Bytes                  15,800,256.0 
+  MPI Msg Count                       7,080.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               5,870.0 msgs
+  256<= MsgSz <4KiB Count               128.0 msgs
+  4KiB<= MsgSz <64KiB Count           1,081.0 msgs
+  64KiB<= MsgSz <1MiB Count               1.0 msgs
+==============================================================================
+  MPI_Isend / Block<>::send_block / BlockCommunicator<>::send_curr_block / BlockCommunicator<>::send_complete / Particles3Dcomm::flush_send / Particles3Dcomm::recommunicate_particles_until_done / iPic3D::c_Solver::ParticlesMover / main / pe.30
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         8.2% 
+  MPI Msg Bytes                  15,224,448.0 
+  MPI Msg Count                       7,080.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               5,881.0 msgs
+  256<= MsgSz <4KiB Count               123.0 msgs
+  4KiB<= MsgSz <64KiB Count           1,075.0 msgs
+  64KiB<= MsgSz <1MiB Count               1.0 msgs
+==============================================================================
+  MPI_Isend / Block<>::send_block / BlockCommunicator<>::send_curr_block / BlockCommunicator<>::send_complete / Particles3Dcomm::flush_send / Particles3Dcomm::recommunicate_particles_until_done / iPic3D::c_Solver::ParticlesMover / main / pe.62
+------------------------------------------------------------------------------
+  MPI Msg Bytes%                         8.1% 
+  MPI Msg Bytes                  15,036,032.0 
+  MPI Msg Count                       7,080.0 msgs
+  MsgSz <16 Count                         0.0 msgs
+  16<= MsgSz <256 Count               5,895.0 msgs
+  256<= MsgSz <4KiB Count               101.0 msgs
+  4KiB<= MsgSz <64KiB Count           1,083.0 msgs
+  64KiB<= MsgSz <1MiB Count               1.0 msgs
+==============================================================================
+
+Notes for table 6:
+
+  This table shows energy and power usage for the nodes with the
+    maximum, mean, and minimum usage, as well as the sum of usage over
+    all nodes.
+    Energy and power for accelerators is also shown, if applicable.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O program_energy ...
+
+Table 6:  Program energy and power usage (from Cray PM)
+
+   Node |     Node |   Process | PE=HIDE
+ Energy |    Power |      Time | 
+    (J) |      (W) |           | 
+----------------------------------------
+ 36,779 |  559.790 | 65.701465 | Total
+========================================
+
+Notes for table 7:
+
+  This table shows values shown for HiMem calculated from information
+    in the /proc/self/numa_maps files captured near the end of the
+    program. It is the total size of all pages, including huge pages,
+    that were actually mapped into physical memory from both private
+    and shared memory segments.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O himem ...
+
+Table 7:  Memory High Water Mark by Numa Node
+
+Numanode / PE=HIDE
+
+  
+============================================================================
+  numanode.0
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)         290.7 
+  HiMem Numa Node 0 (MiBytes)     247.7 MiBytes
+  HiMem Numa Node 1 (MiBytes)       8.5 MiBytes
+  HiMem Numa Node 2 (MiBytes)      10.9 MiBytes
+  HiMem Numa Node 3 (MiBytes)       4.3 MiBytes
+  HiMem Numa Node 4 (MiBytes)       9.4 MiBytes
+  HiMem Numa Node 5 (MiBytes)       3.2 MiBytes
+  HiMem Numa Node 6 (MiBytes)       3.5 MiBytes
+  HiMem Numa Node 7 (MiBytes)       3.3 MiBytes
+============================================================================
+  numanode.1
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)         291.3 
+  HiMem Numa Node 0 (MiBytes)       7.5 MiBytes
+  HiMem Numa Node 1 (MiBytes)     255.2 MiBytes
+  HiMem Numa Node 2 (MiBytes)      10.8 MiBytes
+  HiMem Numa Node 3 (MiBytes)       3.9 MiBytes
+  HiMem Numa Node 4 (MiBytes)       3.3 MiBytes
+  HiMem Numa Node 5 (MiBytes)       3.3 MiBytes
+  HiMem Numa Node 6 (MiBytes)       3.7 MiBytes
+  HiMem Numa Node 7 (MiBytes)       3.5 MiBytes
+============================================================================
+  numanode.2
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)         294.0 
+  HiMem Numa Node 0 (MiBytes)       4.1 MiBytes
+  HiMem Numa Node 1 (MiBytes)       4.5 MiBytes
+  HiMem Numa Node 2 (MiBytes)     268.0 MiBytes
+  HiMem Numa Node 3 (MiBytes)       4.5 MiBytes
+  HiMem Numa Node 4 (MiBytes)       3.4 MiBytes
+  HiMem Numa Node 5 (MiBytes)       3.5 MiBytes
+  HiMem Numa Node 6 (MiBytes)       3.0 MiBytes
+  HiMem Numa Node 7 (MiBytes)       3.1 MiBytes
+============================================================================
+  numanode.3
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)         293.2 
+  HiMem Numa Node 0 (MiBytes)       4.2 MiBytes
+  HiMem Numa Node 1 (MiBytes)       9.0 MiBytes
+  HiMem Numa Node 2 (MiBytes)      11.7 MiBytes
+  HiMem Numa Node 3 (MiBytes)     240.7 MiBytes
+  HiMem Numa Node 4 (MiBytes)      18.2 MiBytes
+  HiMem Numa Node 5 (MiBytes)       3.1 MiBytes
+  HiMem Numa Node 6 (MiBytes)       3.0 MiBytes
+  HiMem Numa Node 7 (MiBytes)       3.2 MiBytes
+============================================================================
+  numanode.4
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)         290.7 
+  HiMem Numa Node 0 (MiBytes)       3.9 MiBytes
+  HiMem Numa Node 1 (MiBytes)       4.4 MiBytes
+  HiMem Numa Node 2 (MiBytes)      11.4 MiBytes
+  HiMem Numa Node 3 (MiBytes)       3.3 MiBytes
+  HiMem Numa Node 4 (MiBytes)     223.0 MiBytes
+  HiMem Numa Node 5 (MiBytes)      26.6 MiBytes
+  HiMem Numa Node 6 (MiBytes)      11.9 MiBytes
+  HiMem Numa Node 7 (MiBytes)       6.3 MiBytes
+============================================================================
+  numanode.5
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)         293.2 
+  HiMem Numa Node 0 (MiBytes)       4.3 MiBytes
+  HiMem Numa Node 1 (MiBytes)       3.7 MiBytes
+  HiMem Numa Node 2 (MiBytes)      10.4 MiBytes
+  HiMem Numa Node 3 (MiBytes)       4.0 MiBytes
+  HiMem Numa Node 4 (MiBytes)       3.1 MiBytes
+  HiMem Numa Node 5 (MiBytes)     260.4 MiBytes
+  HiMem Numa Node 6 (MiBytes)       3.8 MiBytes
+  HiMem Numa Node 7 (MiBytes)       3.8 MiBytes
+============================================================================
+  numanode.6
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)         294.4 
+  HiMem Numa Node 0 (MiBytes)       4.2 MiBytes
+  HiMem Numa Node 1 (MiBytes)       4.4 MiBytes
+  HiMem Numa Node 2 (MiBytes)      12.3 MiBytes
+  HiMem Numa Node 3 (MiBytes)       4.8 MiBytes
+  HiMem Numa Node 4 (MiBytes)       4.1 MiBytes
+  HiMem Numa Node 5 (MiBytes)       3.1 MiBytes
+  HiMem Numa Node 6 (MiBytes)     257.6 MiBytes
+  HiMem Numa Node 7 (MiBytes)       3.9 MiBytes
+============================================================================
+  numanode.7
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)         291.9 
+  HiMem Numa Node 0 (MiBytes)       2.9 MiBytes
+  HiMem Numa Node 1 (MiBytes)       4.8 MiBytes
+  HiMem Numa Node 2 (MiBytes)      10.8 MiBytes
+  HiMem Numa Node 3 (MiBytes)       4.4 MiBytes
+  HiMem Numa Node 4 (MiBytes)       3.4 MiBytes
+  HiMem Numa Node 5 (MiBytes)       3.0 MiBytes
+  HiMem Numa Node 6 (MiBytes)       3.5 MiBytes
+  HiMem Numa Node 7 (MiBytes)     259.0 MiBytes
+============================================================================
+
+Notes for table 8:
+
+  This table shows memory traffic for numa nodes, taking for each numa
+    node the maximum value across nodes. It also shows the balance in
+    memory traffic by showing the top 3 and bottom 3 node values.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O mem_bw ...
+
+Table 8:  Memory Bandwidth by Numanode
+
+   Memory |     Read |    Write |    Thread |  Memory |  Memory | Numanode
+  Traffic |   Memory |   Memory |      Time | Traffic | Traffic |  PE=HIDE
+   GBytes |  Traffic |  Traffic |           |  GBytes |       / | 
+          |   GBytes |   GBytes |           |   / Sec | Nominal | 
+          |          |          |           |         |    Peak | 
+|---------------------------------------------------------------------------
+|   232.18 |   211.79 |    20.38 | 65.668056 |    3.54 |    1.7% | numanode.0
+|   276.51 |   253.02 |    23.50 | 65.665401 |    4.21 |    2.1% | numanode.1
+|   261.14 |   237.51 |    23.62 | 65.665449 |    3.98 |    1.9% | numanode.2
+|   279.49 |   254.98 |    24.51 | 65.659276 |    4.26 |    2.1% | numanode.3
+|   136.04 |   124.67 |    11.37 | 65.651568 |    2.07 |    1.0% | numanode.4
+|    92.50 |    84.72 |     7.77 | 65.651095 |    1.41 |    0.7% | numanode.5
+|    90.44 |    82.24 |     8.20 | 65.639886 |    1.38 |    0.7% | numanode.6
+|   114.04 |   104.64 |     9.40 | 65.646681 |    1.74 |    0.8% | numanode.7
+|===========================================================================
+
+Notes for table 9:
+
+  This table shows total wall clock time for the ranks with the
+    maximum, mean, and minimum time, as well as the average across
+    ranks.
+    It also shows maximum memory usage from /proc/self/numa_maps for
+    those ranks, and on average.  The usage is total size of all
+    pages, including huge pages, that were actually mapped into
+    physical memory from both private and shared memory segments.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O program_time ...
+
+Table 9:  Wall Clock Time, Memory High Water Mark
+
+   Process |   Process | PE=[mmm]
+      Time |     HiMem | 
+           | (MiBytes) | 
+          
+ 65.701465 |     292.3 | Total
+|--------------------------------
+| 65.725831 |     288.6 | pe.52
+| 65.700856 |     287.3 | pe.46
+| 65.678606 |     288.0 | pe.29
+|================================
+
+========================  Additional details  ========================
+
+
+
+General table notes:
+
+    The default notes for a table are based on the default definition of
+    the table, and do not account for the effects of command-line options
+    that may modify the content of the table.
+    
+    Detailed notes, produced by the pat_report -v option, do account for
+    all command-line options, and also show how data is aggregated, and
+    if the table content is limited by thresholds, rank selections, etc.
+    
+    An imbalance metric in a line is based on values in main threads
+    across multiple ranks, or on values across all threads, as applicable.
+    
+    An imbalance percent in a line is relative to the maximum value
+    for that line across ranks or threads, as applicable.
+    
+Experiment:  trace
+
+Original path to data file:
+  /cfs/klemming/home/c/cillians/Public/iPIC3D/build/iPIC3D+orig+apa+51189-8606179t/xf-files   (RTS)
+
+Original program:
+  /cfs/klemming/home/c/cillians/Public/iPIC3D/build/iPIC3D+orig
+
+Instrumented with:
+  pat_build -O iPIC3D+orig+pat+65032-8604127s/build-options.apa
+
+  Option file "iPIC3D+orig+pat+65032-8604127s/build-options.apa" contained:
+    -Drtenv=PAT_RT_PERFCTR=default
+    -g mpi
+    -w
+    -T _ZN11Particles3D12mover_PC_AoSEP10EMfields3D
+    -T _ZN10EMfields3D14sumMoments_AoSEPK15Particles3Dcomm
+    -T _ZN10EMfields3D5MUdotEN6iPic3D10array_ref3IdEES2_S2_NS0_16const_array_ref3IdEES4_S4_
+    -o iPIC3D+orig+apa
+    -U /cfs/klemming/home/c/cillians/Public/iPIC3D/build/iPIC3D+orig
+
+Instrumented program:
+  /cfs/klemming/home/c/cillians/Public/iPIC3D/build/iPIC3D+orig+apa
+
+Program invocation:  iPIC3D+orig+apa ../inputfiles/my_inp.inp
+
+Exit Status:  0 for 64 PEs
+
+Memory pagesize:  4 KiB
+
+Memory hugepagesize:  Not Available
+
+Programming environment:  CRAY
+
+Runtime environment variables:
+  CRAYPAT_COMPILER_OPTIONS=1
+  CRAYPAT_LD_LIBRARY_PATH=/opt/cray/pe/gcc-libs:/opt/cray/gcc-libs:/opt/cray/pe/perftools/22.06.0/lib64
+  CRAYPAT_LITE=lite-samples
+  CRAYPAT_OPTS_EXECUTABLE=libexec64/opts
+  CRAYPAT_ROOT=/opt/cray/pe/perftools/22.06.0
+  CRAYPE_VERSION=2.7.16
+  CRAY_BINUTILS_VERSION=/opt/cray/pe/cce/14.0.1
+  CRAY_CC_VERSION=14.0.1
+  CRAY_DSMML_VERSION=0.2.2
+  CRAY_FTN_VERSION=14.0.1
+  CRAY_LIBSCI_VERSION=21.08.1.2
+  CRAY_MPICH_VERSION=8.1.17
+  CRAY_PERFTOOLS_VERSION=22.06.0
+  LIBSCI_VERSION=21.08.1.2
+  LMOD_FAMILY_COMPILER_VERSION=14.0.1
+  LMOD_FAMILY_CRAYPE_CPU_VERSION=false
+  LMOD_FAMILY_CRAYPE_NETWORK_VERSION=false
+  LMOD_FAMILY_CRAYPE_VERSION=2.7.16
+  LMOD_FAMILY_MPI_VERSION=8.1.17
+  LMOD_FAMILY_PERFTOOLS_VERSION=false
+  LMOD_FAMILY_PRGENV_VERSION=8.3.3
+  LMOD_VERSION=8.3.1
+  MPICH_DIR=/opt/cray/pe/mpich/8.1.17/ofi/crayclang/10.0
+  PAT_BUILD_PAPI_LIBDIR=/opt/cray/pe/papi/6.0.0.15/lib64
+  PAT_RT_PERFCTR=default
+  PAT_RT_PERFCTR_DISABLE_COMPONENTS=cray_cassini,nvml,cuda
+  PERFTOOLS_VERSION=22.06.0
+  PMI_CONTROL_PORT=27745
+
+Report time environment variables:
+    CRAYPAT_ROOT=/opt/cray/pe/perftools/22.06.0
+
+Number of MPI control variables collected:  114
+
+  (To see the list, specify: -s mpi_cvar=show)
+
+Report command line options:  <none>
+
+Operating system:
+  Linux 5.3.18-150300.59.76_11.0.53-cray_shasta_c #1 SMP Thu Jul 7 19:02:20 UTC 2022 (786527e)
+
+Hardware performance counter events:
+   CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:LS_RD_BLK_C  L2 cache request outcomes. This event does not count accesses to the L2 cache by the L2 prefetcher.:Number of data cache fill requests missing in the L2 (all types).
+   L2_PREFETCH_HIT_L2                                      Number of L2 prefetcher hits in the L2
+   L2_PREFETCH_HIT_L3                                      Number of L2 prefetcher hits in the L3
+   REQUESTS_TO_L2_GROUP1:L2_HW_PF                          TBD:Number of prefetches accepted by L2 pipeline, hit or miss.
+   REQUESTS_TO_L2_GROUP1:RD_BLK_X                          TBD:Number of data cache stores
+
+Estimated minimum instrumentation overhead per call of a traced function,
+  which was subtracted from the data shown in this report
+  (for raw data, use the option:  -s overhead=include):
+    Time  0.719  microsecs
+
+Number of traced functions that were called:  43
+
+  (To see the list, specify:  -s traced_functions=show)
+
