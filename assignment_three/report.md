@@ -1,3 +1,8 @@
+---
+header-includes:
+    - \usepackage{setspace}
+---
+
 # Exercise 1 - MPI HelloWorld
 
 **1. Write the code in C.**
@@ -86,7 +91,11 @@ Below are the results averaged across 5 runs of the ping-pong benchmark.
 <!--Latency of inter-communication:     3.5903784765432594 us-->
 
 Note: These results are unexpected, it would be expected that the intra-node 
-communication to be faster than inter-node communication. 
+communication to be faster than inter-node communication. The reason for this 
+could be a non-optimal implementation of MPI for the node. Out of curiosity, I 
+tried using OpenMPI implementation, but got negative latency for both inter and 
+intra node communication. 
+
 
 **3. Why the postal model is not the best performance model for communication?**
     
@@ -132,7 +141,10 @@ which have shared resources and cache.
 
 * MPI blocking point-to-point communication. 
 We communicate ghost cells by sending and receiving to/from the left and right domain corresponding to the rank.
-```
+
+\footnotesize
+
+```c
 	// communicate ghost cells
 	if (rank % 2 == 0) {
 		// send to right and receive from left
@@ -151,11 +163,17 @@ We communicate ghost cells by sending and receiving to/from the left and right d
 		MPI_Send(&f[2], 1, MPI_DOUBLE, (rank + size - 1) % size, 0, MPI_COMM_WORLD);
   }
 ```
+
+\normalsize
+
 The sending and receiving is split into two parts for safety. Each node only sends or receives at any time, and not both so there is no chance of deadlock. However, this is not really necessary since the buffers are very small. The code works just as well without ping-pong messaging.
 
 * MPI non-blocking point-to-point communication.
 Non-blocking communication is similar, with the difference being the use of `Isend` and `Ireceive`:
-```
+
+\footnotesize
+
+```c
 MPI_Request requests[4];
 MPI_Isend(&f[2], 1, MPI_DOUBLE, (rank + size - 1) % size, 0, MPI_COMM_WORLD, &requests[0]);
 MPI_Isend(&f[nxn_loc - 3], 1, MPI_DOUBLE, (rank + size + 1) % size, 0, MPI_COMM_WORLD, &requests[1]);
@@ -163,6 +181,7 @@ MPI_Irecv(&f[0], 1, MPI_DOUBLE, (rank + size - 1) % size, 0, MPI_COMM_WORLD, &re
 MPI_Irecv(&f[nxn_loc - 1], 1, MPI_DOUBLE, (rank + size + 1) % size, 0, MPI_COMM_WORLD, &requests[3]);
 MPI_Waitall(4, requests, MPI_STATUS_IGNORE);
 ```
+\normalsize
 
 **2. Test the results by checking the correct values are on the ghost cells and the derivative of sin(x) on the edges of the domain is correct (the derivative of sin(x) is cos(x)). Show that your code produce the correct results (especially at the ghost cells).**
 
