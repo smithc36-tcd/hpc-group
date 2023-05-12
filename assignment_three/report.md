@@ -3,6 +3,8 @@ header-includes:
     - \usepackage{setspace}
 ---
 
+Code for report available at [https://github.com/smithc36-tcd/hpc-group/tree/main/assignment_three](https://github.com/smithc36-tcd/hpc-group/tree/main/assignment_three)
+
 # Exercise 1 - MPI HelloWorld
 
 **1. Write the code in C.**
