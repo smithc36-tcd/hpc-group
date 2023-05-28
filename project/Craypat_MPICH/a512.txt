@@ -1,0 +1,1023 @@
+CrayPat/X:  Version 22.06.0 Revision 4b5ab6256  05/21/22 02:03:49
+
+Number of PEs (MPI ranks):   512
+                           
+Numbers of PEs per Node:     128  PEs on each of  4  Nodes
+                           
+Numbers of Threads per PE:     1
+                           
+Number of Cores per Socket:   64
+
+Execution start time:  Sun May 28 22:03:22 2023
+
+System name and speed:  nid002635  3.378 GHz (nominal)
+
+AMD   Rome                 CPU  Family: 23  Model: 49  Stepping:  0
+
+Core Performance Boost:  All 512 PEs have CPB capability
+
+
+Current path to data file:
+  /cfs/klemming/home/r/ruimins/projects/iPIC3D/build/iPIC3D+orig+apa+134245-8644324t   (RTS, 4 data files)
+
+
+Notes for table 1:
+
+  This table shows functions that have significant exclusive time,
+    averaged across ranks.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O profile ...
+
+Table 1:  Profile by Function Group and Function
+
+  Time% |      Time |     Imb. |  Imb. |     Calls | Group
+        |           |     Time | Time% |           |  Function
+        |           |          |       |           |   PE=HIDE
+       
+ 100.0% | 11.692309 |       -- |    -- | 459,423.0 | Total
+|-----------------------------------------------------------------------------
+|  80.7% |  9.433999 |       -- |    -- |     782.0 | USER
+||----------------------------------------------------------------------------
+||  43.6% |  5.094510 | 0.402979 |  7.3% |     204.0 | Particles3D::mover_PC_AoS
+||  18.5% |  2.158336 | 0.098523 |  4.4% |      52.0 | EMfields3D::sumMoments_AoS
+||  16.2% |  1.899897 | 0.116866 |  5.8% |       1.0 | main
+||   2.4% |  0.281256 | 0.012215 |  4.2% |     525.0 | EMfields3D::MUdot
+||============================================================================
+|  14.8% |  1.729846 |       -- |    -- | 455,425.0 | MPI
+||----------------------------------------------------------------------------
+||   6.7% |  0.779357 | 0.260270 | 25.1% |  34,872.0 | MPI_Waitall
+||   3.1% |  0.364976 | 0.353628 | 49.3% |  11,808.0 | MPI_Waitany
+||   2.6% |  0.304944 | 0.029944 |  9.0% | 171,439.5 | MPI_Isend
+||   1.2% |  0.136455 | 0.027763 | 16.9% | 171,535.5 | MPI_Irecv
+||============================================================================
+|   4.5% |  0.528316 |       -- |    -- |   2,816.0 | MPI_SYNC
+||----------------------------------------------------------------------------
+||   4.4% |  0.516123 | 0.238930 | 46.3% |   2,814.0 | MPI_Allreduce(sync)
+|=============================================================================
+
+Notes for table 2:
+
+  This table shows functions that have the most significant exclusive
+    time, taking the maximum time across ranks and threads.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O profile_max ...
+
+Table 2:  Profile of maximum function times
+
+  Time% |     Time |     Imb. |  Imb. | Function
+        |          |     Time | Time% |  PE=[max,min]
+|-----------------------------------------------------------------
+| 100.0% | 5.497489 | 0.402979 |  7.3% | Particles3D::mover_PC_AoS
+||----------------------------------------------------------------
+|| 100.0% | 5.497489 |       -- |    -- | pe.288
+||  88.9% | 4.888938 |       -- |    -- | pe.323
+||================================================================
+|  41.1% | 2.256859 | 0.098523 |  4.4% | EMfields3D::sumMoments_AoS
+||----------------------------------------------------------------
+||  41.1% | 2.256859 |       -- |    -- | pe.294
+||  37.1% | 2.037532 |       -- |    -- | pe.125
+||================================================================
+|  36.7% | 2.016763 | 0.116866 |  5.8% | main
+||----------------------------------------------------------------
+||  36.7% | 2.016763 |       -- |    -- | pe.284
+||  32.1% | 1.764085 |       -- |    -- | pe.3
+||================================================================
+|  18.9% | 1.039627 | 0.260270 | 25.1% | MPI_Waitall
+||----------------------------------------------------------------
+||  18.9% | 1.039627 |       -- |    -- | pe.71
+||  11.0% | 0.604577 |       -- |    -- | pe.294
+||================================================================
+|  14.2% | 0.778404 | 0.238930 | 46.3% | MPI_Allreduce(sync)
+||----------------------------------------------------------------
+||  14.2% | 0.778404 |       -- |    -- | pe.506
+||   5.0% | 0.277193 |       -- |    -- | pe.288
+||================================================================
+|  13.1% | 0.718604 | 0.353628 | 49.3% | MPI_Waitany
+||----------------------------------------------------------------
+||  13.1% | 0.718604 |       -- |    -- | pe.303
+||   2.8% | 0.152006 |       -- |    -- | pe.7
+||================================================================
+|   6.1% | 0.334887 | 0.029944 |  9.0% | MPI_Isend
+||----------------------------------------------------------------
+||   6.1% | 0.334887 |       -- |    -- | pe.395
+||   4.7% | 0.260232 |       -- |    -- | pe.71
+||================================================================
+|   5.3% | 0.293472 | 0.012215 |  4.2% | EMfields3D::MUdot
+||----------------------------------------------------------------
+||   5.3% | 0.293472 |       -- |    -- | pe.42
+||   5.0% | 0.273989 |       -- |    -- | pe.81
+||================================================================
+|   3.0% | 0.164218 | 0.027763 | 16.9% | MPI_Irecv
+||----------------------------------------------------------------
+||   3.0% | 0.164218 |       -- |    -- | pe.395
+||   2.2% | 0.119883 |       -- |    -- | pe.61
+||================================================================
+|   1.0% | 0.054951 | 0.002168 |  4.0% | MPI_Allreduce
+||----------------------------------------------------------------
+||   1.0% | 0.054951 |       -- |    -- | pe.492
+||   0.9% | 0.049206 |       -- |    -- | pe.260
+|=================================================================
+
+Observation:  MPI Grid Detection
+
+    There appears to be point-to-point MPI communication in a 8 X 8 X 8
+    grid pattern. The 14.8% of the total execution time spent in MPI
+    functions might be reduced with a rank order that maximizes
+    communication between ranks on the same node. The effect of several
+    rank orders is estimated below.
+
+    A file named MPICH_RANK_ORDER.Grid was generated along with this
+    report and contains usage instructions and the Custom rank order
+    from the following table.
+
+    Rank Order    On-Node    On-Node  MPICH_RANK_REORDER_METHOD
+                 Bytes/PE  Bytes/PE%  
+                            of Total  
+                            Bytes/PE  
+
+        Custom  2.425e+10     83.54%  3
+           SMP  2.333e+10     80.39%  1
+          Fold  2.156e+10     74.27%  2
+    RoundRobin  1.908e+10     65.74%  0
+
+
+Observation:  Metric-Based Rank Order
+
+    No rank order was suggested based on the USER Time metric because
+    that metric was already well balanced across the nodes.
+
+
+Notes for table 3:
+
+  This table shows functions that have significant exclusive time,
+    averaged across ranks.
+    Processor HW counter data is also shown, if available.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O profile+hwpc ...
+
+Table 3:  Profile by Function Group and Function
+
+Group / Function / PE=HIDE
+
+  
+==============================================================================
+  Total
+------------------------------------------------------------------------------
+  Time%                                        100.0% 
+  Time                                      11.692309 secs
+  Imb. Time                                        -- secs
+  Imb. Time%                                       -- 
+  Calls                        0.039M/sec   459,423.0 calls
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                            22,937,341 
+  L2_PREFETCH_HIT_L2                       33,040,551 
+  L2_PREFETCH_HIT_L3                       20,227,714 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF           80,873,765 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X           22,389,789 
+  Cache Lines PF from OffCore  0.004G/sec  47,833,214 lines
+  Cache Lines PF from Memory   0.002G/sec  27,605,500 lines
+  Cache Lines Requested from 
+    Memory                     0.001G/sec  13,237,596 lines
+  Write Memory Traffic GBytes  0.042G/sec        0.49 GB
+  Read Memory Traffic GBytes   0.224G/sec        2.61 GB
+  Memory traffic GBytes        0.265G/sec        3.10 GB
+  Memory Traffic / Nominal Peak                  0.1% 
+  Average Time per Call                      0.000025 secs
+  CrayPat Overhead : Time       2.9%                  
+==============================================================================
+  USER
+------------------------------------------------------------------------------
+  Time%                                         80.7% 
+  Time                                       9.433999 secs
+  Imb. Time                                        -- secs
+  Imb. Time%                                       -- 
+  Calls                       82.892 /sec       782.0 calls
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                             9,932,775 
+  L2_PREFETCH_HIT_L2                       22,388,048 
+  L2_PREFETCH_HIT_L3                       13,928,991 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF           61,458,681 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X           11,613,848 
+  Cache Lines PF from OffCore  0.004G/sec  39,070,633 lines
+  Cache Lines PF from Memory   0.003G/sec  25,141,642 lines
+  Cache Lines Requested from 
+    Memory                     0.678M/sec   6,391,662 lines
+  Write Memory Traffic GBytes  0.032G/sec        0.30 GB
+  Read Memory Traffic GBytes   0.214G/sec        2.02 GB
+  Memory traffic GBytes        0.246G/sec        2.32 GB
+  Memory Traffic / Nominal Peak                  0.1% 
+  Average Time per Call                      0.012064 secs
+  CrayPat Overhead : Time       0.0%                  
+==============================================================================
+  USER / Particles3D::mover_PC_AoS
+------------------------------------------------------------------------------
+  Time%                                         43.6% 
+  Time                                       5.094510 secs
+  Imb. Time                                  0.402979 secs
+  Imb. Time%                                     7.3% 
+  Calls                       40.043 /sec       204.0 calls
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                               496,760 
+  L2_PREFETCH_HIT_L2                        5,289,819 
+  L2_PREFETCH_HIT_L3                          260,747 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF           12,190,527 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X              158,024 
+  Cache Lines PF from OffCore  0.001G/sec   6,900,708 lines
+  Cache Lines PF from Memory   0.001G/sec   6,639,961 lines
+  Cache Lines Requested from 
+    Memory                     0.094M/sec     477,989 lines
+  Write Memory Traffic GBytes  0.001G/sec        0.01 GB
+  Read Memory Traffic GBytes   0.089G/sec        0.46 GB
+  Memory traffic GBytes        0.091G/sec        0.46 GB
+  Memory Traffic / Nominal Peak                  0.0% 
+  Average Time per Call                      0.024973 secs
+  CrayPat Overhead : Time       0.0%                  
+==============================================================================
+  USER / EMfields3D::sumMoments_AoS
+------------------------------------------------------------------------------
+  Time%                                         18.5% 
+  Time                                       2.158336 secs
+  Imb. Time                                  0.098523 secs
+  Imb. Time%                                     4.4% 
+  Calls                       24.093 /sec        52.0 calls
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                               700,105 
+  L2_PREFETCH_HIT_L2                        7,500,472 
+  L2_PREFETCH_HIT_L3                          584,578 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF           15,222,283 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X            1,010,301 
+  Cache Lines PF from OffCore  0.004G/sec   7,721,811 lines
+  Cache Lines PF from Memory   0.003G/sec   7,137,232 lines
+  Cache Lines Requested from 
+    Memory                     0.300M/sec     647,104 lines
+  Write Memory Traffic GBytes  0.014G/sec        0.03 GB
+  Read Memory Traffic GBytes   0.231G/sec        0.50 GB
+  Memory traffic GBytes        0.245G/sec        0.53 GB
+  Memory Traffic / Nominal Peak                  0.1% 
+  Average Time per Call                      0.041506 secs
+  CrayPat Overhead : Time       0.0%                  
+==============================================================================
+  USER / main
+------------------------------------------------------------------------------
+  Time%                                         16.2% 
+  Time                                       1.899897 secs
+  Imb. Time                                  0.116866 secs
+  Imb. Time%                                     5.8% 
+  Calls                        0.526 /sec         1.0 calls
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                             8,478,733 
+  L2_PREFETCH_HIT_L2                        8,773,983 
+  L2_PREFETCH_HIT_L3                       11,836,240 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF           31,970,387 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X           10,422,736 
+  Cache Lines PF from OffCore  0.012G/sec  23,196,405 lines
+  Cache Lines PF from Memory   0.006G/sec  11,360,164 lines
+  Cache Lines Requested from 
+    Memory                     0.002G/sec   4,152,359 lines
+  Write Memory Traffic GBytes  0.125G/sec        0.24 GB
+  Read Memory Traffic GBytes   0.523G/sec        0.99 GB
+  Memory traffic GBytes        0.647G/sec        1.23 GB
+  Memory Traffic / Nominal Peak                  0.3% 
+  Average Time per Call                      1.899897 secs
+  CrayPat Overhead : Time       0.0%                  
+==============================================================================
+  USER / EMfields3D::MUdot
+------------------------------------------------------------------------------
+  Time%                                          2.4% 
+  Time                                       0.281256 secs
+  Imb. Time                                  0.012215 secs
+  Imb. Time%                                     4.2% 
+  Calls                        0.002M/sec       525.0 calls
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                               257,177 
+  L2_PREFETCH_HIT_L2                          823,774 
+  L2_PREFETCH_HIT_L3                        1,247,425 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF            2,075,483 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X               22,786 
+  Cache Lines PF from OffCore  0.004G/sec   1,251,709 lines
+  Cache Lines PF from Memory   0.015M/sec       4,285 lines
+  Cache Lines Requested from 
+    Memory                     0.003M/sec      880.31 lines
+  Write Memory Traffic GBytes  0.011M/sec        0.00 GB
+  Read Memory Traffic GBytes   0.001G/sec        0.00 GB
+  Memory traffic GBytes        0.001G/sec        0.00 GB
+  Memory Traffic / Nominal Peak                  0.0% 
+  Average Time per Call                      0.000536 secs
+  CrayPat Overhead : Time       0.1%                  
+==============================================================================
+==============================================================================
+  MPI
+------------------------------------------------------------------------------
+  Time%                                         14.8% 
+  Time                                       1.729846 secs
+  Imb. Time                                        -- secs
+  Imb. Time%                                       -- 
+  Calls                        0.263M/sec   455,425.0 calls
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                            12,850,893 
+  L2_PREFETCH_HIT_L2                       10,601,331 
+  L2_PREFETCH_HIT_L3                        6,252,284 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF           19,307,948 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X           10,707,649 
+  Cache Lines PF from OffCore  0.005G/sec   8,706,617 lines
+  Cache Lines PF from Memory   0.001G/sec   2,454,333 lines
+  Cache Lines Requested from 
+    Memory                     0.002G/sec   3,622,574 lines
+  Write Memory Traffic GBytes  0.050G/sec        0.09 GB
+  Read Memory Traffic GBytes   0.225G/sec        0.39 GB
+  Memory traffic GBytes        0.275G/sec        0.48 GB
+  Memory Traffic / Nominal Peak                  0.1% 
+  Average Time per Call                      0.000004 secs
+  CrayPat Overhead : Time      19.1%                  
+==============================================================================
+  MPI / MPI_Waitall
+------------------------------------------------------------------------------
+  Time%                                          6.7% 
+  Time                                       0.779357 secs
+  Imb. Time                                  0.260270 secs
+  Imb. Time%                                    25.1% 
+  Calls                        0.045M/sec    34,872.0 calls
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                             4,500,216 
+  L2_PREFETCH_HIT_L2                        3,625,762 
+  L2_PREFETCH_HIT_L3                        2,210,372 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF            6,971,614 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X            3,888,745 
+  Cache Lines PF from OffCore  0.004G/sec   3,345,852 lines
+  Cache Lines PF from Memory   0.001G/sec   1,135,480 lines
+  Cache Lines Requested from 
+    Memory                     0.002G/sec   1,527,235 lines
+  Write Memory Traffic GBytes  0.052G/sec        0.04 GB
+  Read Memory Traffic GBytes   0.219G/sec        0.17 GB
+  Memory traffic GBytes        0.271G/sec        0.21 GB
+  Memory Traffic / Nominal Peak                  0.1% 
+  Average Time per Call                      0.000022 secs
+  CrayPat Overhead : Time       3.2%                  
+==============================================================================
+  MPI / MPI_Waitany
+------------------------------------------------------------------------------
+  Time%                                          3.1% 
+  Time                                       0.364976 secs
+  Imb. Time                                  0.353628 secs
+  Imb. Time%                                    49.3% 
+  Calls                        0.032M/sec    11,808.0 calls
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                                74,174 
+  L2_PREFETCH_HIT_L2                           55,043 
+  L2_PREFETCH_HIT_L3                            7,080 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF               90,566 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X              134,348 
+  Cache Lines PF from OffCore  0.097M/sec      35,523 lines
+  Cache Lines PF from Memory   0.078M/sec      28,444 lines
+  Cache Lines Requested from 
+    Memory                     0.163M/sec      59,392 lines
+  Write Memory Traffic GBytes  0.007G/sec        0.00 GB
+  Read Memory Traffic GBytes   0.015G/sec        0.01 GB
+  Memory traffic GBytes        0.023G/sec        0.01 GB
+  Memory Traffic / Nominal Peak                  0.0% 
+  Average Time per Call                      0.000031 secs
+  CrayPat Overhead : Time       2.3%                  
+==============================================================================
+  MPI / MPI_Isend
+------------------------------------------------------------------------------
+  Time%                                          2.6% 
+  Time                                       0.304944 secs
+  Imb. Time                                  0.029944 secs
+  Imb. Time%                                     9.0% 
+  Calls                        0.562M/sec   171,439.5 calls
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                             4,784,953 
+  L2_PREFETCH_HIT_L2                        4,351,955 
+  L2_PREFETCH_HIT_L3                        2,545,019 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF            7,759,476 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X            4,111,214 
+  Cache Lines PF from OffCore  0.011G/sec   3,407,521 lines
+  Cache Lines PF from Memory   0.003G/sec     862,502 lines
+  Cache Lines Requested from 
+    Memory                     0.004G/sec   1,211,154 lines
+  Write Memory Traffic GBytes  0.096G/sec        0.03 GB
+  Read Memory Traffic GBytes   0.435G/sec        0.13 GB
+  Memory traffic GBytes        0.531G/sec        0.16 GB
+  Memory Traffic / Nominal Peak                  0.3% 
+  Average Time per Call                      0.000002 secs
+  CrayPat Overhead : Time      40.8%                  
+==============================================================================
+  MPI / MPI_Irecv
+------------------------------------------------------------------------------
+  Time%                                          1.2% 
+  Time                                       0.136455 secs
+  Imb. Time                                  0.027763 secs
+  Imb. Time%                                    16.9% 
+  Calls                        0.001G/sec   171,535.5 calls
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                             2,749,703 
+  L2_PREFETCH_HIT_L2                        2,197,757 
+  L2_PREFETCH_HIT_L3                        1,255,093 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF            3,632,062 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X            2,158,468 
+  Cache Lines PF from OffCore  0.011G/sec   1,434,305 lines
+  Cache Lines PF from Memory   0.001G/sec     179,212 lines
+  Cache Lines Requested from 
+    Memory                     0.003G/sec     343,567 lines
+  Write Memory Traffic GBytes  0.050G/sec        0.01 GB
+  Read Memory Traffic GBytes   0.245G/sec        0.03 GB
+  Memory traffic GBytes        0.295G/sec        0.04 GB
+  Memory Traffic / Nominal Peak                  0.1% 
+  Average Time per Call                      0.000001 secs
+  CrayPat Overhead : Time      91.3%                  
+==============================================================================
+==============================================================================
+  MPI_SYNC
+------------------------------------------------------------------------------
+  Time%                                          4.5% 
+  Time                                       0.528316 secs
+  Imb. Time                                        -- secs
+  Imb. Time%                                       -- 
+  Calls                        0.005M/sec     2,816.0 calls
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                               153,579 
+  L2_PREFETCH_HIT_L2                           51,096 
+  L2_PREFETCH_HIT_L3                           46,424 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF              107,010 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X               67,908 
+  Cache Lines PF from OffCore  0.106M/sec      55,914 lines
+  Cache Lines PF from Memory   0.018M/sec       9,490 lines
+  Cache Lines Requested from 
+    Memory                     0.049M/sec      26,066 lines
+  Write Memory Traffic GBytes  0.730M/sec        0.00 GB
+  Read Memory Traffic GBytes   0.004G/sec        0.00 GB
+  Memory traffic GBytes        0.005G/sec        0.00 GB
+  Memory Traffic / Nominal Peak                  0.0% 
+  Average Time per Call                      0.000188 secs
+  CrayPat Overhead : Time       0.4%                  
+==============================================================================
+  MPI_SYNC / MPI_Allreduce(sync)
+------------------------------------------------------------------------------
+  Time%                                          4.4% 
+  Time                                       0.516123 secs
+  Imb. Time                                  0.238930 secs
+  Imb. Time%                                    46.3% 
+  Calls                        0.005M/sec     2,814.0 calls
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                               153,241 
+  L2_PREFETCH_HIT_L2                           51,021 
+  L2_PREFETCH_HIT_L3                           46,382 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF              106,832 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X               67,605 
+  Cache Lines PF from OffCore  0.108M/sec      55,811 lines
+  Cache Lines PF from Memory   0.018M/sec       9,428 lines
+  Cache Lines Requested from 
+    Memory                     0.050M/sec      25,887 lines
+  Write Memory Traffic GBytes  0.740M/sec        0.00 GB
+  Read Memory Traffic GBytes   0.004G/sec        0.00 GB
+  Memory traffic GBytes        0.005G/sec        0.00 GB
+  Memory Traffic / Nominal Peak                  0.0% 
+  Average Time per Call                      0.000183 secs
+  CrayPat Overhead : Time       0.4%                  
+==============================================================================
+
+Notes for table 4:
+
+  This table shows the ranks with maximum, mean, and minimum time for
+    functions with significant time, within the function groups. It
+    also shows MPI message statistics for functions in the MPI group.
+    Note that this table includes both point to point and  collective
+    communications, using estimates for the latter based on a naive
+    implementation using the former, and does not reflect
+    optimizations by the MPI library.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O load_balance_m ...
+
+Table 4:  Load Balance with MPI Message Stats
+
+  Time% |      Time |   MPI Msg |      MPI Msg |    Avg | Group
+        |           |     Count |        Bytes |    MPI |  PE=[mmm]
+        |           |           |              |    Msg | 
+        |           |           |              |   Size | 
+       
+ 100.0% | 11.692309 | 174,253.5 | 56,878,692.1 | 326.41 | Total
+|------------------------------------------------------------------
+|  80.7% |  9.433999 |       0.0 |          0.0 |     -- | USER
+||-----------------------------------------------------------------
+||  85.5% |  9.993591 |       0.0 |          0.0 |     -- | pe.290
+||  80.2% |  9.377846 |       0.0 |          0.0 |     -- | pe.114
+||  78.1% |  9.127371 |       0.0 |          0.0 |     -- | pe.3
+||=================================================================
+|  14.8% |  1.729846 | 174,253.5 | 56,878,692.1 | 326.41 | MPI
+||-----------------------------------------------------------------
+||  17.7% |  2.064538 | 180,246.0 | 59,518,896.0 | 330.21 | pe.303
+||  14.8% |  1.725744 | 180,246.0 | 59,531,184.0 | 330.28 | pe.40
+||  11.8% |  1.385239 | 180,246.0 | 59,598,256.0 | 330.65 | pe.292
+||=================================================================
+|   4.5% |  0.528316 |       0.0 |          0.0 |     -- | MPI_SYNC
+||-----------------------------------------------------------------
+||   6.8% |  0.794405 |       0.0 |          0.0 |     -- | pe.506
+||   4.2% |  0.488115 |       0.0 |          0.0 |     -- | pe.271
+||   2.5% |  0.290639 |       0.0 |          0.0 |     -- | pe.280
+|==================================================================
+
+Notes for table 5:
+
+  This table shows the MPI library functions that are used to send a
+    significant number of bytes, taking the average across sender
+    ranks of the sum of bytes sent from the sender to all destination
+    ranks. It also shows how many bytes are attributable to each of
+    its call paths. It also shows a count of messages and the number
+    of messages that fall into each bin of message sizes. For each
+    path, it shows the ranks that send the minimum, mean, and maximum
+    number of bytes.
+    Note that this table includes both point to point and  collective
+    communications, using estimates for the latter based on a naive
+    implementation using the former, and does not reflect
+    optimizations by the MPI library.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O mpi_callers ...
+
+Table 5:  MPI Message Stats by Caller
+
+    MPI |      MPI Msg |   MPI Msg |   MsgSz |     16<= |    256<= | 4KiB<= | Function
+    Msg |        Bytes |     Count |     <16 |    MsgSz |    MsgSz |  MsgSz |  Caller
+ Bytes% |              |           |   Count |     <256 |    <4KiB | <64KiB |   PE=[mmm]
+        |              |           |         |    Count |    Count |  Count | 
+       
+ 100.0% | 56,878,692.1 | 174,253.5 | 2,340.0 | 95,634.0 | 75,769.8 |  509.7 | Total
+|-----------------------------------------------------------------------------
+|  99.9% | 56,836,612.1 | 171,439.5 |     0.0 | 95,160.0 | 75,769.8 |  509.7 | MPI_Isend
+||----------------------------------------------------------------------------
+||  92.0% | 52,313,286.0 | 159,631.5 |     0.0 | 84,490.5 | 75,141.0 |    0.0 | NBDerivedHaloComm
+|||---------------------------------------------------------------------------
+3||  36.3% | 20,623,872.0 |  75,006.0 |     0.0 | 43,059.0 | 31,947.0 |    0.0 | communicateCenterBC
+||||--------------------------------------------------------------------------
+4|||  30.8% | 17,539,200.0 |  63,787.5 |     0.0 | 36,618.8 | 27,168.8 |    0.0 | Grid3DCU::lapN2N
+5|||        |              |           |         |          |          |        |  EMfields3D::MaxwellImage
+6|||        |              |           |         |          |          |        |   GMRES
+7|||        |              |           |         |          |          |        |    EMfields3D::calculateE
+8|||        |              |           |         |          |          |        |     iPic3D::c_Solver::CalculateField
+9|||        |              |           |         |          |          |        |      main
+||||||||||--------------------------------------------------------------------
+10||||||||  32.4% | 18,446,400.0 |  66,150.0 |     0.0 | 37,800.0 | 28,350.0 |    0.0 | pe.8
+10||||||||  32.4% | 18,446,400.0 |  66,150.0 |     0.0 | 37,800.0 | 28,350.0 |    0.0 | pe.344
+10||||||||  26.1% | 14,817,600.0 |  56,700.0 |     0.0 | 33,075.0 | 23,625.0 |    0.0 | pe.511
+||||||||||====================================================================
+4|||   3.4% |  1,948,800.0 |   7,087.5 |     0.0 |  4,068.8 |  3,018.8 |    0.0 | EMfields3D::MaxwellImage
+5|||        |              |           |         |          |          |        |  GMRES
+6|||        |              |           |         |          |          |        |   EMfields3D::calculateE
+7|||        |              |           |         |          |          |        |    iPic3D::c_Solver::CalculateField
+8|||        |              |           |         |          |          |        |     main
+|||||||||---------------------------------------------------------------------
+9||||||||   3.6% |  2,049,600.0 |   7,350.0 |     0.0 |  4,200.0 |  3,150.0 |    0.0 | pe.8
+9||||||||   3.6% |  2,049,600.0 |   7,350.0 |     0.0 |  4,200.0 |  3,150.0 |    0.0 | pe.344
+9||||||||   2.9% |  1,646,400.0 |   6,300.0 |     0.0 |  3,675.0 |  2,625.0 |    0.0 | pe.511
+|||||||||=====================================================================
+4|||   1.0% |    567,936.0 |   2,065.5 |     0.0 |  1,185.8 |    879.8 |    0.0 | EMfields3D::MaxwellSource
+5|||        |              |           |         |          |          |        |  EMfields3D::calculateE
+6|||        |              |           |         |          |          |        |   iPic3D::c_Solver::CalculateField
+7|||        |              |           |         |          |          |        |    main
+||||||||----------------------------------------------------------------------
+8|||||||   1.1% |    597,312.0 |   2,142.0 |     0.0 |  1,224.0 |    918.0 |    0.0 | pe.8
+8|||||||   1.1% |    597,312.0 |   2,142.0 |     0.0 |  1,224.0 |    918.0 |    0.0 | pe.344
+8|||||||   0.8% |    479,808.0 |   1,836.0 |     0.0 |  1,071.0 |    765.0 |    0.0 | pe.511
+||||||||======================================================================
+4|||   1.0% |    567,936.0 |   2,065.5 |     0.0 |  1,185.8 |    879.8 |    0.0 | EMfields3D::calculateB
+5|||        |              |           |         |          |          |        |  iPic3D::c_Solver::CalculateB
+6|||        |              |           |         |          |          |        |   main
+|||||||-----------------------------------------------------------------------
+7||||||   1.1% |    597,312.0 |   2,142.0 |     0.0 |  1,224.0 |    918.0 |    0.0 | pe.8
+7||||||   1.1% |    597,312.0 |   2,142.0 |     0.0 |  1,224.0 |    918.0 |    0.0 | pe.344
+7||||||   0.8% |    479,808.0 |   1,836.0 |     0.0 |  1,071.0 |    765.0 |    0.0 | pe.511
+||||==========================================================================
+3||  16.8% |  9,530,560.0 |  28,080.0 |     0.0 | 16,120.0 | 11,960.0 |    0.0 | communicateInterp
+4||        |              |           |         |          |          |        |  EMfields3D::communicateGhostP2G
+5||        |              |           |         |          |          |        |   EMfields3D::sumMoments_AoS
+6||        |              |           |         |          |          |        |    iPic3D::c_Solver::CalculateMoments
+7||        |              |           |         |          |          |        |     main
+||||||||----------------------------------------------------------------------
+8|||||||  17.6% | 10,017,280.0 |  29,120.0 |     0.0 | 16,640.0 | 12,480.0 |    0.0 | pe.8
+8|||||||  17.6% | 10,017,280.0 |  29,120.0 |     0.0 | 16,640.0 | 12,480.0 |    0.0 | pe.344
+8|||||||  14.2% |  8,070,400.0 |  24,960.0 |     0.0 | 14,560.0 | 10,400.0 |    0.0 | pe.511
+||||||||======================================================================
+3||  16.8% |  9,530,560.0 |  28,080.0 |     0.0 | 16,120.0 | 11,960.0 |    0.0 | communicateNode_P
+4||        |              |           |         |          |          |        |  EMfields3D::communicateGhostP2G
+5||        |              |           |         |          |          |        |   EMfields3D::sumMoments_AoS
+6||        |              |           |         |          |          |        |    iPic3D::c_Solver::CalculateMoments
+7||        |              |           |         |          |          |        |     main
+||||||||----------------------------------------------------------------------
+8|||||||  17.6% | 10,017,280.0 |  29,120.0 |     0.0 | 16,640.0 | 12,480.0 |    0.0 | pe.8
+8|||||||  17.6% | 10,017,280.0 |  29,120.0 |     0.0 | 16,640.0 | 12,480.0 |    0.0 | pe.344
+8|||||||  14.2% |  8,070,400.0 |  24,960.0 |     0.0 | 14,560.0 | 10,400.0 |    0.0 | pe.511
+||||||||======================================================================
+3||   6.1% |  3,487,536.0 |   5,382.0 |     0.0 |      0.0 |  5,382.0 |    0.0 | communicateNodeBoxStencilBC_P
+4||        |              |           |         |          |          |        |  EMfields3D::smooth
+5||        |              |           |         |          |          |        |   EMfields3D::calculateHatFunctions
+6||        |              |           |         |          |          |        |    iPic3D::c_Solver::CalculateMoments
+7||        |              |           |         |          |          |        |     main
+||||||||----------------------------------------------------------------------
+8|||||||   6.4% |  3,639,168.0 |   5,616.0 |     0.0 |      0.0 |  5,616.0 |    0.0 | pe.8
+8|||||||   6.4% |  3,639,168.0 |   5,616.0 |     0.0 |      0.0 |  5,616.0 |    0.0 | pe.344
+8|||||||   5.3% |  3,032,640.0 |   4,680.0 |     0.0 |      0.0 |  4,680.0 |    0.0 | pe.511
+||||||||======================================================================
+3||   6.0% |  3,420,468.0 |   5,278.5 |     0.0 |      0.0 |  5,278.5 |    0.0 | communicateNodeBoxStencilBC
+4||        |              |           |         |          |          |        |  EMfields3D::smoothE
+5||        |              |           |         |          |          |        |   EMfields3D::calculateE
+6||        |              |           |         |          |          |        |    iPic3D::c_Solver::CalculateField
+7||        |              |           |         |          |          |        |     main
+||||||||----------------------------------------------------------------------
+8|||||||   6.3% |  3,569,184.0 |   5,508.0 |     0.0 |      0.0 |  5,508.0 |    0.0 | pe.8
+8|||||||   6.3% |  3,569,184.0 |   5,508.0 |     0.0 |      0.0 |  5,508.0 |    0.0 | pe.344
+8|||||||   5.2% |  2,974,320.0 |   4,590.0 |     0.0 |      0.0 |  4,590.0 |    0.0 | pe.511
+||||||||======================================================================
+3||   4.7% |  2,698,624.0 |   9,814.5 |     0.0 |  5,634.2 |  4,180.2 |    0.0 | communicateCenterBC_P
+4||   4.4% |  2,509,312.0 |   9,126.0 |     0.0 |  5,239.0 |  3,887.0 |    0.0 |  EMfields3D::calculateHatFunctions
+5||        |              |           |         |          |          |        |   iPic3D::c_Solver::CalculateMoments
+6||        |              |           |         |          |          |        |    main
+|||||||-----------------------------------------------------------------------
+7||||||   4.6% |  2,639,104.0 |   9,464.0 |     0.0 |  5,408.0 |  4,056.0 |    0.0 | pe.8
+7||||||   4.6% |  2,639,104.0 |   9,464.0 |     0.0 |  5,408.0 |  4,056.0 |    0.0 | pe.344
+7||||||   3.7% |  2,119,936.0 |   8,112.0 |     0.0 |  4,732.0 |  3,380.0 |    0.0 | pe.511
+|||||||=======================================================================
+3||   3.7% |  2,103,138.0 |   6,196.5 |     0.0 |  3,557.2 |  2,639.2 |    0.0 | communicateNodeBC
+||||--------------------------------------------------------------------------
+4|||   2.5% |  1,402,092.0 |   4,131.0 |     0.0 |  2,371.5 |  1,759.5 |    0.0 | EMfields3D::calculateE
+5|||        |              |           |         |          |          |        |  iPic3D::c_Solver::CalculateField
+6|||        |              |           |         |          |          |        |   main
+|||||||-----------------------------------------------------------------------
+7||||||   2.6% |  1,473,696.0 |   4,284.0 |     0.0 |  2,448.0 |  1,836.0 |    0.0 | pe.8
+7||||||   2.6% |  1,473,696.0 |   4,284.0 |     0.0 |  2,448.0 |  1,836.0 |    0.0 | pe.344
+7||||||   2.1% |  1,187,280.0 |   3,672.0 |     0.0 |  2,142.0 |  1,530.0 |    0.0 | pe.511
+|||||||=======================================================================
+4|||   1.2% |    701,046.0 |   2,065.5 |     0.0 |  1,185.8 |    879.8 |    0.0 | EMfields3D::calculateB
+5|||        |              |           |         |          |          |        |  iPic3D::c_Solver::CalculateB
+6|||        |              |           |         |          |          |        |   main
+|||||||-----------------------------------------------------------------------
+7||||||   1.3% |    736,848.0 |   2,142.0 |     0.0 |  1,224.0 |    918.0 |    0.0 | pe.8
+7||||||   1.3% |    736,848.0 |   2,142.0 |     0.0 |  1,224.0 |    918.0 |    0.0 | pe.344
+7||||||   1.0% |    593,640.0 |   1,836.0 |     0.0 |  1,071.0 |    765.0 |    0.0 | pe.511
+||||==========================================================================
+3||   1.6% |    918,528.0 |   1,794.0 |     0.0 |      0.0 |  1,794.0 |    0.0 | communicateCenterBoxStencilBC_P
+4||        |              |           |         |          |          |        |  EMfields3D::smooth
+5||        |              |           |         |          |          |        |   EMfields3D::calculateHatFunctions
+6||        |              |           |         |          |          |        |    iPic3D::c_Solver::CalculateMoments
+7||        |              |           |         |          |          |        |     main
+||||||||----------------------------------------------------------------------
+8|||||||   1.7% |    958,464.0 |   1,872.0 |     0.0 |      0.0 |  1,872.0 |    0.0 | pe.8
+8|||||||   1.7% |    958,464.0 |   1,872.0 |     0.0 |      0.0 |  1,872.0 |    0.0 | pe.344
+8|||||||   1.4% |    798,720.0 |   1,560.0 |     0.0 |      0.0 |  1,560.0 |    0.0 | pe.511
+|||===========================================================================
+||   8.0% |  4,523,326.1 |  11,808.0 |     0.0 | 10,669.5 |    628.8 |  509.7 | Block<>::send_block
+3|        |              |           |         |          |          |        |  BlockCommunicator<>::send_curr_block
+4|        |              |           |         |          |          |        |   BlockCommunicator<>::send_complete
+5|        |              |           |         |          |          |        |    Particles3Dcomm::flush_send
+6|        |              |           |         |          |          |        |     Particles3Dcomm::recommunicate_particles_until_done
+7|        |              |           |         |          |          |        |      iPic3D::c_Solver::ParticlesMover
+8|        |              |           |         |          |          |        |       main
+|||||||||---------------------------------------------------------------------
+9||||||||   8.2% |  4,657,280.0 |  11,808.0 |     0.0 | 10,666.0 |    582.0 |  560.0 | pe.217
+9||||||||   8.0% |  4,533,312.0 |  11,808.0 |     0.0 | 10,672.0 |    611.0 |  525.0 | pe.79
+9||||||||   7.7% |  4,375,360.0 |  11,808.0 |     0.0 | 10,661.0 |    693.0 |  454.0 | pe.391
+|=============================================================================
+
+Notes for table 6:
+
+  This table shows energy and power usage for the nodes with the
+    maximum, mean, and minimum usage, as well as the sum of usage over
+    all nodes.
+    Energy and power for accelerators is also shown, if applicable.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O program_energy ...
+
+Table 6:  Program energy and power usage (from Cray PM)
+
+   Node |      Node |   Process | Node Id
+ Energy | Power (W) |      Time |  PE=HIDE
+    (J) |           |           | 
+       
+ 26,440 | 2,165.265 | 12.210841 | Total
+|-----------------------------------------
+|  6,727 |   550.925 | 12.210230 | nid.3
+|  6,613 |   541.546 | 12.211819 | nid.0
+|  6,579 |   538.840 | 12.210082 | nid.1
+|  6,520 |   533.955 | 12.211234 | nid.2
+|=========================================
+
+Notes for table 7:
+
+  This table shows values shown for HiMem calculated from information
+    in the /proc/self/numa_maps files captured near the end of the
+    program. It is the total size of all pages, including huge pages,
+    that were actually mapped into physical memory from both private
+    and shared memory segments.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O himem ...
+
+Table 7:  Memory High Water Mark by Numa Node
+
+Numanode / PE=HIDE
+
+  
+============================================================================
+  numanode.0
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)         147.1 
+  HiMem Numa Node 0 (MiBytes)     121.8 MiBytes
+  HiMem Numa Node 1 (MiBytes)       2.7 MiBytes
+  HiMem Numa Node 2 (MiBytes)       3.1 MiBytes
+  HiMem Numa Node 3 (MiBytes)       2.5 MiBytes
+  HiMem Numa Node 4 (MiBytes)       6.0 MiBytes
+  HiMem Numa Node 5 (MiBytes)       4.2 MiBytes
+  HiMem Numa Node 6 (MiBytes)       4.5 MiBytes
+  HiMem Numa Node 7 (MiBytes)       2.3 MiBytes
+============================================================================
+  numanode.1
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)         146.7 
+  HiMem Numa Node 0 (MiBytes)       4.6 MiBytes
+  HiMem Numa Node 1 (MiBytes)     119.7 MiBytes
+  HiMem Numa Node 2 (MiBytes)       2.4 MiBytes
+  HiMem Numa Node 3 (MiBytes)       3.1 MiBytes
+  HiMem Numa Node 4 (MiBytes)       4.2 MiBytes
+  HiMem Numa Node 5 (MiBytes)       6.0 MiBytes
+  HiMem Numa Node 6 (MiBytes)       4.0 MiBytes
+  HiMem Numa Node 7 (MiBytes)       2.8 MiBytes
+============================================================================
+  numanode.2
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)         146.3 
+  HiMem Numa Node 0 (MiBytes)       5.0 MiBytes
+  HiMem Numa Node 1 (MiBytes)       2.5 MiBytes
+  HiMem Numa Node 2 (MiBytes)     119.1 MiBytes
+  HiMem Numa Node 3 (MiBytes)       2.7 MiBytes
+  HiMem Numa Node 4 (MiBytes)       4.5 MiBytes
+  HiMem Numa Node 5 (MiBytes)       4.1 MiBytes
+  HiMem Numa Node 6 (MiBytes)       6.0 MiBytes
+  HiMem Numa Node 7 (MiBytes)       2.5 MiBytes
+============================================================================
+  numanode.3
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)         146.2 
+  HiMem Numa Node 0 (MiBytes)       4.2 MiBytes
+  HiMem Numa Node 1 (MiBytes)       3.1 MiBytes
+  HiMem Numa Node 2 (MiBytes)       2.8 MiBytes
+  HiMem Numa Node 3 (MiBytes)     119.1 MiBytes
+  HiMem Numa Node 4 (MiBytes)       4.0 MiBytes
+  HiMem Numa Node 5 (MiBytes)       4.5 MiBytes
+  HiMem Numa Node 6 (MiBytes)       4.2 MiBytes
+  HiMem Numa Node 7 (MiBytes)       4.3 MiBytes
+============================================================================
+  numanode.4
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)         146.1 
+  HiMem Numa Node 0 (MiBytes)       5.9 MiBytes
+  HiMem Numa Node 1 (MiBytes)       2.4 MiBytes
+  HiMem Numa Node 2 (MiBytes)       2.8 MiBytes
+  HiMem Numa Node 3 (MiBytes)       2.3 MiBytes
+  HiMem Numa Node 4 (MiBytes)     120.9 MiBytes
+  HiMem Numa Node 5 (MiBytes)       4.4 MiBytes
+  HiMem Numa Node 6 (MiBytes)       4.9 MiBytes
+  HiMem Numa Node 7 (MiBytes)       2.5 MiBytes
+============================================================================
+  numanode.5
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)         146.8 
+  HiMem Numa Node 0 (MiBytes)       4.3 MiBytes
+  HiMem Numa Node 1 (MiBytes)       4.0 MiBytes
+  HiMem Numa Node 2 (MiBytes)       2.3 MiBytes
+  HiMem Numa Node 3 (MiBytes)       2.8 MiBytes
+  HiMem Numa Node 4 (MiBytes)       4.4 MiBytes
+  HiMem Numa Node 5 (MiBytes)     121.5 MiBytes
+  HiMem Numa Node 6 (MiBytes)       4.1 MiBytes
+  HiMem Numa Node 7 (MiBytes)       3.3 MiBytes
+============================================================================
+  numanode.6
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)         146.8 
+  HiMem Numa Node 0 (MiBytes)       4.6 MiBytes
+  HiMem Numa Node 1 (MiBytes)       2.3 MiBytes
+  HiMem Numa Node 2 (MiBytes)       4.1 MiBytes
+  HiMem Numa Node 3 (MiBytes)       2.4 MiBytes
+  HiMem Numa Node 4 (MiBytes)       4.9 MiBytes
+  HiMem Numa Node 5 (MiBytes)       4.2 MiBytes
+  HiMem Numa Node 6 (MiBytes)     121.6 MiBytes
+  HiMem Numa Node 7 (MiBytes)       2.7 MiBytes
+============================================================================
+  numanode.7
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)         146.7 
+  HiMem Numa Node 0 (MiBytes)       4.1 MiBytes
+  HiMem Numa Node 1 (MiBytes)       2.8 MiBytes
+  HiMem Numa Node 2 (MiBytes)       2.5 MiBytes
+  HiMem Numa Node 3 (MiBytes)       4.0 MiBytes
+  HiMem Numa Node 4 (MiBytes)       4.1 MiBytes
+  HiMem Numa Node 5 (MiBytes)       5.0 MiBytes
+  HiMem Numa Node 6 (MiBytes)       4.5 MiBytes
+  HiMem Numa Node 7 (MiBytes)     119.6 MiBytes
+============================================================================
+
+Notes for table 8:
+
+  This table shows memory traffic for numa nodes, taking for each numa
+    node the maximum value across nodes. It also shows the balance in
+    memory traffic by showing the top 3 and bottom 3 node values.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O mem_bw ...
+
+Table 8:  Memory Bandwidth by Numanode
+
+   Memory |     Read |    Write |    Thread |  Memory |  Memory | Numanode
+  Traffic |   Memory |   Memory |      Time | Traffic | Traffic |  Node Id
+   GBytes |  Traffic |  Traffic |           |  GBytes |       / |   PE=HIDE
+          |   GBytes |   GBytes |           |   / Sec | Nominal | 
+          |          |          |           |         |    Peak | 
+|---------------------------------------------------------------------------
+|    50.79 |    42.68 |     8.11 | 12.154810 |    4.18 |    2.0% | numanode.0
+||--------------------------------------------------------------------------
+||    50.79 |    42.68 |     8.11 | 12.154810 |    4.18 |    2.0% | nid.2
+||    50.32 |    42.23 |     8.08 | 12.132348 |    4.15 |    2.0% | nid.0
+||    50.06 |    42.08 |     7.98 | 12.130990 |    4.13 |    2.0% | nid.1
+||    49.31 |    41.68 |     7.63 | 12.125384 |    4.07 |    2.0% | nid.3
+||==========================================================================
+|    49.81 |    42.01 |     7.80 | 12.150644 |    4.10 |    2.0% | numanode.1
+||--------------------------------------------------------------------------
+||    50.18 |    42.27 |     7.91 | 12.140478 |    4.13 |    2.0% | nid.0
+||    50.17 |    42.42 |     7.75 | 12.084278 |    4.15 |    2.0% | nid.2
+||    49.64 |    41.81 |     7.82 | 12.150644 |    4.08 |    2.0% | nid.1
+||    49.26 |    41.54 |     7.73 | 12.140436 |    4.06 |    2.0% | nid.3
+||==========================================================================
+|    50.06 |    42.32 |     7.75 | 12.143603 |    4.12 |    2.0% | numanode.2
+||--------------------------------------------------------------------------
+||    50.08 |    42.31 |     7.77 | 12.133070 |    4.13 |    2.0% | nid.1
+||    50.06 |    42.32 |     7.75 | 12.116707 |    4.13 |    2.0% | nid.2
+||    49.75 |    42.00 |     7.74 | 12.121348 |    4.10 |    2.0% | nid.3
+||    49.55 |    41.78 |     7.76 | 12.143603 |    4.08 |    2.0% | nid.0
+||==========================================================================
+|    49.99 |    42.06 |     7.94 | 12.152757 |    4.11 |    2.0% | numanode.3
+||--------------------------------------------------------------------------
+||    50.00 |    41.85 |     8.16 | 12.132922 |    4.12 |    2.0% | nid.0
+||    49.91 |    42.19 |     7.72 | 12.135229 |    4.11 |    2.0% | nid.1
+||    49.58 |    41.92 |     7.66 | 12.118973 |    4.09 |    2.0% | nid.2
+||    49.49 |    41.69 |     7.79 | 12.152757 |    4.07 |    2.0% | nid.3
+||==========================================================================
+|    50.86 |    42.55 |     8.30 | 12.154557 |    4.18 |    2.0% | numanode.4
+||--------------------------------------------------------------------------
+||    50.39 |    42.55 |     7.84 | 12.154557 |    4.15 |    2.0% | nid.2
+||    49.76 |    41.47 |     8.29 | 12.101545 |    4.11 |    2.0% | nid.3
+||    49.25 |    41.38 |     7.87 | 12.140170 |    4.06 |    2.0% | nid.0
+||    49.07 |    41.42 |     7.65 | 12.154136 |    4.04 |    2.0% | nid.1
+||==========================================================================
+|    50.82 |    42.64 |     8.17 | 12.154405 |    4.18 |    2.0% | numanode.5
+||--------------------------------------------------------------------------
+||    50.56 |    42.64 |     7.91 | 12.127160 |    4.17 |    2.0% | nid.2
+||    49.89 |    41.67 |     8.22 | 12.154405 |    4.10 |    2.0% | nid.3
+||    49.77 |    41.93 |     7.84 | 12.137535 |    4.10 |    2.0% | nid.0
+||    49.31 |    41.68 |     7.63 | 12.116148 |    4.07 |    2.0% | nid.1
+||==========================================================================
+|    49.44 |    41.76 |     7.69 | 12.157668 |    4.07 |    2.0% | numanode.6
+||--------------------------------------------------------------------------
+||    50.39 |    42.46 |     7.93 | 12.123748 |    4.16 |    2.0% | nid.1
+||    50.07 |    42.31 |     7.77 | 12.117666 |    4.13 |    2.0% | nid.2
+||    49.87 |    41.97 |     7.90 | 12.157668 |    4.10 |    2.0% | nid.0
+||    49.66 |    41.97 |     7.69 | 12.140510 |    4.09 |    2.0% | nid.3
+||==========================================================================
+|    49.64 |    41.82 |     7.81 | 12.143379 |    4.09 |    2.0% | numanode.7
+||--------------------------------------------------------------------------
+||    50.18 |    42.29 |     7.89 | 12.129789 |    4.14 |    2.0% | nid.1
+||    49.57 |    41.63 |     7.94 | 12.139786 |    4.08 |    2.0% | nid.0
+||    49.56 |    41.82 |     7.73 | 12.143379 |    4.08 |    2.0% | nid.2
+||    49.28 |    41.54 |     7.74 | 12.131943 |    4.06 |    2.0% | nid.3
+|===========================================================================
+
+Notes for table 9:
+
+  This table shows total wall clock time for the ranks with the
+    maximum, mean, and minimum time, as well as the average across
+    ranks.
+    It also shows maximum memory usage from /proc/self/numa_maps for
+    those ranks, and on average.  The usage is total size of all
+    pages, including huge pages, that were actually mapped into
+    physical memory from both private and shared memory segments.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O program_time ...
+
+Table 9:  Wall Clock Time, Memory High Water Mark
+
+   Process |   Process | PE=[mmm]
+      Time |     HiMem | 
+           | (MiBytes) | 
+          
+ 12.210841 |     146.6 | Total
+|--------------------------------
+| 12.269959 |     150.8 | pe.83
+| 12.211080 |     150.4 | pe.401
+| 12.157996 |     145.0 | pe.391
+|================================
+
+========================  Additional details  ========================
+
+
+
+General table notes:
+
+    The default notes for a table are based on the default definition of
+    the table, and do not account for the effects of command-line options
+    that may modify the content of the table.
+    
+    Detailed notes, produced by the pat_report -v option, do account for
+    all command-line options, and also show how data is aggregated, and
+    if the table content is limited by thresholds, rank selections, etc.
+    
+    An imbalance metric in a line is based on values in main threads
+    across multiple ranks, or on values across all threads, as applicable.
+    
+    An imbalance percent in a line is relative to the maximum value
+    for that line across ranks or threads, as applicable.
+    
+Experiment:  trace
+
+Original path to data file:
+  /cfs/klemming/home/r/ruimins/projects/iPIC3D/build/iPIC3D+orig+apa+134245-8644324t/xf-files   (RTS, 4 data files)
+
+Original program:
+  /cfs/klemming/home/r/ruimins/projects/iPIC3D/build/iPIC3D+orig
+
+Instrumented with:
+  pat_build -O \
+    /cfs/klemming/home/r/ruimins/projects/iPIC3D/build/iPIC3D+99951-8603962s/build-options.apa
+
+  Option file "/cfs/klemming/home/r/ruimins/projects/iPIC3D/build/iPIC3D+99951-8603962s/build-options.apa" contained:
+    -Drtenv=PAT_RT_PERFCTR=default
+    -g mpi
+    -w
+    -T _ZN11Particles3D12mover_PC_AoSEP10EMfields3D
+    -T _ZN10EMfields3D14sumMoments_AoSEPK15Particles3Dcomm
+    -T _ZN10EMfields3D5MUdotEN6iPic3D10array_ref3IdEES2_S2_NS0_16const_array_ref3IdEES4_S4_
+    -o iPIC3D+orig+apa
+    -U /cfs/klemming/home/r/ruimins/projects/iPIC3D/build/iPIC3D+orig
+
+Instrumented program:
+  /cfs/klemming/home/r/ruimins/projects/iPIC3D/build/./iPIC3D+orig+apa
+
+Program invocation:
+  /cfs/klemming/home/r/ruimins/projects/iPIC3D/build/./iPIC3D+orig+apa ./my_inp.inp
+
+Exit Status:  0 for 512 PEs
+
+Memory pagesize:  4 KiB
+
+Memory hugepagesize:  Not Available
+
+Programming environment:  CRAY
+
+Runtime environment variables:
+  CRAYPAT_LD_LIBRARY_PATH=/opt/cray/pe/gcc-libs:/opt/cray/gcc-libs:/opt/cray/pe/perftools/22.06.0/lib64
+  CRAYPAT_OPTS_EXECUTABLE=libexec64/opts
+  CRAYPAT_ROOT=/opt/cray/pe/perftools/22.06.0
+  CRAYPE_VERSION=2.7.16
+  CRAY_BINUTILS_VERSION=/opt/cray/pe/cce/14.0.1
+  CRAY_CC_VERSION=14.0.1
+  CRAY_DSMML_VERSION=0.2.2
+  CRAY_FTN_VERSION=14.0.1
+  CRAY_LIBSCI_VERSION=21.08.1.2
+  CRAY_MPICH_VERSION=8.1.17
+  CRAY_PERFTOOLS_VERSION=22.06.0
+  LIBSCI_VERSION=21.08.1.2
+  LMOD_FAMILY_COMPILER_VERSION=14.0.1
+  LMOD_FAMILY_CRAYPE_CPU_VERSION=false
+  LMOD_FAMILY_CRAYPE_NETWORK_VERSION=false
+  LMOD_FAMILY_CRAYPE_VERSION=2.7.16
+  LMOD_FAMILY_MPI_VERSION=8.1.17
+  LMOD_FAMILY_PRGENV_VERSION=8.3.3
+  LMOD_VERSION=8.3.1
+  MPICH_DIR=/opt/cray/pe/mpich/8.1.17/ofi/crayclang/10.0
+  PAT_BUILD_PAPI_LIBDIR=/opt/cray/pe/papi/6.0.0.15/lib64
+  PAT_RT_PERFCTR=default
+  PAT_RT_PERFCTR_DISABLE_COMPONENTS=cray_cassini,nvml,cuda
+  PERFTOOLS_VERSION=22.06.0
+  PMI_CONTROL_PORT=26736
+
+Report time environment variables:
+    CRAYPAT_ROOT=/opt/cray/pe/perftools/22.06.0
+
+Number of MPI control variables collected:  114
+
+  (To see the list, specify: -s mpi_cvar=show)
+
+Report command line options:  <none>
+
+Operating system:
+  Linux 5.3.18-150300.59.76_11.0.53-cray_shasta_c #1 SMP Thu Jul 7 19:02:20 UTC 2022 (786527e)
+
+Hardware performance counter events:
+   CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:LS_RD_BLK_C  L2 cache request outcomes. This event does not count accesses to the L2 cache by the L2 prefetcher.:Number of data cache fill requests missing in the L2 (all types).
+   L2_PREFETCH_HIT_L2                                      Number of L2 prefetcher hits in the L2
+   L2_PREFETCH_HIT_L3                                      Number of L2 prefetcher hits in the L3
+   REQUESTS_TO_L2_GROUP1:L2_HW_PF                          TBD:Number of prefetches accepted by L2 pipeline, hit or miss.
+   REQUESTS_TO_L2_GROUP1:RD_BLK_X                          TBD:Number of data cache stores
+
+Estimated minimum instrumentation overhead per call of a traced function,
+  which was subtracted from the data shown in this report
+  (for raw data, use the option:  -s overhead=include):
+    Time  0.726  microsecs
+
+Number of traced functions that were called:  35
+
+  (To see the list, specify:  -s traced_functions=show)
+

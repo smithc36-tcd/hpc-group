@@ -1,0 +1,688 @@
+CrayPat/X:  Version 22.06.0 Revision 4b5ab6256  05/21/22 02:03:49
+
+Number of PEs (MPI ranks):   64
+                           
+Numbers of PEs per Node:     64
+                           
+Numbers of Threads per PE:    1
+                           
+Number of Cores per Socket:  64
+
+Execution start time:  Sun May 28 21:18:29 2023
+
+System name and speed:  nid001519  2.944 GHz (nominal)
+
+AMD   Rome                 CPU  Family: 23  Model: 49  Stepping:  0
+
+Core Performance Boost:  All 64 PEs have CPB capability
+
+
+Current path to data file:
+  /cfs/klemming/home/r/ruimins/projects/iPIC3D/build/iPIC3D+141967-8607236s   (RTS)
+
+
+Notes for table 1:
+
+  This table shows functions that have significant exclusive sample
+    hits, averaged across ranks.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O samp_profile ...
+
+Table 1:  Profile by Function
+
+  Samp% |    Samp |  Imb. |  Imb. | Group
+        |         |  Samp | Samp% |  Function
+        |         |       |       |   PE=HIDE
+       
+ 100.0% | 6,213.1 |    -- |    -- | Total
+|----------------------------------------------------------------------
+|  89.4% | 5,553.8 |    -- |    -- | USER
+||---------------------------------------------------------------------
+||  44.1% | 2,737.7 | 100.3 |  3.6% | Particles3D::mover_PC_AoS
+||  20.0% | 1,242.0 |  31.0 |  2.5% | EMfields3D::sumMoments_AoS
+||   2.9% |   182.1 |  38.9 | 17.9% | Grid3DCU::get_safe_cell_and_weights
+||   2.5% |   155.8 |  25.2 | 14.2% | get_field_components_for_cell
+||   1.5% |    93.8 |  29.2 | 24.2% | EMfields3D::MUdot
+||   1.4% |    85.8 |  24.2 | 22.4% | Grid3DCU::get_weights
+||   1.3% |    78.7 |  17.3 | 18.4% | iPic3D::const_array_ref3<>::getidx
+||=====================================================================
+|   6.8% |   420.3 |    -- |    -- | MPI
+||---------------------------------------------------------------------
+||   2.7% |   166.0 | 131.0 | 44.8% | MPI_Waitany
+||   2.4% |   148.2 |  90.8 | 38.6% | MPI_Waitall
+||   1.2% |    72.9 |  47.1 | 39.9% | MPI_Allreduce
+||=====================================================================
+|   3.8% |   233.9 |    -- |    -- | ETC
+||---------------------------------------------------------------------
+||   3.3% |   202.4 |  76.6 | 27.9% | __cray_memcpy_ROME
+|======================================================================
+
+Notes for table 2:
+
+  This table shows functions that have the most significant exclusive
+    time, taking the maximum time across ranks and threads.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O profile_max ...
+
+Table 2:  Profile of maximum function times
+
+  Samp% |    Samp |  Imb. |  Imb. | Function
+        |         |  Samp | Samp% |  PE=[max,min]
+|-----------------------------------------------------------------------------
+| 100.0% | 2,838.0 | 100.3 |  3.6% | Particles3D::mover_PC_AoS
+||----------------------------------------------------------------------------
+|| 100.0% | 2,838.0 |    -- |    -- | pe.36
+||  93.1% | 2,641.0 |    -- |    -- | pe.47
+||============================================================================
+|  44.9% | 1,273.0 |  31.0 |  2.5% | EMfields3D::sumMoments_AoS
+||----------------------------------------------------------------------------
+||  44.9% | 1,273.0 |    -- |    -- | pe.54
+||  43.0% | 1,220.0 |    -- |    -- | pe.39
+||============================================================================
+|  10.5% |   297.0 | 131.0 | 44.8% | MPI_Waitany
+||----------------------------------------------------------------------------
+||  10.5% |   297.0 |    -- |    -- | pe.44
+||   2.0% |    58.0 |    -- |    -- | pe.24
+||============================================================================
+|   9.8% |   279.0 |  76.6 | 27.9% | __cray_memcpy_ROME
+||----------------------------------------------------------------------------
+||   9.8% |   279.0 |    -- |    -- | pe.51
+||   4.4% |   124.0 |    -- |    -- | pe.53
+||============================================================================
+|   8.4% |   239.0 |  90.8 | 38.6% | MPI_Waitall
+||----------------------------------------------------------------------------
+||   8.4% |   239.0 |    -- |    -- | pe.44
+||   2.0% |    58.0 |    -- |    -- | pe.5
+||============================================================================
+|   7.8% |   221.0 |  38.9 | 17.9% | Grid3DCU::get_safe_cell_and_weights
+||----------------------------------------------------------------------------
+||   7.8% |   221.0 |    -- |    -- | pe.27
+||   5.3% |   151.0 |    -- |    -- | pe.43
+||============================================================================
+|   6.4% |   181.0 |  25.2 | 14.2% | get_field_components_for_cell
+||----------------------------------------------------------------------------
+||   6.4% |   181.0 |    -- |    -- | pe.10
+||   4.5% |   129.0 |    -- |    -- | pe.59
+||============================================================================
+|   4.3% |   123.0 |  29.2 | 24.2% | EMfields3D::MUdot
+||----------------------------------------------------------------------------
+||   4.3% |   123.0 |    -- |    -- | pe.50
+||   2.4% |    67.0 |    -- |    -- | pe.11
+||============================================================================
+|   4.2% |   120.0 |  47.1 | 39.9% | MPI_Allreduce
+||----------------------------------------------------------------------------
+||   4.2% |   120.0 |    -- |    -- | pe.63
+||   1.6% |    46.0 |    -- |    -- | pe.21
+||============================================================================
+|   3.9% |   110.0 |  24.2 | 22.4% | Grid3DCU::get_weights
+||----------------------------------------------------------------------------
+||   3.9% |   110.0 |    -- |    -- | pe.16
+||   2.3% |    66.0 |    -- |    -- | pe.45
+||============================================================================
+|   3.4% |    96.0 |  17.3 | 18.4% | iPic3D::const_array_ref3<>::getidx
+||----------------------------------------------------------------------------
+||   3.4% |    96.0 |    -- |    -- | pe.0
+||   2.1% |    60.0 |    -- |    -- | pe.41
+||============================================================================
+|   2.6% |    73.0 |  23.3 | 32.4% | Grid3DCU::divC2N
+||----------------------------------------------------------------------------
+||   2.6% |    73.0 |    -- |    -- | pe.19
+||   1.2% |    35.0 |    -- |    -- | pe.61
+||============================================================================
+|   2.3% |    66.0 |  17.2 | 26.5% | Particles3Dcomm::send_pcl_to_appropriate_buffer
+||----------------------------------------------------------------------------
+||   2.3% |    66.0 |    -- |    -- | pe.18
+||   1.3% |    38.0 |    -- |    -- | pe.29
+||============================================================================
+|   2.3% |    64.0 |  22.0 | 35.0% | Grid3DCU::make_grid_position_safe
+||----------------------------------------------------------------------------
+||   2.3% |    64.0 |    -- |    -- | pe.14
+||   1.1% |    30.0 |    -- |    -- | pe.57
+||============================================================================
+|   2.1% |    61.0 |  17.2 | 28.6% | Larray<>::operator[]
+||----------------------------------------------------------------------------
+||   2.1% |    61.0 |    -- |    -- | pe.29
+||   0.9% |    25.0 |    -- |    -- | pe.36
+||============================================================================
+|   1.9% |    55.0 |  16.5 | 30.4% | SpeciesParticle::get_z
+||----------------------------------------------------------------------------
+||   1.9% |    55.0 |    -- |    -- | pe.41
+||   0.8% |    23.0 |    -- |    -- | pe.37
+||============================================================================
+|   1.9% |    53.0 |  18.9 | 36.3% | SpeciesParticle::get_x
+||----------------------------------------------------------------------------
+||   1.9% |    53.0 |    -- |    -- | pe.38
+||   0.8% |    24.0 |    -- |    -- | pe.41
+||============================================================================
+|   1.9% |    53.0 |  15.6 | 29.9% | Grid3DCU::gradN2C
+||----------------------------------------------------------------------------
+||   1.9% |    53.0 |    -- |    -- | pe.20
+||   0.9% |    25.0 |    -- |    -- | pe.58
+||============================================================================
+|   1.8% |    52.0 |  21.3 | 41.7% | iPic3D::const_array_ref3<>::get
+||----------------------------------------------------------------------------
+||   1.8% |    52.0 |    -- |    -- | pe.51
+||   0.7% |    20.0 |    -- |    -- | pe.49
+||============================================================================
+|   1.7% |    48.0 |  11.6 | 24.5% | Grid3DCU::assert_cell_coordinates_safe
+||----------------------------------------------------------------------------
+||   1.7% |    48.0 |    -- |    -- | pe.57
+||   0.7% |    20.0 |    -- |    -- | pe.13
+||============================================================================
+|   1.6% |    46.0 |  19.7 | 43.5% | MPI_Isend
+||----------------------------------------------------------------------------
+||   1.6% |    46.0 |    -- |    -- | pe.38
+||   0.5% |    13.0 |    -- |    -- | pe.31
+||============================================================================
+|   1.4% |    39.0 |  16.5 | 42.9% | double***
+||----------------------------------------------------------------------------
+||   1.4% |    39.0 |    -- |    -- | pe.28
+||   0.4% |    11.0 |    -- |    -- | pe.52
+||============================================================================
+|   1.3% |    37.0 |  12.3 | 33.9% | Particles3Dcomm::separate_and_send_particles
+||----------------------------------------------------------------------------
+||   1.3% |    37.0 |    -- |    -- | pe.49
+||   0.4% |    12.0 |    -- |    -- | pe.19
+||============================================================================
+|   1.2% |    34.0 |  14.3 | 42.7% | SpeciesParticle::get_w
+||----------------------------------------------------------------------------
+||   1.2% |    34.0 |    -- |    -- | pe.6
+||   0.4% |    11.0 |    -- |    -- | pe.56
+||============================================================================
+|   1.2% |    34.0 |  12.4 | 37.0% | Particles3Dcomm::getNOP
+||----------------------------------------------------------------------------
+||   1.2% |    34.0 |    -- |    -- | pe.25
+||   0.5% |    13.0 |    -- |    -- | pe.50
+||============================================================================
+|   1.2% |    33.0 |  12.4 | 38.2% | sum
+||----------------------------------------------------------------------------
+||   1.2% |    33.0 |    -- |    -- | pe.12
+||   0.5% |    13.0 |    -- |    -- | pe.32
+||============================================================================
+|   1.2% |    33.0 |  11.6 | 35.8% | _fini
+||----------------------------------------------------------------------------
+||   1.2% |    33.0 |    -- |    -- | pe.34
+||   0.5% |    14.0 |    -- |    -- | pe.14
+||============================================================================
+|   1.1% |    32.0 |  11.9 | 37.7% | SpeciesParticle::get_y
+||----------------------------------------------------------------------------
+||   1.1% |    32.0 |    -- |    -- | pe.36
+||   0.4% |    11.0 |    -- |    -- | pe.63
+||============================================================================
+|   1.1% |    30.0 |   7.5 | 25.5% | double****
+||----------------------------------------------------------------------------
+||   1.1% |    30.0 |    -- |    -- | pe.54
+||   0.5% |    13.0 |    -- |    -- | pe.30
+||============================================================================
+|   1.0% |    29.0 |   9.8 | 34.4% | Larray<>::reserve
+||----------------------------------------------------------------------------
+||   1.0% |    29.0 |    -- |    -- | pe.54
+||   0.3% |     9.0 |    -- |    -- | pe.31
+||============================================================================
+|   1.0% |    29.0 |   9.4 | 33.1% | SpeciesParticle::set_x
+||----------------------------------------------------------------------------
+||   1.0% |    29.0 |    -- |    -- | pe.39
+||   0.3% |     8.0 |    -- |    -- | pe.2
+||============================================================================
+|   1.0% |    29.0 |  11.5 | 40.4% | Larray<>::size
+||----------------------------------------------------------------------------
+||   1.0% |    29.0 |    -- |    -- | pe.30
+||   0.3% |     9.0 |    -- |    -- | pe.5
+||============================================================================
+|   1.0% |    28.0 |  12.5 | 45.2% | cap_velocity
+||----------------------------------------------------------------------------
+||   1.0% |    28.0 |    -- |    -- | pe.8
+||   0.3% |     8.0 |    -- |    -- | pe.38
+||============================================================================
+|   1.0% |    28.0 |   9.6 | 35.0% | iPic3D::const_array_ref3<>::fetch
+||----------------------------------------------------------------------------
+||   1.0% |    28.0 |    -- |    -- | pe.52
+||   0.3% |     9.0 |    -- |    -- | pe.16
+||============================================================================
+|   1.0% |    27.0 |   9.8 | 36.7% | iPic3D::const_array_ref3<>::check_idx_bounds
+||----------------------------------------------------------------------------
+||   1.0% |    27.0 |    -- |    -- | pe.17
+||   0.2% |     5.0 |    -- |    -- | pe.60
+||============================================================================
+|   1.0% |    27.0 |   8.3 | 31.1% | Grid3DCU::gradC2N
+||----------------------------------------------------------------------------
+||   1.0% |    27.0 |    -- |    -- | pe.2
+||   0.3% |     9.0 |    -- |    -- | pe.19
+|=============================================================================
+
+Notes for table 3:
+
+  This table shows functions, and line numbers within functions, that
+    have significant exclusive sample hits, averaged across ranks.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O samp_profile+src ...
+
+Table 3:  Profile by Group, Function, and Line
+
+  Samp% |    Samp |  Imb. |  Imb. | Group
+        |         |  Samp | Samp% |  Function
+        |         |       |       |   Source
+        |         |       |       |    Line
+        |         |       |       |     PE=HIDE
+       
+ 100.0% | 6,213.1 |    -- |    -- | Total
+|----------------------------------------------------------------------------
+|  89.4% | 5,553.8 |    -- |    -- | USER
+||---------------------------------------------------------------------------
+||  44.1% | 2,737.7 |    -- |    -- | Particles3D::mover_PC_AoS
+3|        |         |       |       |  projects/iPIC3D/particles/Particles3D.cpp
+||||-------------------------------------------------------------------------
+4|||   1.6% |    97.2 |  26.8 | 22.0% | line.687
+4|||   5.1% |   316.7 |  33.3 |  9.7% | line.711
+4|||   9.3% |   578.8 |  58.2 |  9.3% | line.725
+4|||  18.9% | 1,174.0 |  80.0 |  6.5% | line.727
+4|||   1.5% |    91.2 |  22.8 | 20.3% | line.736
+4|||   1.2% |    76.6 |  22.4 | 23.0% | line.753
+||||=========================================================================
+||  20.0% | 1,242.0 |    -- |    -- | EMfields3D::sumMoments_AoS
+3|        |         |       |       |  projects/iPIC3D/fields/EMfields3D.cpp
+||||-------------------------------------------------------------------------
+4|||   5.7% |   356.2 |  45.8 | 11.6% | line.944
+4|||   7.6% |   470.0 |  48.0 |  9.4% | line.946
+||||=========================================================================
+||   2.9% |   182.1 |    -- |    -- | Grid3DCU::get_safe_cell_and_weights
+3|        |         |       |       |  projects/iPIC3D/include/Grid3DCU.h
+||   2.5% |   155.8 |    -- |    -- | get_field_components_for_cell
+3|        |         |       |       |  projects/iPIC3D/include/EMfields3D.h
+||   1.5% |    93.8 |    -- |    -- | EMfields3D::MUdot
+3|        |         |       |       |  projects/iPIC3D/fields/EMfields3D.cpp
+||   1.4% |    85.8 |    -- |    -- | Grid3DCU::get_weights
+3|        |         |       |       |  projects/iPIC3D/include/Grid3DCU.h
+||   1.3% |    78.7 |  17.3 | 18.4% | iPic3D::const_array_ref3<>::getidx
+3|        |         |       |       |  projects/iPIC3D/include/Alloc.h
+4|        |         |       |       |   line.642
+||===========================================================================
+|   6.8% |   420.3 |    -- |    -- | MPI
+||---------------------------------------------------------------------------
+||   2.7% |   166.0 | 131.0 | 44.8% | MPI_Waitany
+||   2.4% |   148.2 |  90.8 | 38.6% | MPI_Waitall
+||   1.2% |    72.9 |  47.1 | 39.9% | MPI_Allreduce
+||===========================================================================
+|   3.8% |   233.9 |    -- |    -- | ETC
+||---------------------------------------------------------------------------
+||   3.3% |   202.4 |  76.6 | 27.9% | __cray_memcpy_ROME
+|============================================================================
+
+Notes for table 4:
+
+  This table shows HW performance counter data for the whole program,
+    averaged across ranks or threads, as applicable.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O hwpc ...
+
+Table 4:  Program HW Performance Counter Data
+
+PE=HIDE
+
+  
+==============================================================================
+  Total
+------------------------------------------------------------------------------
+  Thread Time                                62.359906 secs
+  CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:
+    LS_RD_BLK_C                             76,079,142 
+  L2_PREFETCH_HIT_L2                       133,505,188 
+  L2_PREFETCH_HIT_L3                        79,389,572 
+  REQUESTS_TO_L2_GROUP1:L2_HW_PF           476,167,279 
+  REQUESTS_TO_L2_GROUP1:RD_BLK_X            51,954,433 
+  Cache Lines PF from OffCore  0.005G/sec  342,662,091 lines
+  Cache Lines PF from Memory   0.004G/sec  263,272,519 lines
+  Cache Lines Requested from 
+    Memory                     0.937M/sec   58,452,767 lines
+  Write Memory Traffic GBytes  0.029G/sec         1.84 GB
+  Read Memory Traffic GBytes   0.330G/sec        20.59 GB
+  Memory traffic GBytes        0.360G/sec        22.43 GB
+  Memory Traffic / Nominal Peak                   0.2% 
+==============================================================================
+
+Notes for table 5:
+
+  This table show the average time and number of bytes read from each
+    input file, taking the average over the number of ranks that read
+    from the file.  It also shows the number of read operations, and
+    average rates.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O read_stats ...
+
+Table 5:  File Input Stats by Filename
+
+ Avg Read | Avg Read |   Read Rate | Number |    Avg |   Bytes/ | File Name=!x/^/(proc|sys)/
+ Time per |  MiBytes | MiBytes/sec |     of |  Reads |     Call |  PE=HIDE
+   Reader |      per |             | Reader |    per |          | 
+     Rank |   Reader |             |  Ranks | Reader |          | 
+          |     Rank |             |        |   Rank |          | 
+|-----------------------------------------------------------------------------
+| 0.005493 | 0.004539 |    0.826347 |     64 |    2.0 | 2,380.00 | ./my_inp.inp
+|=============================================================================
+
+Notes for table 6:
+
+  This table show the average time and number of bytes written to each
+    output file, taking the average over the number of ranks that
+    wrote to the file.  It also shows the number of write operations,
+    and average rates.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O write_stats ...
+
+Table 6:  File Output Stats by Filename
+
+      Avg |      Avg |  Write Rate | Number |    Avg | Bytes/ | File Name=!x/^/(proc|sys)/
+    Write |    Write | MiBytes/sec |     of | Writes |   Call |  PE=HIDE
+ Time per |  MiBytes |             | Writer |    per |        | 
+   Writer |      per |             |  Ranks | Writer |        | 
+     Rank |   Writer |             |        |   Rank |        | 
+          |     Rank |             |        |        |        | 
+|-----------------------------------------------------------------------------
+| 0.001059 | 0.012854 |   12.140226 |      1 |  690.0 |  19.53 | stdout
+| 0.000217 | 0.001042 |    4.813801 |      1 |   41.0 |  26.66 | data/SimulationData.txt
+|=============================================================================
+
+Table 7:  Lustre File Information
+
+                    File Path |    Stripe | Stripe | Stripe | OST list
+                              |      size | offset |  count | 
+----------------------------------------------------------------------
+                 ./my_inp.inp | 1,048,576 |      0 |      1 | 26
+      data/SimulationData.txt | 1,048,576 |      0 |      1 | 4
+ data/ConservedQuantities.txt | 1,048,576 |      0 |      1 | 6
+======================================================================
+
+Notes for table 8:
+
+  This table shows energy and power usage for the nodes with the
+    maximum, mean, and minimum usage, as well as the sum of usage over
+    all nodes.
+    Energy and power for accelerators is also shown, if applicable.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O program_energy ...
+
+Table 8:  Program energy and power usage (from Cray PM)
+
+   Node |     Node |   Process | PE=HIDE
+ Energy |    Power |      Time | 
+    (J) |      (W) |           | 
+----------------------------------------
+ 35,454 |  568.250 | 62.391551 | Total
+========================================
+
+Notes for table 9:
+
+  This table shows values shown for HiMem calculated from information
+    in the /proc/self/numa_maps files captured near the end of the
+    program. It is the total size of all pages, including huge pages,
+    that were actually mapped into physical memory from both private
+    and shared memory segments.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O himem ...
+
+Table 9:  Memory High Water Mark by Numa Node
+
+Numanode / PE=HIDE
+
+  
+============================================================================
+  numanode.0
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)         283.6 
+  HiMem Numa Node 0 (MiBytes)     242.3 MiBytes
+  HiMem Numa Node 1 (MiBytes)       3.0 MiBytes
+  HiMem Numa Node 2 (MiBytes)       7.5 MiBytes
+  HiMem Numa Node 3 (MiBytes)       4.1 MiBytes
+  HiMem Numa Node 4 (MiBytes)       7.4 MiBytes
+  HiMem Numa Node 5 (MiBytes)       3.0 MiBytes
+  HiMem Numa Node 6 (MiBytes)      13.2 MiBytes
+  HiMem Numa Node 7 (MiBytes)       3.0 MiBytes
+============================================================================
+  numanode.1
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)         281.9 
+  HiMem Numa Node 0 (MiBytes)       9.0 MiBytes
+  HiMem Numa Node 1 (MiBytes)     244.3 MiBytes
+  HiMem Numa Node 2 (MiBytes)       2.8 MiBytes
+  HiMem Numa Node 3 (MiBytes)       8.4 MiBytes
+  HiMem Numa Node 4 (MiBytes)       1.9 MiBytes
+  HiMem Numa Node 5 (MiBytes)       2.3 MiBytes
+  HiMem Numa Node 6 (MiBytes)      10.4 MiBytes
+  HiMem Numa Node 7 (MiBytes)       2.8 MiBytes
+============================================================================
+  numanode.2
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)         274.2 
+  HiMem Numa Node 0 (MiBytes)       2.6 MiBytes
+  HiMem Numa Node 1 (MiBytes)       3.1 MiBytes
+  HiMem Numa Node 2 (MiBytes)     248.5 MiBytes
+  HiMem Numa Node 3 (MiBytes)       3.2 MiBytes
+  HiMem Numa Node 4 (MiBytes)       1.9 MiBytes
+  HiMem Numa Node 5 (MiBytes)       2.3 MiBytes
+  HiMem Numa Node 6 (MiBytes)      10.2 MiBytes
+  HiMem Numa Node 7 (MiBytes)       2.4 MiBytes
+============================================================================
+  numanode.3
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)         278.1 
+  HiMem Numa Node 0 (MiBytes)       4.4 MiBytes
+  HiMem Numa Node 1 (MiBytes)      11.6 MiBytes
+  HiMem Numa Node 2 (MiBytes)       7.4 MiBytes
+  HiMem Numa Node 3 (MiBytes)     237.5 MiBytes
+  HiMem Numa Node 4 (MiBytes)       2.0 MiBytes
+  HiMem Numa Node 5 (MiBytes)       2.1 MiBytes
+  HiMem Numa Node 6 (MiBytes)      10.6 MiBytes
+  HiMem Numa Node 7 (MiBytes)       2.6 MiBytes
+============================================================================
+  numanode.4
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)         285.7 
+  HiMem Numa Node 0 (MiBytes)       2.9 MiBytes
+  HiMem Numa Node 1 (MiBytes)       2.8 MiBytes
+  HiMem Numa Node 2 (MiBytes)       1.9 MiBytes
+  HiMem Numa Node 3 (MiBytes)       4.4 MiBytes
+  HiMem Numa Node 4 (MiBytes)     209.4 MiBytes
+  HiMem Numa Node 5 (MiBytes)       1.8 MiBytes
+  HiMem Numa Node 6 (MiBytes)      59.1 MiBytes
+  HiMem Numa Node 7 (MiBytes)       3.5 MiBytes
+============================================================================
+  numanode.5
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)         281.7 
+  HiMem Numa Node 0 (MiBytes)       2.6 MiBytes
+  HiMem Numa Node 1 (MiBytes)       3.0 MiBytes
+  HiMem Numa Node 2 (MiBytes)       2.6 MiBytes
+  HiMem Numa Node 3 (MiBytes)       2.8 MiBytes
+  HiMem Numa Node 4 (MiBytes)       1.8 MiBytes
+  HiMem Numa Node 5 (MiBytes)     255.6 MiBytes
+  HiMem Numa Node 6 (MiBytes)      10.6 MiBytes
+  HiMem Numa Node 7 (MiBytes)       2.6 MiBytes
+============================================================================
+  numanode.6
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)         279.3 
+  HiMem Numa Node 0 (MiBytes)       3.0 MiBytes
+  HiMem Numa Node 1 (MiBytes)       3.0 MiBytes
+  HiMem Numa Node 2 (MiBytes)       2.6 MiBytes
+  HiMem Numa Node 3 (MiBytes)       3.0 MiBytes
+  HiMem Numa Node 4 (MiBytes)       9.3 MiBytes
+  HiMem Numa Node 5 (MiBytes)      25.0 MiBytes
+  HiMem Numa Node 6 (MiBytes)     230.8 MiBytes
+  HiMem Numa Node 7 (MiBytes)       2.7 MiBytes
+============================================================================
+  numanode.7
+----------------------------------------------------------------------------
+  Process HiMem (MiBytes)         276.4 
+  HiMem Numa Node 0 (MiBytes)       3.0 MiBytes
+  HiMem Numa Node 1 (MiBytes)       2.6 MiBytes
+  HiMem Numa Node 2 (MiBytes)       2.3 MiBytes
+  HiMem Numa Node 3 (MiBytes)       3.0 MiBytes
+  HiMem Numa Node 4 (MiBytes)       6.4 MiBytes
+  HiMem Numa Node 5 (MiBytes)       6.8 MiBytes
+  HiMem Numa Node 6 (MiBytes)      15.7 MiBytes
+  HiMem Numa Node 7 (MiBytes)     236.7 MiBytes
+============================================================================
+
+Notes for table 10:
+
+  This table shows memory traffic for numa nodes, taking for each numa
+    node the maximum value across nodes. It also shows the balance in
+    memory traffic by showing the top 3 and bottom 3 node values.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O mem_bw ...
+
+Table 10:  Memory Bandwidth by Numanode
+
+   Memory |     Read |    Write |    Thread |  Memory |  Memory | Numanode
+  Traffic |   Memory |   Memory |      Time | Traffic | Traffic |  PE=HIDE
+   GBytes |  Traffic |  Traffic |           |  GBytes |       / | 
+          |   GBytes |   GBytes |           |   / Sec | Nominal | 
+          |          |          |           |         |    Peak | 
+|---------------------------------------------------------------------------
+|   248.05 |   226.63 |    21.42 | 62.364595 |    3.98 |    1.9% | numanode.0
+|   206.95 |   188.70 |    18.25 | 62.366120 |    3.32 |    1.6% | numanode.1
+|   134.65 |   123.97 |    10.68 | 62.361837 |    2.16 |    1.1% | numanode.2
+|   266.88 |   245.62 |    21.26 | 62.360433 |    4.28 |    2.1% | numanode.3
+|    22.72 |    20.97 |     1.75 | 62.354923 |    0.36 |    0.2% | numanode.4
+|    68.94 |    63.40 |     5.54 | 62.364743 |    1.11 |    0.5% | numanode.5
+|   289.52 |   266.10 |    23.42 | 62.364769 |    4.64 |    2.3% | numanode.6
+|   197.78 |   182.40 |    15.38 | 62.364904 |    3.17 |    1.5% | numanode.7
+|===========================================================================
+
+Notes for table 11:
+
+  This table shows total wall clock time for the ranks with the
+    maximum, mean, and minimum time, as well as the average across
+    ranks.
+    It also shows maximum memory usage from /proc/self/numa_maps for
+    those ranks, and on average.  The usage is total size of all
+    pages, including huge pages, that were actually mapped into
+    physical memory from both private and shared memory segments.
+  For further explanation, see the "General table notes" below, or 
+    use:  pat_report -v -O program_time ...
+
+Table 11:  Wall Clock Time, Memory High Water Mark
+
+   Process |   Process | PE=[mmm]
+      Time |     HiMem | 
+           | (MiBytes) | 
+          
+ 62.391551 |     279.5 | Total
+|--------------------------------
+| 62.394348 |     302.5 | pe.38
+| 62.391371 |     275.7 | pe.52
+| 62.388676 |     274.6 | pe.16
+|================================
+
+========================  Additional details  ========================
+
+
+
+General table notes:
+
+    The default notes for a table are based on the default definition of
+    the table, and do not account for the effects of command-line options
+    that may modify the content of the table.
+    
+    Detailed notes, produced by the pat_report -v option, do account for
+    all command-line options, and also show how data is aggregated, and
+    if the table content is limited by thresholds, rank selections, etc.
+    
+    An imbalance metric in a line is based on values in main threads
+    across multiple ranks, or on values across all threads, as applicable.
+    
+    An imbalance percent in a line is relative to the maximum value
+    for that line across ranks or threads, as applicable.
+    
+Experiment:  samp_cs_time
+
+Sampling interval:  10000 microsecs
+
+Original path to data file:
+  /cfs/klemming/home/r/ruimins/projects/iPIC3D/build/iPIC3D+141967-8607236s/xf-files   (RTS)
+
+Original program:
+  /cfs/klemming/home/r/ruimins/projects/iPIC3D/build/iPIC3D+orig
+
+Instrumented with:
+  pat_build -f -O lite-samples -Drtenv=PAT_RT_REPORT_METHOD=team \
+    -Drtenv=PAT_RT_REPORT_CLEANUP=skip iPIC3D+orig iPIC3D
+
+  Option file "lite-samples" contained:
+    -Drtenv=PAT_RT_PERFCTR=default_samp
+    -Drtenv=PAT_RT_EXPERIMENT=samp_cs_time
+    -Drtenv=PAT_RT_SAMPLING_MODE=3
+    -Dreport=y
+    -Drtenv=PAT_RT_REPORT_CMD=pat_report,-O,lite-samples,-s,summoner=rtl
+    -g upc
+    -g caf
+    -g mpi
+    -g shmem
+    -g syscall
+    -g io
+
+Instrumented program:
+  /cfs/klemming/home/r/ruimins/projects/iPIC3D/build/./iPIC3D
+
+Program invocation:
+  /cfs/klemming/home/r/ruimins/projects/iPIC3D/build/./iPIC3D ./my_inp.inp
+
+Exit Status:  0 for 64 PEs
+
+Memory pagesize:  4 KiB
+
+Memory hugepagesize:  Not Available
+
+Programming environment:  CRAY
+
+Runtime environment variables:
+  CRAYPAT_LD_LIBRARY_PATH=/opt/cray/pe/gcc-libs:/opt/cray/gcc-libs:/opt/cray/pe/perftools/22.06.0/lib64
+  CRAYPAT_OPTS_EXECUTABLE=libexec64/opts
+  CRAYPAT_ROOT=/opt/cray/pe/perftools/22.06.0
+  CRAYPE_VERSION=2.7.16
+  CRAY_BINUTILS_VERSION=/opt/cray/pe/cce/14.0.1
+  CRAY_CC_VERSION=14.0.1
+  CRAY_DSMML_VERSION=0.2.2
+  CRAY_FTN_VERSION=14.0.1
+  CRAY_LIBSCI_VERSION=21.08.1.2
+  CRAY_MPICH_VERSION=8.1.17
+  CRAY_PERFTOOLS_VERSION=22.06.0
+  LIBSCI_VERSION=21.08.1.2
+  LMOD_FAMILY_COMPILER_VERSION=14.0.1
+  LMOD_FAMILY_CRAYPE_CPU_VERSION=false
+  LMOD_FAMILY_CRAYPE_NETWORK_VERSION=false
+  LMOD_FAMILY_CRAYPE_VERSION=2.7.16
+  LMOD_FAMILY_MPI_VERSION=8.1.17
+  LMOD_FAMILY_PRGENV_VERSION=8.3.3
+  LMOD_VERSION=8.3.1
+  MPICH_DIR=/opt/cray/pe/mpich/8.1.17/ofi/crayclang/10.0
+  PAT_BUILD_PAPI_LIBDIR=/opt/cray/pe/papi/6.0.0.15/lib64
+  PAT_RT_EXPERIMENT=samp_cs_time
+  PAT_RT_PERFCTR=default_samp
+  PAT_RT_PERFCTR_DISABLE_COMPONENTS=cray_cassini,nvml,cuda
+  PAT_RT_REPORT_CLEANUP=skip
+  PAT_RT_REPORT_CMD=pat_report,-O,lite-samples,-s,summoner=rtl
+  PAT_RT_REPORT_METHOD=team
+  PAT_RT_SAMPLING_MODE=3
+  PERFTOOLS_VERSION=22.06.0
+  PMI_CONTROL_PORT=27636
+
+Report time environment variables:
+    CRAYPAT_ROOT=/opt/cray/pe/perftools/22.06.0
+
+Number of MPI control variables collected:  114
+
+  (To see the list, specify: -s mpi_cvar=show)
+
+Report command line options:  <none>
+
+Operating system:
+  Linux 5.3.18-150300.59.76_11.0.53-cray_shasta_c #1 SMP Thu Jul 7 19:02:20 UTC 2022 (786527e)
+
+Hardware performance counter events:
+   CORE_TO_L2_CACHEABLE_REQUEST_ACCESS_STATUS:LS_RD_BLK_C  L2 cache request outcomes. This event does not count accesses to the L2 cache by the L2 prefetcher.:Number of data cache fill requests missing in the L2 (all types).
+   L2_PREFETCH_HIT_L2                                      Number of L2 prefetcher hits in the L2
+   L2_PREFETCH_HIT_L3                                      Number of L2 prefetcher hits in the L3
+   REQUESTS_TO_L2_GROUP1:L2_HW_PF                          TBD:Number of prefetches accepted by L2 pipeline, hit or miss.
+   REQUESTS_TO_L2_GROUP1:RD_BLK_X                          TBD:Number of data cache stores
+
