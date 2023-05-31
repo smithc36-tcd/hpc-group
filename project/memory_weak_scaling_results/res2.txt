@@ -1,0 +1,11 @@
+ Performance counter stats for 'srun -n 2 iPIC3D ../inputfiles/weak_scaling_inputfiles/inp_w2.txt':
+
+          74022943      instructions:u            #    1.89  insn per cycle
+          39182946      cycles:u
+          27285964      L1-dcache-loads:u
+            639507      L1-dcache-load-misses:u   #    2.34% of all L1-dcache hits
+
+     109.675238403 seconds time elapsed
+
+       0.025118000 seconds user
+       0.019991000 seconds sys
